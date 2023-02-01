@@ -15,18 +15,18 @@ nav {
   width: 5rem;
   height: 5rem;
 }
-
 .navbar {
   display: flex;
   flex-direction: row;
   background-color: #6c8fa7e2;
   align-items: center;
   box-shadow: 0px 3px 10px rgb(130, 130, 130);
+  height: 10rem;
 }
 .nav-links {
   display: flex;
-  width: 45%;
-  justify-content: center;
+  width: 40%;
+  justify-content: left;
 }
 .nav-links a {
   font-size: 0.8rem;
@@ -56,8 +56,8 @@ nav {
   font-size: 1.3rem;
   display: flex;
   flex-direction: row;
-  justify-items: flex-end;
-  width: 40%;
+  justify-content: right;
+  width: 50%;
   color: #f2f2f2;
 }
 .nav-icons a {
@@ -79,7 +79,7 @@ nav {
   border-radius: 100%;
   width: 1.2rem;
   height: 1.2rem;
-  margin-left: -0.9rem;
+  margin-left: -2rem;
 }
 .logotype-nav {
   display: flex;
@@ -87,7 +87,9 @@ nav {
   padding: 1rem;
   font-family: "Comfortaa", cursive;
   align-items: center;
+  justify-content: center;
   color: #f2f2f2;
+  width: 10%;
 }
 .logotype-nav p {
   font-size: 7px;
@@ -98,7 +100,6 @@ nav {
   margin-bottom: 0.3rem;
   border-radius: 5rem;
 }
-
 .nav-mobile {
   visibility: hidden;
 }

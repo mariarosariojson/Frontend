@@ -1,17 +1,19 @@
 .food-container {
-  margin: 2rem auto;
-  width: 100%;
-  padding: 3rem;
+  margin: 10rem auto;
+  width: 80%;
   text-transform: uppercase;
 }
 .food-menu-card {
-  width: 80%;
   margin: 0 auto;
+  width: 100%;
 }
 .food-menu-header {
   text-align: center;
   margin-top: 5rem;
   color: rgb(45, 45, 45);
+}
+.category {
+  width: fit-content;
 }
 .card {
   display: inline-block;
