@@ -1,0 +1,83 @@
+h1 {
+  text-align: center;
+}
+h3 {
+  font-weight: bolder;
+}
+
+.chef-container {
+  width: 100%;
+  color: rgb(109, 109, 109);
+}
+.chef-order-list {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto;
+  width: 75%;
+}
+.chef-list {
+  width: 100%;
+}
+.chef-card {
+  display: inline-block;
+  border-radius: 0.1rem 0.1rem;
+  background-color: rgb(253, 247, 247);
+  height: max-content;
+  width: 100%;
+  margin: 2rem;
+  transition-property: box-shadow, transform;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+
+.chef-order-status {
+  display: flex;
+  margin: 3rem auto;
+  width: max-content;
+}
+
+.chef-status-col-1,
+.chef-status-col-2,
+.chef-status-col-3 {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  border-left: 1px solid black;
+}
+.chef-status-col-3 {
+  border-right: 1px solid black;
+}
+.chef-btn-container {
+  margin: 3rem 3rem 0rem 0rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.card-btn {
+  cursor: pointer;
+  padding: 0.5rem 0.6rem;
+  border: 0.07rem solid #6c8fa7;
+  border-radius: 50% 50% 50% 50%;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin: 1.5rem 0.6rem 0rem 0rem;
+  color: #6c8fa7;
+  transition: filter 250ms ease;
+  background-color: #f2f2f2;
+}
+.card-btn:hover,
+.card-btn a:hover {
+  background-color: #6c8fa7;
+  color: #f2f2f2;
+  border: 0.1rem solid #6c8fa7;
+}
+.card-remove-btn:hover {
+  background-color: rgb(253, 105, 105);
+  border: 0.1rem solid rgb(253, 105, 105);
+}
+.card-btn:is(:hover, :focus) {
+  filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}

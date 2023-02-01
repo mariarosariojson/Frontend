@@ -1,0 +1,95 @@
+footer {
+  background-color: #6c8fa7;
+  color: #f2f2f2;
+  width: 100%;
+  padding: 2rem;
+  margin: 0 auto;
+  box-shadow: 1px 1px 5px rgb(56, 56, 56);
+  z-index: 5;
+}
+footer h3 {
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+  color: #f2f2f2;
+  font-size: 1.1rem;
+}
+footer ul li {
+  list-style: none;
+  letter-spacing: 1px;
+  line-height: 1.5rem;
+}
+footer input {
+  width: 13rem;
+  border: 0.01rem solid #f2f2f2;
+  border-radius: 0.4rem;
+  background-color: #6c8fa7;
+  padding: 0.9rem;
+  margin-top: 0.5rem;
+  color: #f2f2f2;
+}
+footer input::placeholder {
+  color: #f2f2f2;
+}
+footer button {
+  padding: 0.9rem 1.5rem;
+  margin-top: 0.9rem;
+  border-radius: 0.5rem;
+  background-color: #6c8fa7;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  border: 0.01rem solid #f2f2f2;
+  font-weight: 600;
+  font-size: 0.7rem;
+  transition: filter 250ms ease;
+}
+footer button:is(:hover, :focus) {
+  filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2rem auto;
+  width: 85%;
+}
+.footer-col-1,
+.footer-col-2,
+.footer-col-3,
+.footer-col-4 {
+  display: flex;
+  flex-direction: row;
+  width: 15rem;
+  height: 15rem;
+  color: #f2f2f2;
+  margin: 1rem 2rem;
+  justify-content: top;
+}
+.footer-col-1,
+.footer-col-2,
+.footer-col-3,
+.logotype-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+}
+.footer-copy {
+  width: 100%;
+  height: 0.5rem;
+  color: #6c8fa7;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 11px;
+  text-align: center;
+  margin: 1rem 0rem 1rem 0rem;
+  bottom: 0;
+}
+
+@media only screen and (max-width: 430px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
+}

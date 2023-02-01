@@ -1,0 +1,82 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "frontend-debug",
+      "type": "npm",
+      "script": "devservervscode",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Issues checking in progress...",
+          "endsPattern": "No issues found.*"
+        }
+      }
+    },
+    {
+      "label": "kill-debug-process",
+      "type": "process",
+      "command": ["${command:workbench.action.terminal.kill}"],
+      "problemMatcher": []
+    },
+    {
+      "label": "frontend-backend",
+      "dependsOn": ["frontend", "backend"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "frontend",
+      "type": "npm",
+      "script": "start",
+      "presentation": {
+        "reveal": "always",
+        "group": "build"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "backend",
+      "command": "dotnet",
+      "type": "shell",
+      "args": ["run", "--project", "../Backend"],
+      "presentation": {
+        "reveal": "always",
+        "group": "build"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["build", "${workspaceFolder}/Project.csproj", "/property:GenerateFullPaths=true", "/consoleloggerparameters:NoSummary"],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["publish", "${workspaceFolder}/Project.csproj", "/property:GenerateFullPaths=true", "/consoleloggerparameters:NoSummary"],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "watch",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["watch", "run", "${workspaceFolder}/Project.csproj", "/property:GenerateFullPaths=true", "/consoleloggerparameters:NoSummary"],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

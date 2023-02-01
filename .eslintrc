@@ -1,0 +1,235 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react", "only-warn", "unused-imports", "import", "simple-import-sort", "react-hooks", "immutable", "unicorn"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+    "prettier", // disables linting rules that conflict with prettier
+    "plugin:unicorn/recommended"
+  ],
+  "reportUnusedDisableDirectives": true,
+  "rules": {
+    // Unicorn plugin rules
+    "unicorn/filename-case": ["off", { "case": "pascalCase" }], // Temp
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/no-useless-undefined": "off",
+    "unicorn/switch-case-braces": "off",
+    "unicorn/no-null": "off",
+    "unicorn/prefer-number-properties": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/numeric-separators-style": "off",
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/consistent-destructuring": "off", // Temp
+    "unicorn/number-literal-case": "off", // Temp
+    // Immutable plugin rules
+    "immutable/no-this": "warn",
+    "immutable/no-mutation": "warn",
+    // Javascript rules
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 0 }],
+    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 4 }],
+    "lines-around-comment": ["error", { "beforeBlockComment": true }],
+    "prefer-object-spread": "error",
+    "operator-assignment": "error",
+    "object-shorthand": "error",
+    "no-useless-return": "error",
+    "no-useless-rename": "error",
+    "no-useless-concat": "warn",
+    "no-useless-computed-key": "warn",
+    "no-unneeded-ternary": "warn",
+    "no-return-assign": "warn",
+    "no-nested-ternary": "warn",
+    "no-multi-assign": "warn",
+    "no-lonely-if": "warn",
+    "no-lone-blocks": "warn",
+    "no-implicit-coercion": "warn",
+    "no-confusing-arrow": "warn",
+    "max-params": ["error", 5],
+    "max-nested-callbacks": ["error", 5],
+    "max-depth": ["error", 4],
+    "default-case-last": "warn",
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "*", "next": "export" },
+      { "blankLine": "always", "prev": "*", "next": "function" }
+    ],
+    "dot-location": ["warn", "property"],
+    "eqeqeq": ["warn", "always"],
+    "spaced-comment": "warn",
+    "no-throw-literal": "warn",
+    "no-var": "warn",
+    "prefer-destructuring": "warn",
+    "prefer-template": "warn",
+    "no-console": "warn",
+    "no-await-in-loop": "warn",
+    "no-template-curly-in-string": "error",
+    "curly": "warn",
+    "no-else-return": ["warn", { "allowElseIf": true }],
+    "no-extra-boolean-cast": "warn",
+    // Typescript rules
+    "@typescript-eslint/prefer-nullish-coalescing": "off", // Temp
+    "@typescript-eslint/no-unnecessary-condition": "off", // Temp
+    "@typescript-eslint/no-var-requires": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          // un-ban a type that's banned by default
+          "{}": false
+        },
+        "extendDefaults": true
+      }
+    ],
+    "@typescript-eslint/switch-exhaustiveness-check": "warn",
+    "@typescript-eslint/sort-type-union-intersection-members": "warn",
+    "@typescript-eslint/prefer-string-starts-ends-with": "warn",
+    "@typescript-eslint/prefer-reduce-type-parameter": "warn",
+    "@typescript-eslint/prefer-optional-chain": "warn",
+    "@typescript-eslint/prefer-includes": "warn",
+    "@typescript-eslint/no-useless-empty-export": "warn",
+    "@typescript-eslint/no-require-imports": "warn",
+    "@typescript-eslint/method-signature-style": "warn",
+    "@typescript-eslint/consistent-type-imports": "warn",
+    "@typescript-eslint/consistent-type-exports": "warn",
+    "@typescript-eslint/consistent-type-definitions": "warn",
+    "@typescript-eslint/consistent-type-assertions": "warn",
+    "@typescript-eslint/consistent-indexed-object-style": "warn",
+    "@typescript-eslint/no-unnecessary-boolean-literal-compare": "warn",
+    "@typescript-eslint/consistent-generic-constructors": "warn",
+    "@typescript-eslint/array-type": "warn",
+    // Disabling following eslint rules, so to use equivalent typescript rules
+    // (you must disable the base rule as it can report incorrect errors)
+    "dot-notation": "off",
+    "require-await": "off",
+    "default-param-last": "off",
+    "no-return-await": "off",
+    "no-unused-expressions": "off",
+    "no-useless-constructor": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/dot-notation": "warn",
+    "@typescript-eslint/require-await": "error",
+    "@typescript-eslint/default-param-last": "warn",
+    "@typescript-eslint/return-await": "warn",
+    "@typescript-eslint/no-unused-expressions": "warn",
+    "@typescript-eslint/no-useless-constructor": "warn",
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    // React hook plugin rules
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    // React plugin rules
+    "react/function-component-definition": ["warn", { "namedComponents": "function-declaration" }],
+    "react/no-multi-comp": ["warn", { "ignoreStateless": true }],
+    "react/jsx-fragments": ["warn", "syntax"], // (Fixable) Enforce shorthand syntax for React fragments "<></>"
+    "react/no-this-in-sfc": "error", // Disallow usage of "this" in functional component.
+    "react/self-closing-comp": ["warn", { "component": true, "html": true }], // (Fixable) React and html components without children must be self-closed to avoid unnecessary extra closing tag.
+    "react/jsx-curly-brace-presence": ["warn", "never"], // (Fixable) Disallow unnecessary curly braces in JSX props and/or children.
+    "react/jsx-boolean-value": ["warn", "never"], // (Fixable) Enforce boolean attributes notation: "open" instead of "open={true}"
+    "react/jsx-no-useless-fragment": ["warn", { "allowExpressions": true }], // (Fixable) Disallow unnecessary fragments
+    "react/jsx-key": "warn", // Enforce key-prop on jsx arrays
+    "react/void-dom-elements-no-children": "warn",
+    "react/jsx-pascal-case": "warn", // Enforce pascal case naming convention for JSX components
+    "react/no-unescaped-entities": "warn", // Disallow/forbid certain unnecessary characters that can lead to errors on comps
+    "react/no-unknown-property": "warn", // Enforce camelCased naming convetion for DOM props
+    "react/jsx-no-comment-textnodes": "warn",
+    "react/jsx-no-bind": ["warn", { "allowArrowFunctions": true }],
+    "react/button-has-type": ["error", { "button": true, "submit": false, "reset": false }], // Only allow type="button" on button
+    "react/jsx-sort-props": ["warn", { "callbacksLast": true, "shorthandFirst": true, "ignoreCase": false, "reservedFirst": true }], // (Fixable)
+    "react/jsx-newline": ["warn", { "prevent": true }],
+    "react/jsx-handler-names": "warn",
+    "react/no-unused-prop-types": "warn",
+    "react/jsx-max-depth": ["warn", { "max": 10 }],
+    // Unused imports plugin rules. This plugin is only used for npm scripts to remove unused imports
+    "unused-imports/no-unused-imports": "off", // Turned off since we only use it through npm script.
+    "unused-imports/no-unused-vars": ["off"], // Turned off since we use typescript linting rule instead
+    // Import plugin rules
+    "import/first": "warn", // (Fixable)
+    "import/newline-after-import": "warn", // (Fixable)
+    "import/no-duplicates": "warn", // (Fixable)
+    "import/no-anonymous-default-export": "warn",
+    // "import/prefer-default-export": "warn",
+    "import/no-namespace": "warn",
+    "import/no-unused-modules": "warn",
+    "import/no-extraneous-dependencies": "warn",
+    // Simple import sort plugin rules
+    "sort-imports": "off", // Turned off in favor of using "eslint-plugin-simple-import-sort"
+    "import/order": "off", // Turned off in favor of using "eslint-plugin-simple-import-sort"
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          // Node.js builtins. You could also generate this regex if you use a `.js` config.
+          // For example: `^(${require("module").builtinModules.join("|")})(/|$)`
+          [
+            "^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)"
+          ],
+          // Packages. `react` related packages come first.
+          ["^react", "^@?\\w"],
+          ["^.*\\u0000$"],
+          // Internal packages.
+          ["^(@|@company|@ui|components|utils|config|api|css|images|vendored-lib)(/.*|$)"],
+          ["^(Src/api)(/.*|$)"],
+          ["^(Src/components)(/.*|$)"],
+          ["^(Src/hooks)(/.*|$)"],
+          ["^(Src)(/.*|$)"],
+          // Side effect imports.
+          ["^\\u0000"],
+          // Parent imports. Put `..` last.
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          // Other relative imports. Put same-folder imports and `.` last.
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          // Style imports.
+          ["^.+\\.s?css$"]
+        ]
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    },
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    }
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.tsx"],
+      "rules": {
+        "max-lines": ["off", 250]
+      }
+    },
+    {
+      "files": ["src/**/*.ts"],
+      "excludedFiles": "src/hooks/*",
+      "rules": {
+        "max-lines-per-function": ["warn", 40]
+      }
+    },
+    {
+      "files": ["src/**/*.tsx"],
+      "excludedFiles": "src/hooks/*",
+      "rules": {
+        "max-lines-per-function": ["warn", 250]
+      }
+    },
+    {
+      "files": ["src/**/use*.*", "src/hooks/*"],
+      "rules": {
+        "unicorn/filename-case": ["off", { "case": "pascalCase" }]
+      }
+    }
+  ]
+}

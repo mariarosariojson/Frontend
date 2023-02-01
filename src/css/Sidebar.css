@@ -1,0 +1,27 @@
+.sidebar-cart-header {
+  text-align: center;
+  padding-bottom: 3rem;
+  color: #6c8fa7;
+  text-transform: uppercase;
+}
+.sidebar {
+  background-color: #f2f2f2;
+  padding: 3rem 3rem 0rem 3rem;
+  height: 100%;
+}
+.sidebar-close-btn {
+  visibility: hidden;
+}
+i {
+  padding-right: 1rem;
+}
+
+@media only screen and (max-width: 430px) {
+  .sidebar {
+    padding: 5rem 3rem 3rem 3rem;
+  }
+  .icon-mobile {
+    font-size: 1.5rem;
+    color: #f2f2f2;
+  }
+}

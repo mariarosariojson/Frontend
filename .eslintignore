@@ -1,0 +1,11 @@
+node_modules/
+dist/
+Backend/
+.vscode/
+src/**/api
+src/**/Polyfills.ts
+src/**/scripts
+webpack.*.js
+webpack-dev-server.js
+server_backup.js
+src/**/*.d.ts

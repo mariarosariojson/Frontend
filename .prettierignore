@@ -1,0 +1,7 @@
+node_modules/
+dist/
+Backend/
+src/**/api
+src/**/Polyfills.ts
+src/**/scripts
+src/**/*.d.ts

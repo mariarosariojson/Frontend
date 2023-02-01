@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "ES6",
+    "sourceMap": true,
+    "jsx": "react-jsxdev",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./",
+    "paths": {
+      "Src/*": ["src/*"]
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "importsNotUsedAsValues": "preserve", // This is important for proper files watching (https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/blob/master/examples/eslint/tsconfig.json)
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,153 @@
+{
+  "version": "1.0.0",
+  "configurations": [
+    {
+      "name": "Chrome",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "preLaunchTask": "frontend-debug",
+      "postDebugTask": "kill-debug-process",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": false,
+      "runtimeArgs": ["--disable-infobars --disable-session-crashed-bubble --disable-translate --disable-background-mode"],
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js",
+        "**/*/vendors~main.bundle.js",
+        "react_devtools_backend.js",
+        "injectGlobalHook.js",
+        "contentScript.js",
+        "sock.*",
+        "**/*/node_modules",
+        "**/*/onloadwff.js",
+        "**/*/bootstrap",
+        "**/*/eval",
+        "**/*/jquery.min.js",
+        "**/*/main.bundle.js"
+      ]
+    },
+    {
+      "name": "Edge",
+      "type": "pwa-msedge",
+      "request": "launch",
+      "preLaunchTask": "frontend-debug",
+      "postDebugTask": "kill-debug-process",
+      "sourceMaps": true,
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": false,
+      "runtimeArgs": ["--disable-infobars --disable-session-crashed-bubble --disable-translate --disable-background-mode"],
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js",
+        "**/*/vendors~main.bundle.js",
+        "react_devtools_backend.js",
+        "injectGlobalHook.js",
+        "contentScript.js",
+        "sock.*",
+        "**/*/node_modules",
+        "**/*/onloadwff.js",
+        "**/*/bootstrap",
+        "**/*/eval",
+        "**/*/jquery.min.js",
+        "**/*/main.bundle.js"
+      ]
+    },
+    {
+      "name": "Brave",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "runtimeExecutable": "C:\\Program Files (x86)\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
+      "preLaunchTask": "frontend-debug",
+      "postDebugTask": "kill-debug-process",
+      "sourceMaps": true,
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": false,
+      "runtimeArgs": ["--disable-infobars --disable-session-crashed-bubble --disable-translate --disable-background-mode"],
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js",
+        "**/*/vendors~main.bundle.js",
+        "react_devtools_backend.js",
+        "injectGlobalHook.js",
+        "contentScript.js",
+        "sock.*",
+        "**/*/node_modules",
+        "**/*/onloadwff.js",
+        "**/*/bootstrap",
+        "**/*/eval",
+        "**/*/jquery.min.js",
+        "**/*/main.bundle.js"
+      ]
+    },
+    {
+      "name": "Firefox Dev Edition",
+      "type": "firefox",
+      "request": "launch",
+      "preLaunchTask": "frontend-debug",
+      "postDebugTask": "kill-debug-process",
+      "reAttach": false,
+      "profile": "dev-edition-default",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "skipFiles": [
+        "react_devtools_backend.js",
+        "injectGlobalHook.js",
+        "contentScript.js",
+        "sock.*",
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js"
+      ],
+      "pathMappings": [
+        {
+          "url": "webpack://urval",
+          "path": "${workspaceFolder}"
+        }
+      ]
+    },
+    {
+      "name": "Firefox",
+      "type": "firefox",
+      "request": "launch",
+      "preLaunchTask": "frontend-debug",
+      "postDebugTask": "kill-debug-process",
+      "reAttach": false,
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "skipFiles": [
+        "react_devtools_backend.js",
+        "injectGlobalHook.js",
+        "contentScript.js",
+        "sock.*",
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js"
+      ],
+      "pathMappings": [
+        {
+          "url": "webpack://urval",
+          "path": "${workspaceFolder}"
+        }
+      ]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Chrome & Backend",
+      "configurations": ["Chrome", "Backend"]
+    },
+    {
+      "name": "Edge & Backend",
+      "configurations": ["Edge", "Backend"]
+    },
+    {
+      "name": "Brave & Backend",
+      "configurations": ["Brave", "Backend"]
+    },
+    {
+      "name": "Firefox & Backend",
+      "configurations": ["Firefox", "Backend"]
+    }
+  ]
+}

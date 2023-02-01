@@ -1,0 +1,66 @@
+.container-logreg {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+.register-container {
+  margin: 5rem auto;
+  width: max-content;
+  height: 50vh;
+  border-left: 0.1rem solid #6c8fa7;
+  padding: 3rem 4rem 4rem 4rem;
+}
+.login-reg {
+  width: max-content;
+  height: 50vh;
+  padding: 3rem 5rem 0rem 10rem;
+}
+.register-input {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+}
+.input-1,
+.input-2,
+.input-3 {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.register-container h1 {
+  font-weight: 700;
+}
+.register-container li {
+  list-style: none;
+  letter-spacing: 1px;
+  line-height: 1.5rem;
+}
+.register-container input {
+  width: 13rem;
+  border: 0.01rem solid #6c8fa7;
+  border-radius: 0.4rem;
+  background-color: #f2f2f2;
+  padding: 0.9rem;
+  margin-top: 0.5rem;
+  color: #6c8fa7;
+}
+.register-container input::placeholder {
+  color: #6c8fa7;
+}
+.register-container button {
+  padding: 0.9rem 1.5rem;
+  margin-top: 0.9rem;
+  border-radius: 0.5rem;
+  background-color: #f2f2f2;
+  color: #6c8fa7;
+  text-transform: uppercase;
+  border: 0.01rem solid #6c8fa7;
+  font-weight: 600;
+  font-size: 0.7rem;
+  transition: filter 250ms ease;
+  cursor: pointer;
+}
+.register-container button:is(:hover, :focus) {
+  filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}

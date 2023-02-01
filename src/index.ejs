@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="<%= htmlWebpackPlugin.options.lang %>">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <noscript>
+      <div class="no-js">
+        <br />
+        <h1>Din webbläsare har JavaScript inaktiverat</h1>
+        <p>
+          Den här sidan kräver att JavaScript är aktiverat i webbläsaren för att fungera som avsett. Här finns
+          <a href="http://www.enable-javascript.com/" target="_blank">instruktioner för aktivering av JavaScript i flera olika webbläsare</a>.
+        </p>
+      </div>
+      <style>
+        #root {
+          display: none;
+        }
+        .no-js {
+          text-align: center;
+        }
+      </style>
+    </noscript>
+    <div id="root"></div>
+    <script>
+      // When dom is ready and everything is loaded
+      window.onload = function () {
+        // Listen for changes in DOM by react refresh overlay
+        // It adds an iframe to the DOM
+        let observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            let oldValue = mutation.oldValue;
+            let newValue = mutation.target.textContent;
+
+            if (oldValue === newValue) {
+              return;
+            }
+
+            // A change in the DOM has occured here. Find out what kind
+            if (mutation.type !== "childList" || mutation.addedNodes.length === 0) {
+              return;
+            }
+
+            const iframeReactRefreshOverlay = document.getElementById("react-refresh-overlay");
+
+            if (!iframeReactRefreshOverlay) {
+              return;
+            }
+
+            const reactRefreshOverlay = localStorage.getItem("react-refresh-overlay");
+            const hide = reactRefreshOverlay === "hide";
+            if (hide) {
+              iframeReactRefreshOverlay.style.display = "none";
+            } else {
+              iframeReactRefreshOverlay.style.display = "block";
+            }
+          });
+        });
+
+        observer.observe(document.body, {
+          characterDataOldValue: true,
+          subtree: true,
+          childList: true,
+          characterData: true
+        });
+      };
+    </script>
+  </body>
+</html>
