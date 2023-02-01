@@ -8,6 +8,8 @@ import FoodItem from "Src/components/FoodItem/FoodItem";
 
 import { ShoppingCartProvider } from "Src/context/ShoppingCartContex";
 
+import "src/css/Site.css";
+
 interface HomeProps {
   id: number;
   imageUrl: string;

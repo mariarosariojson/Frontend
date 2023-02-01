@@ -29,6 +29,10 @@ const links = [
   {
     display: "Kontakt",
     path: "/Contact"
+  },
+  {
+    display: "För kocken",
+    path: "/Chef"
   }
 ];
 
