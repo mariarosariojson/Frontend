@@ -29,10 +29,6 @@ const links = [
   {
     display: "Kontakt",
     path: "/Contact"
-  },
-  {
-    display: "För kocken",
-    path: "/Chef"
   }
 ];
 
@@ -77,9 +73,9 @@ export default function Navbar({ children }: Props) {
               </Link>
             </div>
             <div>
-              <Link to="/">
+              <Link to="/Chef">
                 <Button>
-                  <i className="bi bi-person-circle nav-icons" />
+                  <i className="bi bi-shop-window nav-icons" />
                 </Button>
               </Link>
               {cartQuantity > 0 && (
