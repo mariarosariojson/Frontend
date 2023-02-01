@@ -18,8 +18,9 @@
 .cart-total h2 {
   color: #6c8fa7;
 }
-i {
+.nav-icons {
   padding-right: 1rem;
+  color: #f2f2f2;
 }
 .place-order-container {
   margin-top: 2rem;
@@ -49,8 +50,5 @@ i {
 @media only screen and (max-width: 430px) {
   .shopping-cart {
     padding: 5rem 3rem 3rem 3rem;
-  }
-  i {
-    margin: 0.5rem;
   }
 }

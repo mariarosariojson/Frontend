@@ -1,19 +1,16 @@
 .food-container {
   margin: 10rem auto;
-  width: 80%;
   text-transform: uppercase;
-}
-.food-menu-card {
-  margin: 0 auto;
   width: 100%;
+}
+.food-menu-container {
+  width: 98%;
+  margin: 2rem auto 2rem auto;
 }
 .food-menu-header {
   text-align: center;
   margin-top: 5rem;
   color: rgb(45, 45, 45);
-}
-.category {
-  width: fit-content;
 }
 .card {
   display: inline-block;
@@ -103,20 +100,15 @@
     margin: 0 auto;
   }
   .food-menu-container {
+    padding: 0.5rem;
     margin: -4rem auto;
-  }
-  .food-menu-card {
-    min-width: 95%;
   }
   .food-menu-header {
     visibility: hidden;
   }
   .card-img {
-    max-width: 39%;
+    max-width: 43%;
     height: 100%;
     object-fit: cover;
-  }
-  .card-body {
-    padding: 0;
   }
 }

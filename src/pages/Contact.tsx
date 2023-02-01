@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Helmet } from "react-helmet";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, LinearProgress } from "@mui/material";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
 import "src/css/Contact.css";
@@ -13,7 +13,7 @@ export default function Contact() {
   if (!isLoaded) {
     return (
       <div className="progress">
-        <CircularProgress />
+        <LinearProgress />
       </div>
     );
   }

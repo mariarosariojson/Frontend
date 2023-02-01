@@ -41,7 +41,7 @@ export default function Index({ imageUrl, name, price, id }: HomeProps) {
         <section>
           <img alt="placeholder" src={headerImg} />
         </section>
-        <div className="category">
+        <div className="food-container">
           <FoodItem id={id} imageUrl={imageUrl} name={name} price={price} />
         </div>
       </Box>

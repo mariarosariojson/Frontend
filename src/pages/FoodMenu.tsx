@@ -37,12 +37,10 @@ export default function FoodMenu({ imageUrl, name, price, id }: CreateProductPro
         <h2>Meny för mat och dryck</h2>
       </div>
       <div className="food-menu-container">
-        <Row className="food-menu-card" lg={3} md={2} xs={1}>
-          {productItem?.map((productItem) => (
-            <Col key={productItem.productId}>
-              <FoodItem {...foodMenuProps} />
-            </Col>
-          ))}
+        <Row>
+          <Col>
+            <FoodItem {...foodMenuProps} />
+          </Col>
         </Row>
       </div>
     </>
