@@ -4,8 +4,6 @@ import axios from "axios";
 
 import type { CreateKitchen } from "Src/api/Dto";
 
-import QueueSlider from "../QueueSlider/QueueSlider";
-
 import "src/css/Kitchen.css";
 
 export default function Kitchen() {
@@ -37,15 +35,6 @@ export default function Kitchen() {
           <br />
           restaurangen
         </button>
-      </div>
-      <br />
-      <br />
-      <div className="kitchen-queue">
-        <h3>Sätt kötid</h3>
-        <br />
-        <div className="queue-slider">
-          <QueueSlider />
-        </div>
       </div>
     </>
   );

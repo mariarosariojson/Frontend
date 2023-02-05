@@ -1,12 +1,15 @@
-import { Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button, Card } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/material";
+import { AspectRatio } from "@material-ui/icons";
+import { Box, Typography } from "@mui/material";
+import axios from "axios";
 import headerImg from "src/images/placeholder-img/headerImg.svg";
 
-import FoodItem from "Src/components/FoodItem/FoodItem";
+import type { Product } from "Src/api/Dto";
 
-import { ShoppingCartProvider } from "Src/context/ShoppingCartContex";
+import FoodItem from "Src/components/FoodItem/FoodItem";
 
 import "src/css/Site.css";
 
@@ -18,8 +21,20 @@ interface HomeProps {
 }
 
 export default function Index({ imageUrl, name, price, id }: HomeProps) {
+  const [product, setProduct] = useState<Product[]>([]);
+  const [productIsLoading, setProductIsLoading] = useState(false);
+
+  useEffect(() => {
+    setProductIsLoading(true);
+    const productPath = `/api/Product/`;
+    axios.get(productPath).then((response) => {
+      setProduct(response.data);
+      setProductIsLoading(false);
+    });
+  }, []);
+
   return (
-    <ShoppingCartProvider>
+    <>
       <Helmet title="Home" />
       <Box className="hero-container">
         <section className="hero-text">
@@ -47,6 +62,6 @@ export default function Index({ imageUrl, name, price, id }: HomeProps) {
           <FoodItem id={id} imageUrl={imageUrl} name={name} price={price} />
         </div>
       </Box>
-    </ShoppingCartProvider>
+    </>
   );
 }

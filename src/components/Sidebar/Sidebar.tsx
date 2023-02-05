@@ -8,6 +8,8 @@ import Kitchen from "src/components/Kitchen/Kitchen";
 
 import type { CreateKitchen } from "Src/api/Dto";
 
+import QueueSlider from "../QueueSlider/QueueSlider";
+
 import "src/css/Sidebar.css";
 
 type Anchor = "right";
@@ -39,6 +41,7 @@ export default function SideBar() {
       </List>
       <Stack>
         <Kitchen />
+        <QueueSlider />
       </Stack>
     </Box>
   );

@@ -11,6 +11,8 @@ import type { CreateUser } from "Src/api/Dto";
 import { UserType } from "Src/api/Enums";
 import { addUser, listUsers } from "Src/api/User";
 
+import Kitchen from "Src/components/Kitchen/Kitchen";
+
 import Login from "./Login";
 
 import "src/css/Register.css";
@@ -58,7 +60,7 @@ export default function Register() {
         <form className="register-input" onSubmit={handleSubmit(onSubmit)}>
           <div className="login-reg">
             <div>
-              <Login />
+              <Login kitchenQueue={6}/>
             </div>
           </div>
           <div className="register-container">

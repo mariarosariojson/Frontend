@@ -23,7 +23,6 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
   const [orderLine, setOrder] = useState<OrderLine[]>([]);
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
-  const [userIsLoading, setUserIsLoading] = useState(false);
 
   const quantity = getItemQuantity(id);
 

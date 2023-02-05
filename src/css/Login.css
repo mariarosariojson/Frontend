@@ -5,6 +5,10 @@
   margin: 5rem auto;
   width: max-content;
 }
+.kitchen-status-login {
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
 .login-container h1 {
   font-weight: 700;

@@ -2,14 +2,15 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { Box } from "@mui/material";
+import { Box, LinearProgress } from "@mui/material";
 import axios from "axios";
 
 import type { SubmitHandler } from "react-hook-form";
-import type { CreateKitchen } from "Src/api/Dto";
+import type { Kitchen } from "Src/api/Dto";
 
-import Kitchen from "Src/components/Kitchen/Kitchen";
-import QueueSlider from "Src/components/QueueSlider/QueueSlider";
+import type QueueSliderProps from "Src/components/QueueSlider/QueueSlider";
+
+import { KitchenStatus } from "Src/api/Enums";
 
 import "src/css/Login.css";
 
@@ -18,10 +19,14 @@ interface LoginValues {
   code: string;
 }
 
-export default function Login() {
+export interface QueueSliderProps {
+  kitchenQueue: number;
+}
+
+export default function Login(props: QueueSliderProps) {
   const { register, handleSubmit } = useForm<LoginValues>();
   const onSubmit: SubmitHandler<LoginValues> = (data) => data;
-  const [kitchen, setKitchen] = useState<CreateKitchen[]>([]);
+  const [kitchen, setKitchen] = useState<Kitchen[]>([]);
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
 
   useEffect(() => {
@@ -40,15 +45,16 @@ export default function Login() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <section className="login-container">
             <div className="kitchen">
-              <br />
-              <span>{kitchenIsLoading && <p>Laddar</p>}</span>
-              {kitchen?.map((kitchen, kitchenId) => (
-                <div key={kitchenId} className="kitchen-status">
-                  <h5>
-                    KitchenStatus: {kitchen.kitchenQueueTime}, {kitchen.kitchenStatus}
-                  </h5>
-                </div>
-              ))}
+              {kitchenIsLoading ? (
+                <LinearProgress />
+              ) : (
+                kitchen.map((kitchen, kitchenId) => (
+                  <div key={kitchenId} className="kitchen-status-login" id="kitchen-status">
+                    <h3>Restaurangen är {kitchen.kitchenStatus}</h3>
+                    <p>Kötiden är cirka {props.kitchenQueue} minuter</p>
+                  </div>
+                ))
+              )}
             </div>
             <br />
             <div className="login-header">
