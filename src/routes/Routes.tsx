@@ -30,7 +30,7 @@ const routes: RouteObject[] = [
   { path: "/Created", element: <Created /> },
   { path: "/Done", element: <Done /> },
   { path: "/ShoppingCart", element: <ShoppingCart /> },
-  { path: "/FoodProduct", element: <FoodProduct /> }
+  { path: "/FoodProduct/:id", element: <FoodProduct /> }
 ];
 
 export default function Routes() {

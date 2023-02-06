@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import { LinearProgress } from "@mui/material";
 import axios from "axios";
 import { useShoppingCart } from "src/context/ShoppingCartContex";
@@ -51,9 +52,13 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
           (product) =>
             (
               <div key={product.productId} className="card">
-                <img alt="image" className="card-img" src={product.imageUrl} />
+                <Link to={`/FoodProduct/${product.name}`}>
+                  <img alt="image" className="card-img" src={product.imageUrl} />
+                </Link>
                 <div className="card-body">
-                  <h4 className="card-title">{product.name}</h4>
+                  <Link to={`/FoodProduct/${product.productId}`}>
+                    <h4 className="card-title">{product.name}</h4>
+                  </Link>
                   <div className="text-muted" style={{ fontSize: ".75rem" }}>
                     {formatCurrency(product.price)}
                   </div>

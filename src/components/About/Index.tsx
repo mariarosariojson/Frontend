@@ -79,12 +79,12 @@ export default function Index() {
         <h1>Användare</h1>
         {usersIsLoading && productsIsLoading && <h1>Laddar användare</h1>}
         <ul>
-          {users?.map((u, k) => (
-            <li key={k}>
-              {u.firstName} {u.lastName}
+          {users?.map((user, userId) => (
+            <li key={userId}>
+              {user.firstName} {user.lastName}
               <ul>
-                {u.orders.map((o, k) => (
-                  <li key={k}>{OrderStatus[o.orderStatus]}</li>
+                {user.orders.map((order, orderId) => (
+                  <li key={orderId}>{OrderStatus[order.orderStatus]}</li>
                 ))}
               </ul>
             </li>

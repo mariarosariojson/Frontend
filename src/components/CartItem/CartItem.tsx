@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Stack } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import axios from "axios";
@@ -21,7 +21,7 @@ export function CartItem({ quantity, id }: CartItemProps) {
   const [productItem, setProductItem] = useState<Product[]>([]);
   const [productIsLoading, setProductIsLoading] = useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setOrderIsLoading(true);
     const path = `/api/Order/`;
     axios.get(path).then((response) => {
@@ -30,7 +30,7 @@ export function CartItem({ quantity, id }: CartItemProps) {
     });
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setProductIsLoading(true);
     const path = `/api/Product/`;
     axios.get(path).then((response) => {

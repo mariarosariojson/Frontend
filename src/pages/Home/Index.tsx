@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { Button, Card } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { AspectRatio } from "@material-ui/icons";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import axios from "axios";
 import headerImg from "src/images/placeholder-img/headerImg.svg";
 
@@ -24,7 +23,7 @@ export default function Index({ imageUrl, name, price, id }: HomeProps) {
   const [product, setProduct] = useState<Product[]>([]);
   const [productIsLoading, setProductIsLoading] = useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setProductIsLoading(true);
     const productPath = `/api/Product/`;
     axios.get(productPath).then((response) => {

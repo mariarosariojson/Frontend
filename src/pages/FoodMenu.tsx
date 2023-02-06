@@ -8,6 +8,7 @@ import type { Product } from "Src/api/Dto";
 import FoodItem from "Src/components/FoodItem/FoodItem";
 
 import "src/css/FoodItem.css";
+import React from "react";
 
 interface CreateProductProps {
   id: number;
@@ -21,7 +22,7 @@ export default function FoodMenu({ imageUrl, name, price, id }: CreateProductPro
   const [productItem, setProductItem] = useState<Product[]>([]);
   const [productIsLoading, setProductIsLoading] = useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setProductIsLoading(true);
     const path = `/api/Product/`;
     axios.get(path).then((response) => {

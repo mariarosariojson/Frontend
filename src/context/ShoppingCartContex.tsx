@@ -1,8 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 import ShoppingCart from "src/components/ShoppingCart/ShoppingCart";
 import { useLocalStorage } from "src/hooks/useLocalStorage";
 
 import type { ReactNode } from "react";
+import type { CreateOrderLine, Product } from "Src/api/Dto";
 
 interface ShoppingCartProviderProps {
   children: ReactNode;
@@ -14,7 +16,7 @@ interface CartItem {
 }
 
 interface ShoppingCartContext {
-  getItemQuantity: (id: number) => number;
+  getItemQuantity: (productId: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
@@ -31,6 +33,26 @@ export function useShoppingCart() {
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []);
+
+  const [product, setProduct] = useState<Product[]>([]);
+  const [orderLine, setOrder] = useState<CreateOrderLine[]>([]);
+  const [productIsLoading, setProductIsLoading] = useState(false);
+  const [orderIsLoading, setOrderIsLoading] = useState(false);
+
+  useEffect(() => {
+    setOrderIsLoading(true);
+    setProductIsLoading(true);
+    const orderPath = `/api/Order/`;
+    const productPath = `/api/Product/`;
+    axios.get(orderPath).then((response) => {
+      setOrder(response.data);
+      setOrderIsLoading(false);
+    });
+    axios.get(productPath).then((response) => {
+      setProduct(response.data);
+      setProductIsLoading(false);
+    });
+  }, []);
 
   const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
 
