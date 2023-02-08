@@ -4,6 +4,7 @@ import type { RouteObject } from "react-router";
 
 import Error401 from "Src/components/Errors/Error401";
 import Error404 from "Src/components/Errors/Error404";
+import { FoodItemProps } from "Src/components/FoodItem/FoodItem";
 import ShoppingCart from "Src/components/ShoppingCart/ShoppingCart";
 
 import Chef from "Src/pages/Chef";
@@ -16,6 +17,7 @@ import Confirmed from "Src/pages/Orders/Confirmed";
 import Created from "Src/pages/Orders/Created";
 import Done from "Src/pages/Orders/Done";
 import Register from "Src/pages/Register";
+// import Register from "Src/pages/Register";
 
 const routes: RouteObject[] = [
   { path: "/", element: <Index id={0} imageUrl="" name="" price={0} /> },
@@ -30,7 +32,7 @@ const routes: RouteObject[] = [
   { path: "/Created", element: <Created /> },
   { path: "/Done", element: <Done /> },
   { path: "/ShoppingCart", element: <ShoppingCart /> },
-  { path: "/FoodProduct/:id", element: <FoodProduct /> }
+  { path: "/FoodProduct/:id", element: <FoodProduct id={0} imageUrl="" name="" price={0} /> }
 ];
 
 export default function Routes() {

@@ -7,10 +7,7 @@ import axios from "axios";
 
 import type { SubmitHandler } from "react-hook-form";
 import type { Kitchen } from "Src/api/Dto";
-
 import type QueueSliderProps from "Src/components/QueueSlider/QueueSlider";
-
-import { KitchenStatus } from "Src/api/Enums";
 
 import "src/css/Login.css";
 

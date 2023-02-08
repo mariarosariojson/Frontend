@@ -16,6 +16,7 @@ export interface CreateKitchen {
     name: string;
 }
 export interface CreateOrder {
+    orderId: number;
     confirmed?: Optional<string | null>;
     created?: Optional<string | null>;
     done?: Optional<string | null>;

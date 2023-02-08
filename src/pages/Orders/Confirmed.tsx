@@ -100,7 +100,7 @@ export default function Confirmed() {
                   ))}
                 </div>
                 <div className="order-btn-container">
-                  <button className="order-btn done-btn" type="button">
+                  <button className="order-btn done-btn" type="button" onClick={()=> confirmed.done}>
                     Sätt som klar
                   </button>
                 </div>

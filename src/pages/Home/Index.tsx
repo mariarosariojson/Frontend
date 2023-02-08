@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
@@ -20,8 +20,8 @@ interface HomeProps {
 }
 
 export default function Index({ imageUrl, name, price, id }: HomeProps) {
-  const [product, setProduct] = useState<Product[]>([]);
-  const [productIsLoading, setProductIsLoading] = useState(false);
+  const [, setProduct] = useState<Product[]>([]);
+  const [, setProductIsLoading] = useState(false);
 
   React.useEffect(() => {
     setProductIsLoading(true);

@@ -11,7 +11,7 @@ import type { OrderLine, Product } from "Src/api/Dto";
 
 import "src/css/FoodItem.css";
 
-interface FoodItemProps {
+export interface FoodItemProps {
   id: number;
   name: string;
   price: number;
@@ -20,12 +20,11 @@ interface FoodItemProps {
 
 export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
   const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
+  const quantity = getItemQuantity(id);
   const [product, setProduct] = useState<Product[]>([]);
   const [orderLine, setOrder] = useState<OrderLine[]>([]);
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
-
-  const quantity = getItemQuantity(id);
 
   useEffect(() => {
     setOrderIsLoading(true);

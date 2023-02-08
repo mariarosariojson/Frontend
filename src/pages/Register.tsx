@@ -11,8 +11,6 @@ import type { CreateUser } from "Src/api/Dto";
 import { UserType } from "Src/api/Enums";
 import { addUser, listUsers } from "Src/api/User";
 
-import Kitchen from "Src/components/Kitchen/Kitchen";
-
 import Login from "./Login";
 
 import "src/css/Register.css";
@@ -30,12 +28,17 @@ export default function Register() {
   const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
 
   useEffect(() => {
-    setUserIsLoading(true);
-    const path = `/api/User/`;
-    axios.get(path).then((response) => {
-      setNewUser(response.data);
+    const fetchData = async () => {
+      setUserIsLoading(true);
+      const result = await listUsers();
+      setNewUser(result);
       setUserIsLoading(false);
-    });
+    };
+    fetchData();
+
+    return () => {
+      setNewUser([]);
+    };
   }, []);
 
   const registerUser = async () => {
@@ -48,8 +51,8 @@ export default function Register() {
     };
     await addUser(newUser);
     setUserIsLoading(true);
-    const result = await listUsers();
-    setNewUser(result);
+    const result = await addUser(newUser);
+    setNewUser([result]);
     setUserIsLoading(false);
   };
 
@@ -60,7 +63,7 @@ export default function Register() {
         <form className="register-input" onSubmit={handleSubmit(onSubmit)}>
           <div className="login-reg">
             <div>
-              <Login kitchenQueue={6}/>
+              <Login kitchenQueue={5} />
             </div>
           </div>
           <div className="register-container">

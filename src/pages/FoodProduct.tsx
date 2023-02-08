@@ -1,58 +1,85 @@
 import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router";
-import { ShoppingBag } from "@mui/icons-material";
-import axios from "axios";
 
-import type { Product } from "Src/api/Dto";
+import type { CreateProduct } from "Src/api/Dto";
+import type { FoodItemProps } from "Src/components/FoodItem/FoodItem";
 
 import { addProduct } from "Src/api/Product";
 
-export default function FoodProduct() {
-  const [foodProduct, setFoodProduct] = useState<Product[]>([]);
+import { useShoppingCart } from "Src/context/ShoppingCartContex";
+
+import "src/css/FoodProduct.css";
+
+export default function FoodProduct({ name, imageUrl, price, id }: FoodItemProps) {
+  const [foodProduct, setFoodProduct] = useState({});
   const [productIsLoading, setProductIsLoading] = useState(false);
-  const params = useParams<{ productId: string }>();
+  const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
+  const quantity = getItemQuantity(id);
+  const params = useParams();
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`/api/Product?id=${params.id}`);
+      const data = await response.json();
+
+      setFoodProduct(data);
+    } catch {}
+  };
 
   useEffect(() => {
-    setProductIsLoading(true);
-    const path = `/api/Product?id=${params.productId}`;
-    axios.get(path).then((response) => {
-      setFoodProduct(response.data);
-      setProductIsLoading(false);
-    });
-  }, []);
+    fetchData();
+  });
 
-  const handleClick = (foodProduct: Product) => {
-    addProduct(foodProduct);
+  const handleClick = (product: CreateProduct) => {
+    addProduct(product);
   };
 
   return (
     <>
       <Helmet title="FoodProduct" />
-      <div>
-        <h1>{FoodProduct.name}</h1>
-        {foodProduct?.map((foodProduct) => (
-          <section key={foodProduct.productId}>
-            <h1 className="title-add">{foodProduct.name}</h1>
-            <div className="img-desc">
-              <img alt="prodImage" className="img-add" src={foodProduct.imageUrl} />
-              <div>
-                <p className="food-description">{foodProduct.productId}</p>
-                <h2 className="price-add">{foodProduct.price} SEK</h2>
-                <input className="inputProductQty" max="10" min="1" placeholder="1" type="number" />
-                <button
-                  className="checkout_btn"
-                  type="button"
-                  onClick={() => {
-                    handleClick(foodProduct);
-                  }}
-                >
-                  <ShoppingBag />
-                </button>
+      <div className="product-container">
+        <h1>productName{name}</h1>
+        <section className="product">
+          <div className="product-img">
+            <img alt="prodImage" className="img-product" src={imageUrl} />
+            <div>
+              <div className="product-title">
+                <h2>productName{name}</h2>
+              </div>
+              <h2 className="product-price">{price} SEK</h2>
+              <div className="product-description">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestias molestiae quidem labore similique est, tempore cupiditate id
+                  quia aperiam minus amet quo quisquam earum voluptates sint nostrum alias ipsam?
+                </p>
+              </div>
+              <div className="product-btn-container">
+                {quantity === 0 ? (
+                  <Button className="food-card-btn add-to-cart" onClick={() => increaseCartQuantity(id)}>
+                    <i className="bi bi-basket" />
+                  </Button>
+                ) : (
+                  <>
+                    <Button className="food-card-btn food-card-remove-btn" onClick={() => removeFromCart(id)}>
+                      <i className="bi bi-x-lg" />
+                    </Button>
+                    <div className="food-count-container">
+                      <Button className="food-card-count-btn" onClick={() => decreaseCartQuantity(id)}>
+                        -
+                      </Button>
+                      <div className="quantity-count">{quantity}</div>
+                      <Button className="food-card-count-btn" onClick={() => increaseCartQuantity(id)}>
+                        +
+                      </Button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
-          </section>
-        ))}
+          </div>
+        </section>
       </div>
     </>
   );

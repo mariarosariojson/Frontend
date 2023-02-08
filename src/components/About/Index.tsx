@@ -13,15 +13,12 @@ export default function Index() {
   const [usersIsLoading, setUsersIsLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [productsIsLoading, setProductsIsLoading] = useState(false);
- 
 
   useEffect(() => {
     const fetchData = async () => {
       setProductsIsLoading(true);
       const result = await listProducts();
-
       setProducts(result);
-
       setProductsIsLoading(false);
     };
     fetchData();
@@ -35,13 +32,10 @@ export default function Index() {
     const fetchData = async () => {
       setUsersIsLoading(true);
       setProductsIsLoading(true);
-
       const usersResult = await listUsers();
       const productsResult = await listProducts();
-
       setProducts(productsResult);
       setUsers(usersResult);
-
       setProductsIsLoading(false);
       setUsersIsLoading(false);
     };
@@ -61,7 +55,8 @@ export default function Index() {
       totalAmount: 240,
       userId: 1,
       orderStatus: OrderStatus.Created,
-      orderLines: [{ orderLineId: 0, orderId: 0, productId: 3, quantity: 2 }]
+      orderLines: [{ orderLineId: 0, orderId: 0, productId: 3, quantity: 2 }],
+      orderId: 0
     };
     // Skicka order till DB
     await addOrder(newOrder);

@@ -42,6 +42,24 @@ export default function Created() {
     });
   }, []);
 
+  function toggleState(id: number) {
+    setOrder(
+      order.map((state) => {
+        if (state.orderId === id) {
+          return {
+            ...state,
+            completed: !state.confirmed
+          };
+        }
+
+        return state;
+      })
+    );
+  }
+
+  console.log(orderStatus)
+
+
   const createdOrders = orderStatus.filter((created) => created.orderStatus === OrderStatus.Created);
 
   const filteredList = createdOrders.map((createdOrder, id) => (
@@ -85,7 +103,7 @@ export default function Created() {
                   ))}
                 </div>
                 <div className="order-btn-container">
-                  <button className="order-btn confirmed-btn" type="button">
+                  <button className="order-btn confirmed-btn" type="button" onClick={() => toggleState}>
                     Sätt som bekräftad
                   </button>
                 </div>
