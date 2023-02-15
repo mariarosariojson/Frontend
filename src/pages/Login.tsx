@@ -4,10 +4,14 @@ import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { Box, LinearProgress } from "@mui/material";
 import axios from "axios";
+import { gapi } from "gapi-script";
 
 import type { SubmitHandler } from "react-hook-form";
 import type { Kitchen } from "Src/api/Dto";
 import type QueueSliderProps from "Src/components/QueueSlider/QueueSlider";
+
+import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
+import GoogleLogoutButton from "Src/components/google-login/GoogleLogout";
 
 import "src/css/Login.css";
 
@@ -19,6 +23,8 @@ interface LoginValues {
 export interface QueueSliderProps {
   kitchenQueue: number;
 }
+
+const clientId = "758380863651-69t6pe0h7ta7g7btvh7v9dt5r1b3nkkd.apps.googleusercontent.com";
 
 export default function Login(props: QueueSliderProps) {
   const { register, handleSubmit } = useForm<LoginValues>();
@@ -34,6 +40,18 @@ export default function Login(props: QueueSliderProps) {
       setKitchenIsLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId,
+        scope: ""
+      });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
+
+  // const accessToken = gapi.auth.getToken().access_token;
 
   return (
     <>
@@ -70,16 +88,15 @@ export default function Login(props: QueueSliderProps) {
                   <button className="register-btn" type="submit">
                     Logga in
                   </button>
+                  <GoogleLoginButton />
                 </li>
               </ul>
             </div>
-            <section>
-              <div className="reg-nav-text">
-                <a href="./Register">
-                  <p>Har du inget konto? Registrera dig här.</p>
-                </a>
-              </div>
-            </section>
+            <div className="reg-nav-text">
+              <a href="./Register">
+                <p>Har du inget konto? Registrera dig här.</p>
+              </a>
+            </div>
           </section>
         </form>
       </Box>

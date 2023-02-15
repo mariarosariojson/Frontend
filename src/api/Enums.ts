@@ -10,9 +10,9 @@ export enum KitchenStatus {
     Open = 2,
 }
 export enum OrderStatus {
-    Created = 1,
-    Confirmed = 2,
-    Done = 3,
+  Created = 1,
+  Confirmed = 2,
+  Done = 3,
 }
 export enum UserType {
     Admin = 1,

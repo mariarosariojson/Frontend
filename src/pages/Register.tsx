@@ -11,6 +11,8 @@ import type { CreateUser } from "Src/api/Dto";
 import { UserType } from "Src/api/Enums";
 import { addUser, listUsers } from "Src/api/User";
 
+import GoogleLogoutButton from "Src/components/google-login/GoogleLogout";
+
 import Login from "./Login";
 
 import "src/css/Register.css";
@@ -78,10 +80,13 @@ export default function Register() {
               <input placeholder="E-mail adress" type="email" {...register("email")} />
             </section>
             <section className="input-4">
-              <button className="register-btn" type="submit" onSubmit={registerUser}>
+              <button className="register-btn" type="submit" onSubmit={() => registerUser()}>
                 Spara
               </button>
             </section>
+            <div className="google-logout-btn">
+              <GoogleLogoutButton />
+            </div>
           </div>
         </form>
       </Box>

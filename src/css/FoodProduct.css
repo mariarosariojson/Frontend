@@ -1,5 +1,8 @@
 .product-container {
   margin-top: 3rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .product {
   display: flex;
@@ -12,8 +15,8 @@
 }
 
 .img-product {
-  width: 40%;
-  height: 40%;
+  width: 60%;
+  height: 80%;
 }
 .product-price {
   margin-top: 1rem;

@@ -4,7 +4,6 @@ import type { RouteObject } from "react-router";
 
 import Error401 from "Src/components/Errors/Error401";
 import Error404 from "Src/components/Errors/Error404";
-import { FoodItemProps } from "Src/components/FoodItem/FoodItem";
 import ShoppingCart from "Src/components/ShoppingCart/ShoppingCart";
 
 import Chef from "Src/pages/Chef";

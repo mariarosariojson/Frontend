@@ -3,6 +3,7 @@ import ShoppingCart from "src/components/ShoppingCart/ShoppingCart";
 import { useLocalStorage } from "src/hooks/useLocalStorage";
 
 import type { ReactNode } from "react";
+import type { CreateOrder } from "Src/api/Dto";
 
 interface ShoppingCartProviderProps {
   children: ReactNode;
@@ -20,6 +21,7 @@ interface ShoppingCartContext {
   removeFromCart: (id: number) => void;
   cartQuantity: number;
   cartItems: CartItem[];
+  removeOrder: (id: number) => void;
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -29,8 +31,8 @@ export function useShoppingCart() {
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-  const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []);
+  const [orderStatus, setOrderStatus] = useState<CreateOrder[]>([]);
 
   const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0);
 
@@ -76,6 +78,12 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     });
   }
 
+  function removeOrder(id: number) {
+    setOrderStatus((currItems) => {
+      return currItems.filter((item) => item.orderId !== id);
+    });
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -84,7 +92,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         decreaseCartQuantity,
         removeFromCart,
         cartItems,
-        cartQuantity
+        cartQuantity,
+        removeOrder
       }}
     >
       {children}

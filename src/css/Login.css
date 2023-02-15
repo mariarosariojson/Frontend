@@ -47,7 +47,7 @@
 }
 
 .reg-nav-text {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   font-size: 11px;
 }
 .reg-nav-text a {
@@ -55,4 +55,7 @@
 }
 .reg-nav-text a:hover {
   text-decoration: underline;
+}
+.google-logout-btn {
+  margin-top: 3rem;
 }

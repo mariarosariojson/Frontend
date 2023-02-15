@@ -19,18 +19,7 @@ export default function FoodProduct({ name, imageUrl, price, id }: FoodItemProps
   const quantity = getItemQuantity(id);
   const params = useParams();
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`/api/Product?id=${params.id}`);
-      const data = await response.json();
-
-      setFoodProduct(data);
-    } catch {}
-  };
-
-  useEffect(() => {
-    fetchData();
-  });
+ 
 
   const handleClick = (product: CreateProduct) => {
     addProduct(product);
@@ -43,7 +32,7 @@ export default function FoodProduct({ name, imageUrl, price, id }: FoodItemProps
         <h1>productName{name}</h1>
         <section className="product">
           <div className="product-img">
-            <img alt="prodImage" className="img-product" src={imageUrl} />
+            <img alt={imageUrl} className="img-product" src={imageUrl} />
             <div>
               <div className="product-title">
                 <h2>productName{name}</h2>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { LinearProgress } from "@mui/material";
 import axios from "axios";
 
 import type { Order, Product, User } from "Src/api/Dto";
@@ -7,6 +8,8 @@ import type { Order, Product, User } from "Src/api/Dto";
 import { OrderStatus } from "Src/api/Enums";
 
 import TabLink from "Src/components/TabLink/TabLink";
+
+import { useShoppingCart } from "Src/context/ShoppingCartContex";
 
 import "src/css/Chef.css";
 
@@ -18,6 +21,7 @@ export default function Chef() {
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [userIsLoading, setUserIsLoading] = useState(false);
+  const { removeOrder } = useShoppingCart();
 
   useEffect(() => {
     setOrderIsLoading(true);
@@ -43,6 +47,7 @@ export default function Chef() {
 
   const handleClick = (event: { preventDefault: () => void }) => {
     event.preventDefault();
+    setOrderStatus(orderStatus);
     console.log("The link was clicked.");
   };
 
@@ -56,10 +61,10 @@ export default function Chef() {
         <br />
         <div className="chef-order-status">
           <div className="chef-status-col-1">
-            <h2>Nya ordrar: {OrderStatus.Created}st</h2>
+            <h2>Nya ordrar: {OrderStatus.Created} st</h2>
           </div>
           <div className="chef-status-col-2">
-            <h2>Bekräftade: {OrderStatus.Confirmed}st</h2>
+            <h2>Bekräftade: {OrderStatus.Confirmed} st</h2>
           </div>
           <div className="chef-status-col-3">
             <h2>Slutförda: {OrderStatus.Done}st</h2>
@@ -67,7 +72,7 @@ export default function Chef() {
         </div>
         <div className="chef-order-list">
           {orderIsLoading && orderIsLoading && userIsLoading ? (
-            <p>Laddar</p>
+            <LinearProgress />
           ) : (
             order?.map((order, orderId) => (
               <div key={orderId} className="chef-card">
@@ -97,14 +102,14 @@ export default function Chef() {
                       </div>
                     ))}
                     <div className="chef-btn-container">
-                      <button className="order-btn confirmed-btn" type="button" onClick={handleClick}>
+                      <button className="order-btn confirmed-btn" type="button">
                         Sätt som befräftad
                       </button>
-                      <button className="order-btn done-btn" type="button">
+                      <button className="order-btn done-btn" type="button" onClick={handleClick}>
                         Sätt som klar
                       </button>
-                      <button className="order-btn delete-order-btn" type="button">
-                        Ta bort order
+                      <button className="order-btn delete-order-btn" type="button" onClick={() => removeOrder(order.orderId)}>
+                        Ta bort
                       </button>
                     </div>
                   </div>

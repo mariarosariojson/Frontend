@@ -9,6 +9,7 @@ import { OrderStatus } from "Src/api/Enums";
 import TabLink from "Src/components/TabLink/TabLink";
 
 import "src/css/Orders.css";
+import { LinearProgress } from "@mui/material";
 
 export default function Confirmed() {
   const [order, setOrder] = useState<Order[]>([]);
@@ -69,7 +70,7 @@ export default function Confirmed() {
         <br />
         <div className="order-list">
           {orderIsLoading && productIsLoading && userIsLoading && orderStatusIsLoading ? (
-            <p>Laddar</p>
+            <LinearProgress />
           ) : (
             confirmedOrders?.map((confirmed, i) => (
               <div key={i} className="chef-card">
@@ -100,7 +101,7 @@ export default function Confirmed() {
                   ))}
                 </div>
                 <div className="order-btn-container">
-                  <button className="order-btn done-btn" type="button" onClick={()=> confirmed.done}>
+                  <button className="order-btn done-btn" type="button" onClick={() => confirmed.done}>
                     Sätt som klar
                   </button>
                 </div>

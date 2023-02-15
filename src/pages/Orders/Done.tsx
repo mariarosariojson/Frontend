@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { LinearProgress } from "@mui/material";
 import axios from "axios";
 
 import type { CreateOrder, Order, Product } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
+import { deleteOrder } from "Src/api/Order";
 
 import TabLink from "Src/components/TabLink/TabLink";
+
+import { useShoppingCart } from "Src/context/ShoppingCartContex";
 
 import "src/css/Orders.css";
 
@@ -17,6 +21,7 @@ export default function Done() {
   const [orderStatusIsLoading, setOrderStatusIsLoading] = useState(false);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
+  const { removeOrder } = useShoppingCart();
 
   useEffect(() => {
     setOrderIsLoading(true);
@@ -60,7 +65,7 @@ export default function Done() {
         <br />
         <div className="order-list">
           {orderIsLoading && productIsLoading ? (
-            <p>Laddar</p>
+            <LinearProgress />
           ) : (
             doneOrders?.map((order, orderId) => (
               <div key={orderId} className="chef-card">
@@ -84,7 +89,7 @@ export default function Done() {
                   </div>
                 </div>
                 <div className="order-btn-container">
-                  <button className="order-btn delete-order-btn" type="button">
+                  <button className="order-btn delete-order-btn" type="button" onClick={() => removeOrder(orderId)}>
                     Ta bort
                   </button>
                 </div>
