@@ -55,8 +55,7 @@ export default function Index() {
       totalAmount: 240,
       userId: 1,
       orderStatus: OrderStatus.Created,
-      orderLines: [{ orderLineId: 0, orderId: 0, productId: 3, quantity: 2 }],
-      orderId: 0
+      orderLines: [{ orderLineId: 0, orderId: 0, productId: 3, quantity: 2 }]
     };
     // Skicka order till DB
     await addOrder(newOrder);

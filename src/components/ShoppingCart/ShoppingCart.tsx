@@ -53,8 +53,7 @@ export default function ShoppingCart() {
       totalAmount: 240,
       userId: 1,
       orderStatus: OrderStatus.Created,
-      orderLines: [{ orderLineId: 0, orderId: 0, productId: 3, quantity: 2 }],
-      orderId: 0
+      orderLines: [{ orderLineId: 0, orderId: 0, productId: 3, quantity: 2 }]
     };
     await addOrder(newOrder);
     setUserIsLoading(true);
