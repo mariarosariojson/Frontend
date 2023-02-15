@@ -63,20 +63,20 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
                   </div>
                   <div className="food-card-btn-container">
                     {quantity === 0 ? (
-                      <Button className="food-card-btn add-to-cart" onClick={() => increaseCartQuantity(id)}>
+                      <Button className="food-card-btn add-to-cart" onClick={() => increaseCartQuantity(product.productId)}>
                         <i className="bi bi-basket" />
                       </Button>
                     ) : (
                       <>
-                        <Button className="food-card-btn food-card-remove-btn" onClick={() => removeFromCart(id)}>
+                        <Button className="food-card-btn food-card-remove-btn" onClick={() => removeFromCart(product.productId)}>
                           <i className="bi bi-x-lg" />
                         </Button>
                         <div className="food-count-container">
-                          <Button className="food-card-count-btn" onClick={() => decreaseCartQuantity(id)}>
+                          <Button className="food-card-count-btn" onClick={() => decreaseCartQuantity(product.productId)}>
                             -
                           </Button>
-                          <div className="quantity-count">{quantity}</div>
-                          <Button className="food-card-count-btn" onClick={() => increaseCartQuantity(id)}>
+                          <div className="quantity-count">{getItemQuantity(product.productId)}</div>
+                          <Button className="food-card-count-btn" onClick={() => increaseCartQuantity(product.productId)}>
                             +
                           </Button>
                         </div>

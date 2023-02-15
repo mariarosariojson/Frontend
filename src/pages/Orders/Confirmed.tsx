@@ -15,7 +15,7 @@ export default function Confirmed() {
   const [order, setOrder] = useState<Order[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
   const [user, setUser] = useState<User[]>([]);
-  const [orderStatus, setOrderStatus] = useState<CreateOrder[]>([]);
+  const [orderStatus, setOrderStatus] = useState<Order[]>([]);
   const [orderStatusIsLoading, setOrderStatusIsLoading] = useState(false);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
