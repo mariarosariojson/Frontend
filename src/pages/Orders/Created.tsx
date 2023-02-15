@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { LinearProgress } from "@mui/material";
 import axios from "axios";
 
-import type { CreateOrder, CreateOrderLine, Order, Product } from "Src/api/Dto";
+import type { Order, Product, User } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 
 import TabLink from "Src/components/TabLink/TabLink";
-
-import Confirmed from "./Confirmed";
 
 import "src/css/Orders.css";
 
 export default function Created() {
   const [order, setOrder] = useState<Order[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
-  const [orderStatus, setOrderStatus] = useState<Order[]>([]);
-  const [orderStatusIsLoading, setOrderStatusIsLoading] = useState(false);
+  const [user, setUser] = useState<User[]>([]);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
-  const [newOrderStatus, setNewOrderStatus] = useState<CreateOrder[]>([]);
+  const [userIsLoading, setUserIsLoading] = useState(false);
 
   async function confirmedOrder(id: number, order: any) {
     const orderPath = `/api/Order/${id}`;
@@ -28,7 +25,6 @@ export default function Created() {
     setOrderIsLoading(true);
     const path = `/api/Order/`;
     axios.get(path).then((response) => {
-      console.log(response.data);
       setOrder(response.data);
       setOrderIsLoading(false);
     });
@@ -37,6 +33,7 @@ export default function Created() {
   useEffect(() => {
     setOrderIsLoading(true);
     setProductIsLoading(true);
+    setUserIsLoading(true);
     const orderPath = `/api/Order/`;
     const productPath = `/api/Product/`;
     axios.get(orderPath).then((response) => {
@@ -47,18 +44,14 @@ export default function Created() {
       setProduct(response.data);
       setProductIsLoading(false);
     });
-  }, []);
-
-  useEffect(() => {
-    setOrderStatusIsLoading(true);
-    const path = `/api/Order/`;
-    axios.get(path).then((response) => {
-      setOrderStatus(response.data);
-      setOrderStatusIsLoading(false);
+    const userPath = `/api/User/`;
+    axios.get(userPath).then((response) => {
+      setUser(response.data);
+      setUserIsLoading(false);
     });
   }, []);
 
-  const createdOrders = orderStatus.filter((created) => created.orderStatus === OrderStatus.Created);
+  const createdOrders = order.filter((created) => created.orderStatus === OrderStatus.Created);
 
   const filteredList = createdOrders.map((createdOrder, id) => (
     <div key={id}>
@@ -75,33 +68,34 @@ export default function Created() {
         <h1>Nya ordrar</h1>
         <br />
         <div className="order-list">
-          {orderIsLoading ? (
+          {orderIsLoading && productIsLoading && userIsLoading ? (
             <LinearProgress />
           ) : (
-            createdOrders?.map((order, orderId) => (
+            createdOrders?.map((created, orderId) => (
               <div key={orderId} className="chef-card">
                 <div className="chef-list">
                   <div className="created-status-header">
-                    Order skapad: {order.created}
-                    <h2>Orderstatus: {order.created ? "Ny order" : ""}</h2>
+                    Order id: {created.orderId} <br />
+                    <h2>Orderstatus: {created.created ? "Ny order" : ""}</h2>
+                    Order skapad: {created.created}
                   </div>
                   <br />
-                  {order.orderLines?.map((item, productId) => (
+                  {created.orderLines?.map((item, productId) => (
                     <div key={productId}>
                       <h3>{product.find((product) => product.productId === item.productId)?.name}</h3>
                       <br />
                       <div className="order-info">
-                        Order skapad: {order.created} <br />
-                        Kund: {order.userId}
-                        <br />
-                        <br />
-                        Ordersumma: {order.totalAmount}kr
+                        <div>
+                          Kund: {user.find((user) => user.userId === created.userId)?.firstName}{" "}
+                          {user.find((user) => user.userId === created.userId)?.lastName} <br />
+                        </div>
+                        Ordersumma: {created.totalAmount}kr
                       </div>
                     </div>
                   ))}
                 </div>
                 <div className="order-btn-container">
-                  <button className="order-btn confirmed-btn" type="button" onClick={(_) => confirmedOrder(order.orderId, order)}>
+                  <button className="order-btn confirmed-btn" type="button" onClick={(_) => confirmedOrder(created.orderId, created)}>
                     Sätt som befräftad
                   </button>
                 </div>

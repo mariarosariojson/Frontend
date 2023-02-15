@@ -13,7 +13,6 @@ import "src/css/Chef.css";
 
 export default function Chef() {
   const [order, setOrder] = useState<Order[]>([]);
-  const [orderStatus, setOrderStatus] = useState<OrderStatus[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
   const [user, setUser] = useState<User[]>([]);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
@@ -33,7 +32,6 @@ export default function Chef() {
     setOrderIsLoading(true);
     const path = `/api/Order/`;
     axios.get(path).then((response) => {
-      console.log(response.data);
       setOrder(response.data);
       setOrderIsLoading(false);
     });
@@ -77,7 +75,7 @@ export default function Chef() {
       <div className="chef-container">
         <TabLink />
         <br />
-        <h1>Chefs view</h1>
+        <h1>Alla ordrar</h1>
         <br />
         <div className="chef-order-status">
           <div className="chef-status-col-1">
@@ -91,7 +89,7 @@ export default function Chef() {
           </div>
         </div>
         <div className="chef-order-list">
-          {orderIsLoading && orderIsLoading && userIsLoading ? (
+          {orderIsLoading && orderIsLoading && userIsLoading && productIsLoading ? (
             <LinearProgress />
           ) : (
             order?.map((order, orderId) => (

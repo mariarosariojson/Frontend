@@ -15,8 +15,6 @@ export default function Confirmed() {
   const [order, setOrder] = useState<Order[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
   const [user, setUser] = useState<User[]>([]);
-  const [orderStatus, setOrderStatus] = useState<Order[]>([]);
-  const [orderStatusIsLoading, setOrderStatusIsLoading] = useState(false);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [userIsLoading, setUserIsLoading] = useState(false);
@@ -37,7 +35,6 @@ export default function Confirmed() {
     setProductIsLoading(true);
     setUserIsLoading(true);
     const orderPath = `/api/Order/`;
-
     axios.get(orderPath).then((response) => {
       setOrder(response.data);
       setOrderIsLoading(false);
@@ -54,16 +51,7 @@ export default function Confirmed() {
     });
   }, []);
 
-  useEffect(() => {
-    setOrderStatusIsLoading(true);
-    const path = `/api/Order/`;
-    axios.get(path).then((response) => {
-      setOrderStatus(response.data);
-      setOrderStatusIsLoading(false);
-    });
-  }, []);
-
-  const confirmedOrders = orderStatus.filter((confirmed) => confirmed.orderStatus === OrderStatus.Confirmed);
+  const confirmedOrders = order.filter((confirmed) => confirmed.orderStatus === OrderStatus.Confirmed);
 
   const filteredList = confirmedOrders.map((confirmedOrder, id) => (
     <div key={id}>
@@ -80,7 +68,7 @@ export default function Confirmed() {
         <h1>Bekräftade ordrar</h1>
         <br />
         <div className="order-list">
-          {orderIsLoading && productIsLoading && userIsLoading && orderStatusIsLoading ? (
+          {orderIsLoading && productIsLoading && userIsLoading ? (
             <LinearProgress />
           ) : (
             confirmedOrders?.map((confirmed, i) => (
@@ -89,6 +77,7 @@ export default function Confirmed() {
                   <div className="confirmed-status-header">
                     Order Id: {confirmed.orderId}
                     <h2>Orderstatus: {confirmed.confirmed ? "Bekräftad" : "Ej bekräftad"}</h2>
+                    Order uppdaterad: {confirmed.confirmed}
                   </div>
                   <br />
                   {confirmed.orderLines?.map((item, productId) => (
@@ -103,8 +92,6 @@ export default function Confirmed() {
                           {user.find((user) => user.userId === confirmed.userId)?.lastName} <br />
                         </div>
                         Ordersumma: {confirmed.totalAmount}kr
-                        <br />
-                        Tidstämpel: {confirmed.confirmed}
                         <br />
                         <br />
                       </div>
