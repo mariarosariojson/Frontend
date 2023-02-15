@@ -21,6 +21,17 @@ export default function Confirmed() {
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [userIsLoading, setUserIsLoading] = useState(false);
 
+  async function doneOrder(id: number, order: any) {
+    const orderPath = `/api/Order/${id}`;
+    await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Done });
+    setOrderIsLoading(true);
+    const path = `/api/Order/`;
+    axios.get(path).then((response) => {
+      setOrder(response.data);
+      setOrderIsLoading(false);
+    });
+  }
+
   useEffect(() => {
     setOrderIsLoading(true);
     setProductIsLoading(true);
@@ -101,7 +112,7 @@ export default function Confirmed() {
                   ))}
                 </div>
                 <div className="order-btn-container">
-                  <button className="order-btn done-btn" type="button" onClick={() => confirmed.done}>
+                  <button className="order-btn done-btn" type="button" onClick={(_) => doneOrder(confirmed.orderId, confirmed)}>
                     Sätt som klar
                   </button>
                 </div>

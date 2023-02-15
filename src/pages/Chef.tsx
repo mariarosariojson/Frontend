@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { LinearProgress } from "@mui/material";
 import axios from "axios";
 
-import type { CreateOrderLine, Order, Product, User } from "Src/api/Dto";
+import type { Order, Product, User } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 

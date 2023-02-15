@@ -16,11 +16,23 @@ import "src/css/Orders.css";
 export default function Created() {
   const [order, setOrder] = useState<Order[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
-  const [orderStatus, setOrderStatus] = useState<CreateOrder[]>([]);
+  const [orderStatus, setOrderStatus] = useState<Order[]>([]);
   const [orderStatusIsLoading, setOrderStatusIsLoading] = useState(false);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [newOrderStatus, setNewOrderStatus] = useState<CreateOrder[]>([]);
+
+  async function confirmedOrder(id: number, order: any) {
+    const orderPath = `/api/Order/${id}`;
+    await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Confirmed });
+    setOrderIsLoading(true);
+    const path = `/api/Order/`;
+    axios.get(path).then((response) => {
+      console.log(response.data);
+      setOrder(response.data);
+      setOrderIsLoading(false);
+    });
+  }
 
   useEffect(() => {
     setOrderIsLoading(true);
@@ -45,20 +57,6 @@ export default function Created() {
       setOrderStatusIsLoading(false);
     });
   }, []);
-
-  // useEffect(() => {
-  //   setOrderStatusIsLoading(true);
-  //   const path = `/api/Order/`;
-  //   axios.put(path).then((response) => {
-  //     setNewOrderStatus(response.data);
-  //     setOrderStatusIsLoading(false);
-  //   });
-  // }, []);
-
-  // const handleClick = () => {
-  //   setNewOrderStatus(newOrderStatus.map((order) => ({ ...order, orderStatus: OrderStatus.Confirmed })));
-  // };
-  // const newState = newOrderStatus.filter((order) => ({ ...order, orderStatus: OrderStatus.Confirmed }));
 
   const createdOrders = orderStatus.filter((created) => created.orderStatus === OrderStatus.Created);
 
@@ -103,8 +101,8 @@ export default function Created() {
                   ))}
                 </div>
                 <div className="order-btn-container">
-                  <button className="order-btn confirmed-btn" type="button" onClick={() => setNewOrderStatus}>
-                    Sätt som bekräftad
+                  <button className="order-btn confirmed-btn" type="button" onClick={(_) => confirmedOrder(order.orderId, order)}>
+                    Sätt som befräftad
                   </button>
                 </div>
               </div>

@@ -6,18 +6,15 @@ import axios from "axios";
 import type { CreateOrder, Order, Product } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
-import { deleteOrder } from "Src/api/Order";
 
 import TabLink from "Src/components/TabLink/TabLink";
-
-import { useShoppingCart } from "Src/context/ShoppingCartContex";
 
 import "src/css/Orders.css";
 
 export default function Done() {
   const [order, setOrder] = useState<Order[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
-  const [orderStatus, setOrderStatus] = useState<CreateOrder[]>([]);
+  const [orderStatus, setOrderStatus] = useState<Order[]>([]);
   const [orderStatusIsLoading, setOrderStatusIsLoading] = useState(false);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
@@ -66,16 +63,16 @@ export default function Done() {
           {orderIsLoading && productIsLoading ? (
             <LinearProgress />
           ) : (
-            doneOrders?.map((order, orderId) => (
+            doneOrders?.map((done, orderId) => (
               <div key={orderId} className="chef-card">
                 <div>
                   <div className="chef-list">
                     <div className="done-status-header">
-                      Order Id: {order.userId}
-                      <h2>Orderstatus: {order.done ? "Slutförd" : "Ej slutförd"}</h2>
+                      Order Id: {done.orderId}
+                      <h2>Orderstatus: {done.done ? "Slutförd" : "Ej slutförd"}</h2>
                       <br />
                     </div>
-                    {order.orderLines?.map((item, productId) => (
+                    {done.orderLines?.map((item, productId) => (
                       <div key={productId}>
                         <h3>{product.find((product) => product.productId === item.productId)?.name}</h3>
                       </div>
@@ -83,7 +80,7 @@ export default function Done() {
                     <div className="order-info">
                       <br />
                       <br />
-                      Ordersumma: {order.totalAmount}kr
+                      Ordersumma: {done.totalAmount}kr
                     </div>
                   </div>
                 </div>
