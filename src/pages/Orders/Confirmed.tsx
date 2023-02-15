@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { LinearProgress } from "@mui/material";
 import axios from "axios";
 
-import type { CreateOrder, Order, Product, User } from "Src/api/Dto";
+import type { Order, Product, User } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 
@@ -61,7 +61,6 @@ export default function Confirmed() {
   ));
 
   return (
-<<<<<<< HEAD
     <>
       <Helmet title="Bekräftade ordrar" />
       <div className="order-container">
@@ -100,29 +99,6 @@ export default function Confirmed() {
                       </div>
                     </div>
                   ))}
-=======
-    <div>
-      <h1>Mottagna ordrar</h1>
-      <div>
-        {orderIsLoading && productIsLoading && userIsLoading && <p>Laddar</p>}
-        {order?.map((order, orderId) => (
-          <div key={orderId} className="chef-card">
-            <div>
-              <h2>Orderstatus: </h2>
-              <span>{OrderStatus.Confirmed}</span>
-              <br />
-              {order.orderLines?.map((item, productId) => (
-                <div key={productId} className="chef-list">
-                  Product: {product.find((p) => p.productId === item.productId)?.name}
-                  <br />
-                  <div>
-                    Kund: <br />
-                    {user.find((u) => u.userId === order.userId)?.firstName} {user.find((u) => u.userId === order.userId)?.lastName} <br />
-                    <br />
-                  </div>
-                  Ordersumma: {order.totalAmount}kr
-                  <br />
->>>>>>> aa9fe91fdc5a7f220c833c59382bf33937ecd72a
                 </div>
                 <div className="order-btn-container">
                   <button className="order-btn done-btn" type="button" onClick={() => confirmed.done}>
