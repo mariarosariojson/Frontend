@@ -21,7 +21,6 @@ export default function Done() {
   const [orderStatusIsLoading, setOrderStatusIsLoading] = useState(false);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
-  const { removeOrder } = useShoppingCart();
 
   useEffect(() => {
     setOrderIsLoading(true);
@@ -89,7 +88,7 @@ export default function Done() {
                   </div>
                 </div>
                 <div className="order-btn-container">
-                  <button className="order-btn delete-order-btn" type="button" onClick={() => removeOrder(orderId)}>
+                  <button className="order-btn delete-order-btn" type="button">
                     Ta bort
                   </button>
                 </div>

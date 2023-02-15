@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { LinearProgress } from "@mui/material";
 import axios from "axios";
 
 import type { CreateOrder, Order, Product, User } from "Src/api/Dto";
@@ -9,7 +10,6 @@ import { OrderStatus } from "Src/api/Enums";
 import TabLink from "Src/components/TabLink/TabLink";
 
 import "src/css/Orders.css";
-import { LinearProgress } from "@mui/material";
 
 export default function Confirmed() {
   const [order, setOrder] = useState<Order[]>([]);
@@ -76,7 +76,7 @@ export default function Confirmed() {
               <div key={i} className="chef-card">
                 <div>
                   <div className="confirmed-status-header">
-                    Order Id: {confirmed.orderStatus}
+                    Order Id: {confirmed.orderId}
                     <h2>Orderstatus: {confirmed.confirmed ? "Bekräftad" : "Ej bekräftad"}</h2>
                   </div>
                   <br />

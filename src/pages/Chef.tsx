@@ -3,13 +3,11 @@ import { Helmet } from "react-helmet";
 import { LinearProgress } from "@mui/material";
 import axios from "axios";
 
-import type { Order, Product, User } from "Src/api/Dto";
+import type { CreateOrderLine, Order, Product, User } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 
 import TabLink from "Src/components/TabLink/TabLink";
-
-import { useShoppingCart } from "Src/context/ShoppingCartContex";
 
 import "src/css/Chef.css";
 
@@ -21,14 +19,42 @@ export default function Chef() {
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [userIsLoading, setUserIsLoading] = useState(false);
-  const { removeOrder } = useShoppingCart();
+
+  function removeOrder(id: number) {
+    const orderPath = `/api/Order/${id}`;
+    axios.delete(orderPath).then();
+    const newOrderList = order.filter((id) => id !== id);
+    setOrder(newOrderList);
+  }
+
+  async function confirmedOrder(id: number, order: any) {
+    const orderPath = `/api/Order/${id}`;
+    await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Confirmed });
+    setOrderIsLoading(true);
+    const path = `/api/Order/`;
+    axios.get(path).then((response) => {
+      console.log(response.data);
+      setOrder(response.data);
+      setOrderIsLoading(false);
+    });
+  }
+
+  async function doneOrder(id: number, order: any) {
+    const orderPath = `/api/Order/${id}`;
+    await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Done });
+    setOrderIsLoading(true);
+    const path = `/api/Order/`;
+    axios.get(path).then((response) => {
+      setOrder(response.data);
+      setOrderIsLoading(false);
+    });
+  }
 
   useEffect(() => {
     setOrderIsLoading(true);
     setProductIsLoading(true);
     setUserIsLoading(true);
     const orderPath = `/api/Order/`;
-
     axios.get(orderPath).then((response) => {
       setOrder(response.data);
       setOrderIsLoading(false);
@@ -44,12 +70,6 @@ export default function Chef() {
       setUserIsLoading(false);
     });
   }, []);
-
-  const handleClick = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    setOrderStatus(orderStatus);
-    console.log("The link was clicked.");
-  };
 
   return (
     <>
@@ -102,13 +122,13 @@ export default function Chef() {
                       </div>
                     ))}
                     <div className="chef-btn-container">
-                      <button className="order-btn confirmed-btn" type="button">
+                      <button className="order-btn confirmed-btn" type="button" onClick={(_) => confirmedOrder(order.orderId, order)}>
                         Sätt som befräftad
                       </button>
-                      <button className="order-btn done-btn" type="button" onClick={handleClick}>
+                      <button className="order-btn done-btn" type="button" onClick={(_) => doneOrder(order.orderId, order)}>
                         Sätt som klar
                       </button>
-                      <button className="order-btn delete-order-btn" type="button" onClick={() => removeOrder(order.orderId)}>
+                      <button className="order-btn delete-order-btn" type="button" onClick={(_) => removeOrder(order.orderId)}>
                         Ta bort
                       </button>
                     </div>
