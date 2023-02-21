@@ -22,7 +22,7 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
   const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
   const quantity = getItemQuantity(id);
   const [product, setProduct] = useState<Product[]>([]);
-  const [orderLine, setOrder] = useState<OrderLine[]>([]);
+  const [, setOrder] = useState<OrderLine[]>([]);
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
 

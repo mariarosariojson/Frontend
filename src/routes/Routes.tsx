@@ -2,8 +2,6 @@ import { useRoutes } from "react-router-dom";
 
 import type { RouteObject } from "react-router";
 
-import { OrderStatus } from "Src/api/Enums";
-
 import Error401 from "Src/components/Errors/Error401";
 import Error404 from "Src/components/Errors/Error404";
 import ShoppingCart from "Src/components/ShoppingCart/ShoppingCart";
