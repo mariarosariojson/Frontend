@@ -29,11 +29,9 @@ function Map() {
       <Helmet title="Contact" />
       <Box>
         <section className="contact-container">
-          <div className="map-container">
-            <GoogleMap center={center} mapContainerClassName="map-container" mapTypeId={google.maps.MapTypeId.TERRAIN} zoom={15}>
-              <Marker position={center} />
-            </GoogleMap>
-          </div>
+          <GoogleMap center={center} mapContainerClassName="map-container" mapTypeId={google.maps.MapTypeId.TERRAIN} zoom={15}>
+            <Marker position={center} />
+          </GoogleMap>
           <div className="contact-info">
             <section className="contact-header">
               <div>

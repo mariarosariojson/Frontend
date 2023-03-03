@@ -68,7 +68,7 @@ h5 {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
 .food-container {
-  width: 76%;
+  width: 100%;
 }
 
 @media only screen and (max-width: 430px) {

@@ -1,7 +1,10 @@
 .food-container {
-  margin: 10rem auto;
-  text-transform: uppercase;
-  width: 100%;
+  margin: 0 auto;
+  font-weight: 500;
+  width: 80%;
+  padding: 0rem 5rem 0rem 5rem;
+  height: 100%;
+  z-index: 1;
 }
 .food-menu-container {
   width: 98%;
@@ -24,6 +27,9 @@
   transition-timing-function: ease;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.24);
   overflow: hidden;
+}
+.card-section {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.24);
 }
 .card-body {
   display: flex;
@@ -90,25 +96,28 @@
 .food-card-btn:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
+.card-mobile {
+  visibility: hidden;
+}
+.card-desktop {
+  margin-top: -40rem;
+}
+
 @media only screen and (max-width: 430px) {
-  .card {
-    border-radius: 2rem;
-    margin: 0.5rem auto;
-  }
   .food-container {
-    padding: 0rem;
+    width: 100%;
     margin: 0 auto;
-  }
-  .food-menu-container {
-    padding: 0.5rem;
-    margin: -4rem auto;
+    padding: 0;
+    height: fit-content;
   }
   .food-menu-header {
-    visibility: hidden;
+    visibility: visible;
+    font-size: 0.8rem;
   }
-  .card-img {
-    max-width: 43%;
-    height: 100%;
-    object-fit: cover;
+  .card-mobile {
+    visibility: visible;
+  }
+  .card-desktop {
+    visibility: hidden;
   }
 }
