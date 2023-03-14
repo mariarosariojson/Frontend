@@ -40,13 +40,14 @@ h3 {
 
 .chef-status-col-1,
 .chef-status-col-2,
-.chef-status-col-3 {
+.chef-status-col-3,
+.chef-status-col-4 {
   display: flex;
   flex-direction: column;
   padding: 0.5rem 2rem 0.5rem 2rem;
   border-left: 1px solid black;
 }
-.chef-status-col-3 {
+.chef-status-col-4 {
   border-right: 1px solid black;
 }
 .chef-btn-container {

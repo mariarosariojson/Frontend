@@ -13,6 +13,7 @@ export enum OrderStatus {
     Created = 1,
     Confirmed = 2,
     Done = 3,
+    Closed = 4,
 }
 export enum UserType {
     Admin = 1,

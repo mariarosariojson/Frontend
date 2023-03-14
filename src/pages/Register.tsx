@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { Box } from "@mui/material";
+import axios from "axios";
 
 import type { SubmitHandler } from "react-hook-form";
-import type { CreateUser } from "Src/api/Dto";
+import type { CreateUser, User } from "Src/api/Dto";
 
 import { UserType } from "Src/api/Enums";
 import { addUser, listUsers } from "Src/api/User";
@@ -27,6 +28,17 @@ export default function Register() {
   const [userIsLoading, setUserIsLoading] = useState(false);
   const { register, handleSubmit } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+
+  const [user, setUser] = useState<User[]>([]);
+
+  // useEffect(() => {
+  //   setUserIsLoading(true);
+  //   const path = `/api/User/`;
+  //   axios.post(path).then((response) => {
+  //     setUser(response.data);
+  //     setUserIsLoading(false);
+  //   });
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {

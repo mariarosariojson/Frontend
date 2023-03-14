@@ -31,6 +31,9 @@ export default function LinkTabs() {
           <Link to="/Chef">
             <Tab icon={<i className="bi bi-person-lines-fill" />} label="Alla Ordrar" />
           </Link>
+          <Link to="/Closed">
+            <Tab icon={<i className="bi bi-x-circle-fill" />} label="Stängda" />
+          </Link>
         </div>
       </Tabs>
     </Box>

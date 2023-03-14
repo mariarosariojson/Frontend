@@ -38,14 +38,14 @@ export default function Index({ imageUrl, name, price, id }: HomeProps) {
       <Box className="hero-container">
         <section className="hero-text">
           <div>
-            <h5>Välkommen hit,</h5>
+            <h5>Välkommen,</h5>
             <h1 className="hero-title">
               Kom förbi eller <br />
               beställ din mat här!
             </h1>
             <p className="hero-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui magni delectus tenetur autem, sint veritatis!</p>
           </div>
-          <div>
+          <div className="hero-btns">
             <Link to="/FoodMenu">
               <Button className="hero-btn">Maträtter</Button>
             </Link>
@@ -57,10 +57,10 @@ export default function Index({ imageUrl, name, price, id }: HomeProps) {
         <section>
           <img alt="placeholder" src={headerImg} />
         </section>
-        <div className="food-container">
-          <FoodItem id={id} imageUrl={imageUrl} name={name} price={price} />
-        </div>
       </Box>
+      <div className="food-container">
+        <FoodItem id={id} imageUrl={imageUrl} name={name} price={price} />
+      </div>
     </>
   );
 }

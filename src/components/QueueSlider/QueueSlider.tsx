@@ -17,7 +17,7 @@ export default function QueueSlider() {
   console.log(kitchenQueue)
 
   return (
-    <Box sx={{ width: 300 }}>
+    <Box sx={{ width: 280 }}>
       <div className="kitchen-queue">
         <h3>Sätt kötid</h3>
         <Slider marks aria-label="Minuter" defaultValue={5} max={60} min={5} step={5} valueLabelDisplay="auto" onChange={changeValue} />

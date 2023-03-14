@@ -6,6 +6,7 @@
 \******************************************/
 
 import _client from "./HttpClient";
+import * as Enums from "./Enums";
 import * as DTO from "./Dto";
 export const addOrder = async (Order: DTO.CreateOrder): Promise<DTO.Order> => {
     const path = [_client.resolveUrl(`/api/Order`)];
@@ -22,21 +23,24 @@ export const getOrder = async (id: number): Promise<DTO.Order> => {
     return _client.httpFetch<DTO.Order>('GET', path.join(""), null, undefined, undefined, undefined);
 };
 
-export const listOrders = async (): Promise<DTO.Order[]> => {
+export const listOrders = async (/** Default =  */from?: string, /** Default = 0 */status?: Enums.OrderStatus): Promise<DTO.Order[]> => {
     const path = [_client.resolveUrl(`/api/Order`)];
-    return _client.httpFetch<DTO.Order[]>('GET', path.join(""), null, undefined, undefined, undefined);
-};
-
-export const listUsersOrders = async (userId: number, id: any): Promise<DTO.Order[]> => {
-    const path = [_client.resolveUrl(`/api/Order/ListUsersOrders/${id}`)];
     const _queryParameters: string[] = [];
-    if(userId !== null && userId !== undefined) {
-        _queryParameters.push(`userId=${encodeURIComponent(userId)}`);
+    if(from !== null && from !== undefined) {
+        _queryParameters.push(`from=${encodeURIComponent(from)}`);
+    }
+    if(status !== null && status !== undefined) {
+        _queryParameters.push(`status=${encodeURIComponent(status)}`);
     }
     if(_queryParameters.length > 0) {
         path.push("?");
         path.push(_queryParameters.join("&"));
     }
+    return _client.httpFetch<DTO.Order[]>('GET', path.join(""), null, undefined, undefined, undefined);
+};
+
+export const listUsersOrders = async (id: number): Promise<DTO.Order[]> => {
+    const path = [_client.resolveUrl(`/api/Order/ListUsersOrders/${id}`)];
     return _client.httpFetch<DTO.Order[]>('GET', path.join(""), null, undefined, undefined, undefined);
 };
 

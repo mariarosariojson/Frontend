@@ -30,7 +30,7 @@ export default function SideBar() {
   };
 
   const list = (anchor: Anchor) => (
-    <Box className="sidebar" role="presentation" sx={{ width: "auto" }} onClick={toggleDrawer(anchor, false)} onKeyDown={toggleDrawer(anchor, false)}>
+    <Box className="sidebar" role="presentation" sx={{ width: "27rem", minHeight: "500%" }}>
       <List>
         <div className="sidebar-cart-header">
           <h2>
@@ -50,12 +50,12 @@ export default function SideBar() {
     <Button>
       {(["right"] as const).map((anchor) => (
         <React.Fragment key={anchor}>
-          <IconButton onClick={toggleDrawer(anchor, true)}>
-            <i className="bi bi-list nav-icons" />
-          </IconButton>
           <SwipeableDrawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)} onOpen={toggleDrawer(anchor, true)}>
             {list(anchor)}
           </SwipeableDrawer>
+          <IconButton onClick={toggleDrawer(anchor, true)}>
+            <i className="bi bi-list" />
+          </IconButton>
         </React.Fragment>
       ))}
     </Button>

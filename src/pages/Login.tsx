@@ -11,7 +11,6 @@ import type { Kitchen } from "Src/api/Dto";
 import type QueueSliderProps from "Src/components/QueueSlider/QueueSlider";
 
 import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
-import GoogleLogoutButton from "Src/components/google-login/GoogleLogout";
 
 import "src/css/Login.css";
 

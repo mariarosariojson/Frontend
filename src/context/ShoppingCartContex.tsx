@@ -4,16 +4,16 @@ import { useLocalStorage } from "src/hooks/useLocalStorage";
 
 import type { ReactNode } from "react";
 
-interface ShoppingCartProviderProps {
+export interface ShoppingCartProviderProps {
   children: ReactNode;
 }
 
-interface CartItem {
+export interface CartItem {
   id: number;
   quantity: number;
 }
 
-interface ShoppingCartContext {
+export interface ShoppingCartContext {
   getItemQuantity: (productId: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;

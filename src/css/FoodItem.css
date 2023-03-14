@@ -3,7 +3,7 @@
   font-weight: 500;
   width: 80%;
   padding: 0rem 5rem 0rem 5rem;
-  height: 100%;
+  height: fit-content;
   z-index: 1;
 }
 .food-menu-container {
@@ -104,12 +104,6 @@
 }
 
 @media only screen and (max-width: 430px) {
-  .food-container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    height: fit-content;
-  }
   .food-menu-header {
     visibility: visible;
     font-size: 0.8rem;

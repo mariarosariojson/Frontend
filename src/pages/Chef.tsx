@@ -9,6 +9,7 @@ import { OrderStatus } from "Src/api/Enums";
 
 import TabLink from "Src/components/TabLink/TabLink";
 
+// import { useShoppingCart } from "Src/context/ShoppingCartContex";
 import "src/css/Chef.css";
 
 export default function Chef() {
@@ -18,6 +19,8 @@ export default function Chef() {
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [userIsLoading, setUserIsLoading] = useState(false);
+  // const { getItemQuantity } = useShoppingCart();
+  // const quantity = getItemQuantity(id);
 
   function removeOrder(id: number) {
     const orderPath = `/api/Order/${id}`;
@@ -79,13 +82,16 @@ export default function Chef() {
         <br />
         <div className="chef-order-status">
           <div className="chef-status-col-1">
-            <h2>Nya ordrar: {OrderStatus.Created} st</h2>
+            <h2>Nya ordrar: {OrderStatus.Created}st</h2>
           </div>
           <div className="chef-status-col-2">
-            <h2>Bekräftade: {OrderStatus.Confirmed} st</h2>
+            <h2>Bekräftade: {OrderStatus.Confirmed}st</h2>
           </div>
           <div className="chef-status-col-3">
             <h2>Slutförda: {OrderStatus.Done}st</h2>
+          </div>
+          <div className="chef-status-col-4">
+            <h2>Stängda: {OrderStatus.Closed}st</h2>
           </div>
         </div>
         <div className="chef-order-list">
@@ -127,7 +133,7 @@ export default function Chef() {
                         Sätt som klar
                       </button>
                       <button className="order-btn delete-order-btn" type="button" onClick={(_) => removeOrder(order.orderId)}>
-                        Ta bort
+                        Stängd
                       </button>
                     </div>
                   </div>

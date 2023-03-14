@@ -35,6 +35,10 @@ h3 {
 .created-status-header {
   color: rgb(253, 105, 105);
 }
+.closed-status-header {
+  color: black;
+  opacity: 0.3;
+}
 .order-btn-container {
   display: flex;
   flex-direction: column;

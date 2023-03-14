@@ -1,0 +1,40 @@
+.checkout-icon {
+  color: rgb(239, 115, 0);
+}
+.checkout-icon-box {
+  background-color: #6c8fa7e2;
+}
+.bottom-drawer {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 3.7rem;
+  width: 100%;
+}
+.count {
+  font-style: normal;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.drawer-btn {
+  cursor: pointer;
+  padding: 1rem 0rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin: 0 auto;
+  width: 90%;
+  color: #f2f2f2;
+  transition: filter 250ms ease;
+  background-color: #6c8fa7;
+}
+.drawer-btn:hover,
+.drawer-btn a:hover {
+  background-color: #6c8fa7;
+  color: #f2f2f2;
+}
+.drawer-btn:is(:hover, :focus) {
+  filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}

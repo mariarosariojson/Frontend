@@ -11,22 +11,11 @@ import TabLink from "Src/components/TabLink/TabLink";
 
 import "src/css/Orders.css";
 
-export default function Done() {
+export default function Closed() {
   const [order, setOrder] = useState<Order[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
-
-  async function closedOrder(id: number, order: any) {
-    const orderPath = `/api/Order/${id}`;
-    await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Closed });
-    setOrderIsLoading(true);
-    const path = `/api/Order/`;
-    axios.get(path).then((response) => {
-      setOrder(response.data);
-      setOrderIsLoading(false);
-    });
-  }
 
   useEffect(() => {
     setOrderIsLoading(true);
@@ -43,11 +32,11 @@ export default function Done() {
     });
   }, []);
 
-  const doneOrders = order.filter((done) => done.orderStatus === OrderStatus.Done);
+  const closedOrders = order.filter((closed) => closed.orderStatus === OrderStatus.Closed);
 
-  const filteredList = doneOrders.map((doneOrder, id) => (
+  const filteredList = closedOrders.map((closedOrder, id) => (
     <div key={id}>
-      <div>{doneOrder.done}</div>
+      <div>{closedOrder.closed}</div>
     </div>
   ));
 
@@ -57,22 +46,22 @@ export default function Done() {
       <div className="order-container">
         <TabLink />
         <br />
-        <h1>Slutförda ordrar</h1>
+        <h1>Stängda ordrar</h1>
         <br />
         <div className="order-list">
           {orderIsLoading && productIsLoading ? (
             <LinearProgress />
           ) : (
-            doneOrders?.map((done, orderId) => (
+            closedOrders?.map((closed, orderId) => (
               <div key={orderId} className="chef-card">
                 <div>
                   <div className="chef-list">
-                    <div className="done-status-header">
-                      Order Id: {done.orderId}
-                      <h2>Orderstatus: {done.done ? "Slutförd" : "Ej slutförd"}</h2>
+                    <div className="closed-status-header">
+                      Order Id: {closed.orderId}
+                      <h2>Orderstatus: {closed.done ? "Stängd" : "Ej stängd"}</h2>
                       <br />
                     </div>
-                    {done.orderLines?.map((item, productId) => (
+                    {closed.orderLines?.map((item, productId) => (
                       <div key={productId}>
                         <h3>{product.find((product) => product.productId === item.productId)?.name}</h3>
                       </div>
@@ -80,15 +69,11 @@ export default function Done() {
                     <div className="order-info">
                       <br />
                       <br />
-                      Ordersumma: {done.totalAmount}kr
+                      Ordersumma: {closed.totalAmount}kr
                     </div>
                   </div>
                 </div>
-                <div className="order-btn-container">
-                  <button className="order-btn delete-order-btn" type="button" onClick={(_) => closedOrder(done.orderId, done)}>
-                    Stäng order
-                  </button>
-                </div>
+               
               </div>
             ))
           )}

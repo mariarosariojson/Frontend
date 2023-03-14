@@ -110,6 +110,9 @@ nav {
 .tab-nav {
   padding: 1rem 3rem 0rem 3rem;
 }
+.account-menu {
+  visibility: hidden;
+}
 
 @media only screen and (max-width: 430px) {
   nav {
@@ -118,7 +121,7 @@ nav {
     top: 0;
     height: 6rem;
     color: #f2f2f2;
-    max-width: 100%;
+    width: 100%;
   }
   .navbar {
     visibility: hidden;
@@ -128,7 +131,7 @@ nav {
     color: #f2f2f2;
     display: flex;
     justify-content: space-between;
-    padding-right: 0.5rem;
+    padding: 0.5rem;
     visibility: visible;
     margin-top: -2rem;
   }
@@ -143,14 +146,21 @@ nav {
     border-radius: 5rem;
     padding: 0.2rem;
   }
-  .nav-icons {
+  .header-icons-1 {
     font-size: 1.3rem;
     display: flex;
-    flex-direction: column;
-    justify-content: left;
-    min-width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     color: #f2f2f2;
-    padding-right: 2.1rem;
+    width: 20%;
+    height: 100vh;
   }
-  
+  .link-icon {
+    color: #f2f2f2;
+  }
+
+  .account-menu {
+    visibility: visible;
+  }
 }

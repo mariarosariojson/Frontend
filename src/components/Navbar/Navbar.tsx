@@ -41,18 +41,19 @@ export default function Navbar({ children }: Props) {
       <nav>
         <div className="navbar">
           <div className="nav-mobile">
-            <AccountMenu />
-            <div className="logotype-nav">
-              <Link to="/">
-                <img alt="logo" className="logotype" src={fastfood} width="45px" />
+            <div className="header-icons-1">
+              <Link className="link-icon" to="/">
+                <i className="bi bi-house-fill" />
               </Link>
             </div>
-            {cartQuantity > 0 && (
-              <Button>
-                <ShoppingCart />
-                <div className="cart-count">{cartQuantity}</div>
-              </Button>
-            )}
+            <div className="logotype-nav">
+              <img alt="logo" className="logotype" src={fastfood} width="45px" />
+            </div>
+            <div className="header-icons-1">
+              <Link className="link-icon" to="/Sidebar">
+                <SideBar />
+              </Link>
+            </div>
           </div>
           <div className="nav-links">
             {links.map((item, index) => (
@@ -87,6 +88,9 @@ export default function Navbar({ children }: Props) {
               <SideBar />
             </div>
           </div>
+        </div>
+        <div className="account-menu">
+          <AccountMenu />
         </div>
       </nav>
       {children}

@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 
-import type { CreateKitchen } from "Src/api/Dto";
+import type { Kitchen } from "Src/api/Dto";
 
 import "src/css/Kitchen.css";
 
 export default function Kitchen() {
   const [kitchenOpen, setKitchenOpen] = useState("tyvärr stängd");
-  const [kitchen, setKitchen] = useState<CreateKitchen[]>([]);
+  const [kitchen, setKitchen] = useState<Kitchen[]>([]);
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
 
   useEffect(() => {
@@ -35,6 +35,19 @@ export default function Kitchen() {
           <br />
           restaurangen
         </button>
+        <div className="kitchen-code">
+          {kitchen?.map((kitchen) => (
+            <>
+              <h3>Dagens kod</h3>
+              <div key={kitchen.kitchenId}>{kitchen.code}</div>
+              <br />
+              <input className="kitchen-input" type="text" />
+              <button className="kitchen-input-btn" type="button">
+                Ändra kod
+              </button>
+            </>
+          ))}
+        </div>
       </div>
     </>
   );

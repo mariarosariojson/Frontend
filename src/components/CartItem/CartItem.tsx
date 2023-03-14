@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Stack } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import axios from "axios";
@@ -16,10 +16,10 @@ interface CartItemProps {
 
 export function CartItem({ quantity, id }: CartItemProps) {
   const { removeFromCart } = useShoppingCart();
-  const [order, setOrder] = useState<CreateOrderLine[]>([]);
-  const [orderIsLoading, setOrderIsLoading] = useState(false);
+  const [, setOrder] = useState<CreateOrderLine[]>([]);
+  const [, setOrderIsLoading] = useState(false);
   const [productItem, setProductItem] = useState<Product[]>([]);
-  const [productIsLoading, setProductIsLoading] = useState(false);
+  const [, setProductIsLoading] = useState(false);
 
   React.useEffect(() => {
     setOrderIsLoading(true);
