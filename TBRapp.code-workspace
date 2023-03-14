@@ -108,7 +108,8 @@
     },
     "[typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "powershell.cwd": "/Users/mariarosariojson/Desktop/Dekiru/TBRapp/Frontend"
   },
   "extensions": {
     "recommendations": [

@@ -73,7 +73,6 @@ export default function Closed() {
                     </div>
                   </div>
                 </div>
-               
               </div>
             ))
           )}
