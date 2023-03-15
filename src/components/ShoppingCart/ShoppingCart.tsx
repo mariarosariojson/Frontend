@@ -70,7 +70,7 @@ export default function ShoppingCart() {
   };
 
   const list = (anchor: Anchor) => (
-    <Box className="shopping-cart" role="presentation" sx={{ width: "auto", minHeight: "auto" }} onKeyDown={toggleDrawer(anchor, true)}>
+    <Box className="shopping-cart" role="presentation" sx={{ width: "27rem", minHeight: "500%" }} onKeyDown={toggleDrawer(anchor, true)}>
       <List>
         <div className="shopping-cart-header">
           <h2>

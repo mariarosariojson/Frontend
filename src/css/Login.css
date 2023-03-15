@@ -59,3 +59,41 @@
 .google-logout-btn {
   margin-top: 3rem;
 }
+
+@media only screen and (max-width: 900px) {
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto;
+    width: 100%;
+    font-weight: 400;
+    font-size: 0.7rem;
+  }
+  .login-container h3 {
+    color: #6c8fa7;
+    text-transform: uppercase;
+  }
+
+  .login-container input {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 0.01rem solid #6c8fa7;
+    border-radius: 0.4rem;
+    background-color: #f2f2f2;
+    padding: 0.9rem;
+    margin-top: 0.5rem;
+    color: #6c8fa7;
+  }
+  .login-container input::placeholder {
+    color: #6c8fa7;
+  }
+  .login-container button {
+    width: 100%;
+    border-radius: 0.3rem;
+    background-color: #6c8fa7;
+    color: #f2f2f2;
+  }
+}

@@ -78,7 +78,7 @@ export default function Login(props: QueueSliderProps) {
               <ul>
                 <br />
                 <li>
-                  <input placeholder="E-mailadress" type="email" {...register("email")} />
+                  <input placeholder="E-postadress" type="email" {...register("email")} />
                 </li>
                 <li>
                   <input placeholder="Kod" type="password" {...register("code")} />

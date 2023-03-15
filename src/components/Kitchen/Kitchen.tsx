@@ -6,10 +6,15 @@ import type { Kitchen } from "Src/api/Dto";
 
 import "src/css/Kitchen.css";
 
+export interface KitchenProps {
+  closed: string,
+  open: string
+}
+
 export default function Kitchen() {
   const [kitchenOpen, setKitchenOpen] = useState("tyvärr stängd");
   const [kitchen, setKitchen] = useState<Kitchen[]>([]);
-  const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
+  const [, setKitchenIsLoading] = useState(false);
 
   useEffect(() => {
     setKitchenIsLoading(true);

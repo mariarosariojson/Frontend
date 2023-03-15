@@ -42,7 +42,7 @@ export default function Navbar({ children }: Props) {
         <div className="navbar">
           <div className="nav-mobile">
             <div className="header-icons-1">
-              <Link className="link-icon" to="/">
+              <Link className="link-icon" to="/Home">
                 <i className="bi bi-house-fill" />
               </Link>
             </div>

@@ -51,6 +51,17 @@ export default function Chef() {
     });
   }
 
+  async function closedOrder(id: number, order: any) {
+    const orderPath = `/api/Order/${id}`;
+    await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Closed });
+    setOrderIsLoading(true);
+    const path = `/api/Order/`;
+    axios.get(path).then((response) => {
+      setOrder(response.data);
+      setOrderIsLoading(false);
+    });
+  }
+
   useEffect(() => {
     setOrderIsLoading(true);
     setProductIsLoading(true);
@@ -132,7 +143,7 @@ export default function Chef() {
                       <button className="order-btn done-btn" type="button" onClick={(_) => doneOrder(order.orderId, order)}>
                         Sätt som klar
                       </button>
-                      <button className="order-btn delete-order-btn" type="button" onClick={(_) => removeOrder(order.orderId)}>
+                      <button className="order-btn delete-order-btn" type="button" onClick={(_) => closedOrder(order.orderId, order)}>
                         Stängd
                       </button>
                     </div>

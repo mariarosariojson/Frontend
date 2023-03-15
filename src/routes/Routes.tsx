@@ -22,10 +22,10 @@ import Register from "Src/pages/Register";
 // import Register from "Src/pages/Register";
 
 const routes: RouteObject[] = [
-  { path: "/", element: <Index id={0} imageUrl="" name="" price={0} /> },
+  { path: "/Home", element: <Index id={0} imageUrl="" name="" price={0} /> },
   { path: "/foodMenu", element: <FoodMenu id={0} imageUrl="" name="" price={0} /> },
   { path: "/Contact", element: <Contact /> },
-  { path: "/Login", element: <Login kitchenQueue={0} /> },
+  { path: "/", element: <Login kitchenQueue={0} /> },
   { path: "*", element: <Error404 /> },
   { path: "unauthorized", element: <Error401 /> },
   { path: "/Register", element: <Register /> },
