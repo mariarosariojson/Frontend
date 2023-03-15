@@ -7,8 +7,8 @@ import type { Kitchen } from "Src/api/Dto";
 import "src/css/Kitchen.css";
 
 export interface KitchenProps {
-  closed: string,
-  open: string
+  closed: string;
+  open: string;
 }
 
 export default function Kitchen() {
@@ -40,6 +40,7 @@ export default function Kitchen() {
           <br />
           restaurangen
         </button>
+        <br />
         <div className="kitchen-code">
           {kitchen?.map((kitchen) => (
             <>

@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@types/jquery": "^3.5.16",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17.0.18",
     "@types/react-helmet": "^6.1.6",

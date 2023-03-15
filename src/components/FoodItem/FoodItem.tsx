@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import Favorite from "@mui/icons-material/Favorite";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
@@ -95,22 +95,8 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
                               </Link>
                             </CardCover>
                           </AspectRatio>
-                          <IconButton
-                            aria-label="Like minimal photography"
-                            color="danger"
-                            size="md"
-                            sx={{
-                              position: "absolute",
-                              zIndex: 2,
-                              borderRadius: "50%",
-                              right: "1rem",
-                              bottom: 0,
-                              transform: "translateY(50%)",
-                              color: "#fd6969"
-                            }}
-                            variant="solid"
-                          >
-                            <Favorite />
+                          <IconButton variant="plain">
+                            <FavoriteBorder />
                           </IconButton>
                         </CardOverflow>
                         <div>

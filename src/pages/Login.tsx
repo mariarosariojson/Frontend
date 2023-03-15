@@ -30,6 +30,7 @@ export default function Login(props: QueueSliderProps) {
   const onSubmit: SubmitHandler<LoginValues> = (data) => data;
   const [kitchen, setKitchen] = useState<Kitchen[]>([]);
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
+  // const { label, value, onChange } = Input();
 
   useEffect(() => {
     setKitchenIsLoading(true);
@@ -48,7 +49,7 @@ export default function Login(props: QueueSliderProps) {
       });
     }
     gapi.load("client:auth2", start);
-  }, []);
+  });
 
   // const accessToken = gapi.auth.getToken().access_token;
 
@@ -87,7 +88,7 @@ export default function Login(props: QueueSliderProps) {
                   <button className="register-btn" type="submit">
                     Logga in
                   </button>
-                  <div className="google-login-btn"> 
+                  <div className="google-login-btn">
                     <GoogleLoginButton />
                   </div>
                 </li>

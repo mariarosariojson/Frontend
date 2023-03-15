@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100vh;
 }
 .emptyFood-container {
   display: flex;
@@ -53,4 +54,9 @@
 .checkout-btn:is(:hover, :focus),
 .emptyFood-btn:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+@media only screen and (max-width: 900px) {
+  
+
 }

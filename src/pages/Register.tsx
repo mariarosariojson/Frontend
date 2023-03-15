@@ -24,21 +24,10 @@ interface FormValues {
 }
 
 export default function Register() {
-  const [newUser, setNewUser] = useState<CreateUser[]>([]);
+  const [newUser, setNewUser] = useState<User[]>([]);
   const [userIsLoading, setUserIsLoading] = useState(false);
   const { register, handleSubmit } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
-
-  const [user, setUser] = useState<User[]>([]);
-
-  // useEffect(() => {
-  //   setUserIsLoading(true);
-  //   const path = `/api/User/`;
-  //   axios.post(path).then((response) => {
-  //     setUser(response.data);
-  //     setUserIsLoading(false);
-  //   });
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,9 +45,9 @@ export default function Register() {
 
   const registerUser = async () => {
     const newUser: CreateUser = {
-      firstName: "",
-      lastName: "",
-      email: "",
+      firstName: "Test",
+      lastName: "Testsson",
+      email: "test@mail.com",
       orders: [],
       userType: UserType.User || UserType.Admin
     };

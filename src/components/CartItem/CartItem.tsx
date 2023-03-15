@@ -51,14 +51,14 @@ export function CartItem({ quantity, id }: CartItemProps) {
         <Stack key={productItem.productId} className="cart-item-container" direction="horizontal" gap={2}>
           <img className="cart-item-img" src={productItem.imageUrl} />
           <div className="cart-item-body">
-            <div>
+            <div className="cart-item-text-primary">
               {productItem.name} <br />
               {quantity > 1 && <span className="cart-item-text-secondary">{quantity}st</span>}
             </div>
             <div className="cart-item-text-secondary">{formatCurrency(productItem.price)}</div>
-            <div>{formatCurrency(productItem.price * quantity)}</div>
+            <div className="cart-item-text-third">{formatCurrency(productItem.price * quantity)}</div>
           </div>
-          <div>
+          <div className="cart-item-btn-container">
             <Button className="cart-item-btn cart-item-remove-btn" onClick={() => removeFromCart(id)}>
               &times;
             </Button>
