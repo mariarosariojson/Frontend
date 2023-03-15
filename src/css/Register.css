@@ -64,3 +64,49 @@
 .register-container button:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
+
+@media only screen and (max-width: 900px) {
+  .container-logreg {
+    display: flex;
+    height: fit-content;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .register-container h3 {
+    display: flex;
+    font-weight: 700;
+    color: #6c8fa7;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  .login-reg {
+    display: flex;
+    padding: 0;
+    visibility: hidden;
+  }
+  .register-input {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: none;
+    padding: 0;
+    margin-top: -22rem;
+  }
+  .register-container button {
+    width: 100%;
+    border-radius: 0.3rem;
+    background-color: #6c8fa7;
+    color: #f2f2f2;
+  }
+  .google-logout-btn {
+    border-top: 0.5px solid #6c8fa776;
+    width: 100%;
+    margin: 3rem auto;
+  }
+}
