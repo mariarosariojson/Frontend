@@ -87,7 +87,9 @@ export default function Login(props: QueueSliderProps) {
                   <button className="register-btn" type="submit">
                     Logga in
                   </button>
-                  <GoogleLoginButton />
+                  <div className="google-login-btn"> 
+                    <GoogleLoginButton />
+                  </div>
                 </li>
               </ul>
             </div>

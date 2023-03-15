@@ -96,4 +96,9 @@
     background-color: #6c8fa7;
     color: #f2f2f2;
   }
+  .google-login-btn {
+    border-top: 0.5px solid #6c8fa776;
+    width: 100%;
+    margin: 3rem auto;
+  }
 }

@@ -16,6 +16,7 @@ export default function GoogleLoginButton() {
       <GoogleLogin
         isSignedIn
         buttonText="Logga in med Google"
+        className="google-login-btn"
         clientId={clientId}
         cookiePolicy="single_host_origin"
         onFailure={onFailure}
