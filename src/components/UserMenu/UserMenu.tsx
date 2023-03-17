@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Global } from "@emotion/react";
 import Box from "@mui/material/Box";
 import { grey } from "@mui/material/colors";
@@ -7,6 +7,7 @@ import { styled } from "@mui/material/styles";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import { CartItem } from "src/components/CartItem/CartItem";
 
 import type { CreateOrder, CreateOrderLine, Product, User } from "Src/api/Dto";
 
@@ -15,8 +16,6 @@ import { addOrder } from "Src/api/Order";
 import { listUsers } from "Src/api/User";
 
 import { useShoppingCart } from "Src/context/ShoppingCartContex";
-
-import { CartItem } from "./CartItem/CartItem";
 
 import "src/css/UserMenu.css";
 

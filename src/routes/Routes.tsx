@@ -19,7 +19,6 @@ import Confirmed from "Src/pages/Orders/Confirmed";
 import Created from "Src/pages/Orders/Created";
 import Done from "Src/pages/Orders/Done";
 import Register from "Src/pages/Register";
-// import Register from "Src/pages/Register";
 
 const routes: RouteObject[] = [
   { path: "/Home", element: <Index id={0} imageUrl="" name="" price={0} /> },

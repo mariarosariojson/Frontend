@@ -24,6 +24,7 @@ export default function Kitchen() {
       setKitchenIsLoading(false);
     });
   }, []);
+  console.log("test");
 
   return (
     <>

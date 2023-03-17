@@ -14,7 +14,6 @@ export default function QueueSlider() {
   const changeValue = (event: any, value: any) => {
     setKitchenQueue(value);
   };
-  console.log(kitchenQueue);
 
   return (
     <Box sx={{ width: 280 }}>

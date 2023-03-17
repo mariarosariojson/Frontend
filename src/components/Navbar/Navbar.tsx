@@ -9,7 +9,7 @@ import { useShoppingCart } from "Src/context/ShoppingCartContex";
 
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import SideBar from "../Sidebar/Sidebar";
-import AccountMenu from "../UserMenu";
+import AccountMenu from "../UserMenu/UserMenu";
 
 import "src/css/Navbar.css";
 
@@ -69,7 +69,7 @@ export default function Navbar({ children }: Props) {
           </div>
           <div className="nav-icons">
             <div className="login-register">
-              <Link to="/Login">
+              <Link to="/">
                 <p>Logga in / Skapa konto</p>
               </Link>
             </div>
