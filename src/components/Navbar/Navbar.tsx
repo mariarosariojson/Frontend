@@ -20,7 +20,7 @@ interface Props {
 const links = [
   {
     display: "Hem",
-    path: "/"
+    path: "/Home"
   },
   {
     display: "Maträtter",

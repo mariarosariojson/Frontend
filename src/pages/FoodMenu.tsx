@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import axios from "axios";
@@ -8,7 +8,6 @@ import type { Product } from "Src/api/Dto";
 import FoodItem from "Src/components/FoodItem/FoodItem";
 
 import "src/css/FoodItem.css";
-import React from "react";
 
 interface CreateProductProps {
   id: number;
