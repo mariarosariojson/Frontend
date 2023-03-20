@@ -53,21 +53,14 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
 
   return (
     <>
-      <Helmet title="/Meny" />
+      <Helmet />
       <Box>
         <div>
           <FoodCardMobile id={0} imageUrl="" name="" price={0} />
         </div>
         <div className="food-container">
           <div className="card-desktop">
-            <Stack
-              direction="row"
-              flexWrap="wrap"
-              gap={3}
-              justifyContent="left"
-              rowGap={3}
-              sx={{ width: "fit-content", marginLeft: "auto", marginRight: "auto" }}
-            >
+            <Stack direction="row" flexWrap="wrap" gap={3} rowGap={3} sx={{ width: "85%", marginLeft: "auto", marginRight: "auto" }}>
               {orderIsLoading && productIsLoading ? (
                 <LinearProgress />
               ) : (

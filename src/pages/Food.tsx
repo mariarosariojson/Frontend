@@ -1,9 +1,8 @@
-import { Col, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 
 import FoodItem from "Src/components/FoodItem/FoodItem";
 
-import "src/css/FoodItem.css";
+import "src/css/Food.css";
 
 interface CreateProductProps {
   id: number;
@@ -18,15 +17,9 @@ export default function FoodMenu({ imageUrl, name, price, id }: CreateProductPro
   return (
     <>
       <Helmet title="Food" />
-      <div className="food-menu-header">
-        <h2>Meny för mat och dryck</h2>
-      </div>
+     
       <div className="food-menu-container">
-        <Row>
-          <Col>
-            <FoodItem {...foodMenuProps} />
-          </Col>
-        </Row>
+        <FoodItem {...foodMenuProps} />
       </div>
     </>
   );

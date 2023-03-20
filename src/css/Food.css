@@ -1,0 +1,19 @@
+.food-menu-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+.food-menu-header {
+  text-align: center;
+  margin-top: 5rem;
+  color: rgb(45, 45, 45);
+}
+@media only screen and (max-width: 900px) {
+  .food-menu-header {
+    visibility: visible;
+    font-size: 0.8rem;
+    margin: 2rem;
+  }
+}

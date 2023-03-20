@@ -29,22 +29,35 @@ h5 {
   font-weight: 400;
 }
 .hero-container {
+  margin-top: 5rem;
   display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: left;
+}
+.hero-header {
   flex-direction: row;
-  flex-wrap: wrap;
-  width: 85%;
-  margin: 6rem auto;
-  text-align: left;
+  display: flex;
+  justify-content: center;
 }
-.hero-text {
-  width: 55%;
-  padding: 5rem;
+.hero-greeting {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  padding: 1.5rem;
 }
-.hero-title {
-  padding: 0.9rem 0rem;
-  text-align: left;
-  font-size: 36px;
+.hero-title h1 {
   color: #6c8fa7;
+  text-align: left;
+  font-size: 2.5rem;
+}
+.hero-img {
+  display: flex;
+  width: 35%;
+  padding: 1.5rem;
+}
+.hero-paragraph {
+  font-size: 1.1rem;
 }
 .hero-btn {
   cursor: pointer;

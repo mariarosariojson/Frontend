@@ -10,9 +10,9 @@ import Sidebar from "Src/components/Sidebar/Sidebar";
 import Checkout from "Src/pages/Checkout";
 import Chef from "Src/pages/Chef";
 import Contact from "Src/pages/Contact";
-import FoodMenu from "Src/pages/FoodMenu";
+import FoodMenu from "Src/pages/Food";
 import FoodProduct from "Src/pages/FoodProduct";
-import Index from "Src/pages/Home/Index";
+import Index from "Src/pages/Index";
 import Login from "Src/pages/Login";
 import Closed from "Src/pages/Orders/Closed";
 import Confirmed from "Src/pages/Orders/Confirmed";
@@ -22,7 +22,7 @@ import Register from "Src/pages/Register";
 
 const routes: RouteObject[] = [
   { path: "/Home", element: <Index id={0} imageUrl="" name="" price={0} /> },
-  { path: "/foodMenu", element: <FoodMenu id={0} imageUrl="" name="" price={0} /> },
+  { path: "/Food", element: <FoodMenu id={0} imageUrl="" name="" price={0} /> },
   { path: "/Contact", element: <Contact /> },
   { path: "/", element: <Login kitchenQueue={0} /> },
   { path: "*", element: <Error404 /> },

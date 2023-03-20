@@ -1,27 +1,19 @@
 .food-container {
-  margin: 0 auto;
+  display: flex;
+  justify-items: center;
   font-weight: 500;
-  width: 80%;
-  padding: 0rem 5rem 0rem 5rem;
-  height: fit-content;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  width: fit-content;
   z-index: 1;
 }
-.food-menu-container {
-  width: 98%;
-  margin: 2rem auto 2rem auto;
-}
-.food-menu-header {
-  text-align: center;
-  margin-top: 5rem;
-  color: rgb(45, 45, 45);
-}
+
 .card {
   display: inline-block;
   width: 27rem;
   border-radius: 0.1rem 0.1rem;
   background-color: whitesmoke;
   height: 180px;
-  margin: 1rem;
   transition-property: box-shadow, transform;
   transition-duration: 350ms;
   transition-timing-function: ease;
@@ -104,10 +96,6 @@
 }
 
 @media only screen and (max-width: 430px) {
-  .food-menu-header {
-    visibility: visible;
-    font-size: 0.8rem;
-  }
   .card-mobile {
     visibility: visible;
   }

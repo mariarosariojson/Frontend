@@ -24,7 +24,7 @@ const links = [
   },
   {
     display: "Maträtter",
-    path: "/foodMenu"
+    path: "/Food"
   },
   {
     display: "Kontakt",

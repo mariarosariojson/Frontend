@@ -36,26 +36,30 @@ export default function Index({ imageUrl, name, price, id }: HomeProps) {
     <>
       <Helmet title="Home" />
       <Box className="hero-container">
-        <section className="hero-text">
-          <div>
-            <h5>Välkommen,</h5>
-            <h1 className="hero-title">
-              Kom förbi eller <br />
-              beställ din mat här!
-            </h1>
-            <p className="hero-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui magni delectus tenetur autem, sint veritatis!</p>
+        <section className="hero-header">
+          <div className="hero-greeting">
+            <div className="hero-title">
+              <h5>Välkommen,</h5>
+              <h1>
+                Kom förbi eller <br />
+                beställ din mat här!
+              </h1>
+              <p className="hero-paragraph">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui magni delectus tenetur autem, sint veritatis!
+              </p>
+            </div>
+            <div className="hero-btns">
+              <Link to="/Food">
+                <Button className="hero-btn">Maträtter</Button>
+              </Link>
+              <Link to="/contact">
+                <Button className="hero-btn">Kontakta oss</Button>
+              </Link>
+            </div>
           </div>
-          <div className="hero-btns">
-            <Link to="/FoodMenu">
-              <Button className="hero-btn">Maträtter</Button>
-            </Link>
-            <Link to="/contact">
-              <Button className="hero-btn">Kontakta oss</Button>
-            </Link>
+          <div className="hero-img">
+            <img alt="placeholder" src={headerImg} />
           </div>
-        </section>
-        <section>
-          <img alt="placeholder" src={headerImg} />
         </section>
       </Box>
       <div className="food-container">
