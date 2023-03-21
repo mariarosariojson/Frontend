@@ -8,10 +8,13 @@ import { gapi } from "gapi-script";
 
 import type { SubmitHandler } from "react-hook-form";
 import type { Kitchen } from "Src/api/Dto";
-import type QueueSliderProps from "Src/components/QueueSlider/QueueSlider";
+import type { QueueSliderProps } from "Src/components/QueueSlider/QueueSlider";
 
 import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
+import KitchenTime, { KitchenState } from "Src/components/KitchenTime/KitchenTime";
+import QueueSlider, { KitchenLine } from "Src/components/QueueSlider/QueueSlider";
 
+// import { WaitingLine } from "Src/components/QueueSlider/QueueSlider";
 import "src/css/Login.css";
 
 interface LoginValues {
@@ -19,16 +22,12 @@ interface LoginValues {
   code: string;
 }
 
-export interface QueueSliderProps {
-  kitchenQueue: number;
-}
-
 const clientId = "758380863651-69t6pe0h7ta7g7btvh7v9dt5r1b3nkkd.apps.googleusercontent.com";
 
-export default function Login(props: QueueSliderProps) {
+export default function Login() {
   const { register, handleSubmit } = useForm<LoginValues>();
   const onSubmit: SubmitHandler<LoginValues> = (data) => data;
-  const [kitchen, setKitchen] = useState<Kitchen[]>([]);
+  const [kitchen, setKitchen] = useState<Kitchen>();
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
   // const { label, value, onChange } = Input();
 
@@ -63,12 +62,14 @@ export default function Login(props: QueueSliderProps) {
               {kitchenIsLoading ? (
                 <LinearProgress />
               ) : (
-                kitchen.map((kitchen, kitchenId) => (
-                  <div key={kitchenId} className="kitchen-status-login" id="kitchen-status">
-                    <h3>Restaurangen är {kitchen.kitchenStatus}</h3>
-                    <p>Kötiden är cirka {props.kitchenQueue} minuter</p>
-                  </div>
-                ))
+                <div className="kitchen-status-login" id="kitchen-status">
+                  <h3>
+                    <KitchenState kitchen={kitchen} />
+                  </h3>
+                  <p>
+                    <KitchenLine kitchen={kitchen} />
+                  </p>
+                </div>
               )}
             </div>
             <br />

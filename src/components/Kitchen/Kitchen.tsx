@@ -4,6 +4,9 @@ import axios from "axios";
 
 import type { Kitchen } from "Src/api/Dto";
 
+import KitchenTime from "../KitchenTime/KitchenTime";
+import QueueSlider from "../QueueSlider/QueueSlider";
+
 import "src/css/Kitchen.css";
 
 export interface KitchenProps {
@@ -13,7 +16,7 @@ export interface KitchenProps {
 
 export default function Kitchen() {
   const [kitchenOpen, setKitchenOpen] = useState("tyvärr stängd");
-  const [kitchen, setKitchen] = useState<Kitchen[]>([]);
+  const [kitchen, setKitchen] = useState<Kitchen>();
   const [, setKitchenIsLoading] = useState(false);
 
   useEffect(() => {
@@ -42,19 +45,25 @@ export default function Kitchen() {
         </button>
         <br />
         <div className="kitchen-code">
-          {kitchen?.map((kitchen) => (
-            <>
-              <h3>Dagens kod</h3>
-              <div key={kitchen.kitchenId}>{kitchen.code}</div>
-              <br />
-              <input className="kitchen-input" type="text" />
-              <button className="kitchen-input-btn" type="button">
-                Ändra kod
-              </button>
-            </>
-          ))}
+          <h3>Dagens kod</h3>
+          <div>{kitchen?.code}</div>
+          <br />
+          <input className="kitchen-input" type="text" />
+          <button className="kitchen-input-btn" type="button">
+            Ändra kod
+          </button>
         </div>
+      </div>
+      <div>
+        <KitchenTime kitchen={kitchen} />
+      </div>
+      <div>
+        <QueueSlider kitchen={kitchen} />
       </div>
     </>
   );
 }
+
+// export function KitchenTime() {
+//   return <h3>Restaurangen är {}</h3>;
+// }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import Favorite from "@mui/icons-material/Favorite";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
@@ -48,8 +48,10 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
     axios.get(productPath).then((response) => {
       setProduct(response.data);
       setProductIsLoading(false);
+      console.log("response.data", response.data);
     });
   }, []);
+  console.log("first", product);
 
   return (
     <>
@@ -64,7 +66,7 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
               {orderIsLoading && productIsLoading ? (
                 <LinearProgress />
               ) : (
-                product?.map(
+                product.map(
                   (product) =>
                     (
                       <Card
@@ -88,8 +90,21 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
                               </Link>
                             </CardCover>
                           </AspectRatio>
-                          <IconButton variant="plain">
-                            <FavoriteBorder />
+                          <IconButton
+                            size="md"
+                            sx={{
+                              position: "absolute",
+                              zIndex: 2,
+                              borderRadius: "50%",
+                              right: "1rem",
+                              bottom: 0,
+                              transform: "translateY(50%)",
+                              color: "#fd6969",
+                              backgroundColor: "#f2f2f2"
+                            }}
+                            variant="soft"
+                          >
+                            <Favorite />
                           </IconButton>
                         </CardOverflow>
                         <div>

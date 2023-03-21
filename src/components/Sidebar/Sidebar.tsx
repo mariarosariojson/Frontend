@@ -8,14 +8,11 @@ import Kitchen from "src/components/Kitchen/Kitchen";
 
 import type { CreateKitchen } from "Src/api/Dto";
 
-import QueueSlider from "../QueueSlider/QueueSlider";
-
 import "src/css/Sidebar.css";
 
 type Anchor = "right";
 
 export default function SideBar() {
-  const [kitchen, setKitchen] = useState<CreateKitchen[]>([]);
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
   const [state, setState] = React.useState({
     right: false
@@ -41,7 +38,6 @@ export default function SideBar() {
       </List>
       <Stack>
         <Kitchen />
-        <QueueSlider />
       </Stack>
     </Box>
   );

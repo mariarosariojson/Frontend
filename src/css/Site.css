@@ -90,52 +90,43 @@ h5 {
     max-width: 100%;
     overflow: hidden;
   }
-  body {
-    background-color: #f2f2f2;
-    width: 100%;
-  }
   .hero-container {
+    margin: 1rem auto;
+  }
+  .hero-header {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    max-height: 12rem;
-    margin: 0 auto;
-    padding: 0;
-  }
-  .hero-text {
-    width: 100%;
+    height: fit-content;
     text-align: center;
-    padding: 0;
-    margin: 2rem auto;
     font-size: 1rem;
+    margin: 0 auto;
   }
-  .hero-p {
+  .hero-greeting {
+    min-width: 100%;
+  }
+  .hero-paragraph, .hero-img {
     visibility: hidden;
     padding: 0;
   }
-  .hero-title {
-    font-size: 16px;
+  .hero-title h1 {
+    font-size: 1.2rem;
     color: #6c8fa7;
     padding: 0;
     text-align: center;
   }
-  .hero-container img {
-    visibility: hidden;
-    padding: 0;
-  }
   .food-container {
-    margin: 0 auto;
+    margin: 1rem auto;
     visibility: visible;
     width: 100%;
     padding: 0.3rem;
   }
   .hero-btns {
-    margin-top: -5rem;
+    min-width: 100%;
+    margin-top: -6.5rem;
+    padding: 0;
   }
   .hero-btn {
     cursor: pointer;
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 0.5rem;
     border: 0.1rem solid #6c8fa7;
     border-radius: 0.5rem;
     font-weight: 600;
@@ -145,6 +136,7 @@ h5 {
     color: #6c8fa7;
     transition: filter 250ms ease;
     background-color: #f2f2f2;
+    width: fit-content;
   }
   .hero-btn:hover,
   .hero-btn a:hover {

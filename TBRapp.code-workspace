@@ -121,7 +121,8 @@
       "dsznajder.es7-react-js-snippets",
       "eamodio.gitlens",
       "visualstudioexptteam.vscodeintellicode",
-      "vscode-icons-team.vscode-icons"
+      "vscode-icons-team.vscode-icons",
+      "github.copilot"
     ]
   }
 }

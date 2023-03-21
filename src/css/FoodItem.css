@@ -82,8 +82,8 @@
   border: 0.1rem solid #6c8fa7;
 }
 .food-card-remove-btn:hover {
-  background-color: rgb(253, 105, 105);
-  border: 0.1rem solid rgb(253, 105, 105);
+  background-color: #fd6969;
+  border: 0.1rem solid #fd6969;
 }
 .food-card-btn:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
@@ -102,4 +102,5 @@
   .card-desktop {
     visibility: hidden;
   }
+  
 }

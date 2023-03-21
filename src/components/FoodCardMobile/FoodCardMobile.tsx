@@ -76,8 +76,6 @@ export default function FoodCardMobile({ id }: FoodItemProps) {
                     </Link>
                   </AspectRatio>
                   <IconButton
-                    aria-label="Like minimal photography"
-                    color="danger"
                     size="md"
                     sx={{
                       position: "absolute",
@@ -87,7 +85,7 @@ export default function FoodCardMobile({ id }: FoodItemProps) {
                       left: 0,
                       top: 0
                     }}
-                    variant="solid"
+                    variant="plain"
                   >
                     <Favorite />
                   </IconButton>

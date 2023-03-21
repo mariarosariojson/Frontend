@@ -12,14 +12,9 @@ export const addKitchen = async (Kitchen: DTO.CreateKitchen): Promise<DTO.Kitche
     return _client.httpFetch<DTO.Kitchen>('POST', path.join(""), Kitchen, undefined, undefined, undefined);
 };
 
-export const getKitchen = async (id: number): Promise<DTO.Kitchen> => {
-    const path = [_client.resolveUrl(`/api/Kitchen/${id}`)];
-    return _client.httpFetch<DTO.Kitchen>('GET', path.join(""), null, undefined, undefined, undefined);
-};
-
-export const listKitchens = async (): Promise<DTO.Kitchen[]> => {
+export const getKitchen = async (): Promise<DTO.Kitchen> => {
     const path = [_client.resolveUrl(`/api/Kitchen`)];
-    return _client.httpFetch<DTO.Kitchen[]>('GET', path.join(""), null, undefined, undefined, undefined);
+    return _client.httpFetch<DTO.Kitchen>('GET', path.join(""), null, undefined, undefined, undefined);
 };
 
 export const updateKitchen = async (id: number, Kitchen: DTO.CreateKitchen): Promise<DTO.Kitchen> => {

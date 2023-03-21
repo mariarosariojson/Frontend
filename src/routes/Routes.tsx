@@ -21,10 +21,10 @@ import Done from "Src/pages/Orders/Done";
 import Register from "Src/pages/Register";
 
 const routes: RouteObject[] = [
-  { path: "/Home", element: <Index id={0} imageUrl="" name="" price={0} /> },
-  { path: "/Food", element: <FoodMenu id={0} imageUrl="" name="" price={0} /> },
+  { path: "/Home", element: <Index /> },
+  { path: "/Food", element: <FoodMenu /> },
   { path: "/Contact", element: <Contact /> },
-  { path: "/", element: <Login kitchenQueue={0} /> },
+  { path: "/", element: <Login /> },
   { path: "*", element: <Error404 /> },
   { path: "unauthorized", element: <Error401 /> },
   { path: "/Register", element: <Register /> },
@@ -35,8 +35,8 @@ const routes: RouteObject[] = [
   { path: "/Closed", element: <Closed /> },
   { path: "/ShoppingCart", element: <ShoppingCart /> },
   { path: "/Checkout", element: <Checkout /> },
-  { path: "/Sidebar", element: <Sidebar /> },
-  { path: "/FoodProduct/:id", element: <FoodProduct id={0} imageUrl="" name="" price={0} /> }
+  { path: "/Sidebar", element: <Sidebar /> }
+  // { path: "/FoodProduct/:id", element: <FoodProduct /> }
 ];
 
 export default function Routes() {

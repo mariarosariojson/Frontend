@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { Box } from "@mui/material";
-import axios from "axios";
 
 import type { SubmitHandler } from "react-hook-form";
 import type { CreateUser, User } from "Src/api/Dto";
@@ -65,7 +64,7 @@ export default function Register() {
         <form className="register-input" onSubmit={handleSubmit(onSubmit)}>
           <div className="login-reg">
             <div>
-              <Login kitchenQueue={5} />
+              <Login/>
             </div>
           </div>
           <div className="register-container">
