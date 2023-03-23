@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { Global } from "@emotion/react";
 import Box from "@mui/material/Box";
 import { grey } from "@mui/material/colors";
@@ -153,9 +154,11 @@ export default function SwipeableEdgeDrawer(props: Props) {
             }}
           >
             <CartItem id={0} quantity={0} />
-            <button className="place-order-btn" type="button" onClick={placeOrder}>
-              Skicka beställning
-            </button>
+            <div className="place-order-drawer">
+              <Button className="place-order-btn" type="button" onClick={placeOrder}>
+                Skicka beställning <i className="bi bi-send-fill" />
+              </Button>
+            </div>
           </StyledBox>
         </SwipeableDrawer>
       </Root>

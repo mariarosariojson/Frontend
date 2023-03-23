@@ -38,10 +38,8 @@ export default function Index() {
             <img alt="placeholder" src={headerImg} />
           </div>
         </section>
-        <div className="food-container">
-          <FoodList />
-        </div>
       </Box>
+      <FoodList />
     </>
   );
 }

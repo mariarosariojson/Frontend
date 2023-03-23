@@ -15,9 +15,19 @@ export interface KitchenProps {
 }
 
 export default function Kitchen() {
-  const [kitchenOpen, setKitchenOpen] = useState("tyvärr stängd");
+  const [kitchenOpen, setKitchenOpen] = useState(true);
+  const [kitchenClosed, setKitchenClosed] = useState(false);
   const [kitchen, setKitchen] = useState<Kitchen>();
   const [, setKitchenIsLoading] = useState(false);
+
+  const stateOpen = () => {
+    setKitchenOpen(true);
+    setKitchenClosed(!setKitchenClosed);
+  };
+  const stateClosed = () => {
+    setKitchenOpen(!setKitchenOpen);
+    setKitchenClosed(true);
+  };
 
   useEffect(() => {
     setKitchenIsLoading(true);
@@ -32,13 +42,17 @@ export default function Kitchen() {
     <>
       <Helmet title="Kitchen" />
       <div className="kitchen-status" id="kitchen-status">
-        <h3>Restaurangen är {kitchenOpen}</h3>
-        <button className="kitchen-btn kitchen-open-btn" type="button" onClick={() => setKitchenOpen("öppen!")}>
+        <h3>
+          {" "}
+          {kitchenOpen && <p>Restaurangen är öppen!</p>}
+          {kitchenClosed && <p>Restaurangen är tyvärr stängd.</p>}
+        </h3>
+        <button className="kitchen-btn kitchen-open-btn" type="button" onClick={stateOpen}>
           Öppna
           <br />
           restaurangen
         </button>
-        <button className="kitchen-btn kitchen-close-btn" type="button" onClick={() => setKitchenOpen("tyvärr stängd.")}>
+        <button className="kitchen-btn kitchen-close-btn" type="button" onClick={stateClosed}>
           Stäng
           <br />
           restaurangen

@@ -23,10 +23,16 @@ export default function KitchenTime({ kitchen }: KitchenTimeProps) {
   return (
     <Box>
       <div className="kitchen-queue">
-        <Slider marks aria-label="Öppettider" max={2} min={1} step={1} valueLabelDisplay="auto" onChange={changeState} />
+        {/* <Slider marks aria-label="Öppettider" max={2} min={1} step={1} valueLabelDisplay="auto" onChange={changeState} /> */}
         <div>
           <h3>State {kitchen?.kitchenStatus}</h3>
         </div>
+      </div>
+      <div>
+        <button className="add-edit-btn" type="button" onClick={() => changeState}>
+          {" "}
+          open / close <br /> restaurangen
+        </button>
       </div>
     </Box>
   );

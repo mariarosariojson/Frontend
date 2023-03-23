@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { LinearProgress } from "@mui/material";
 import axios from "axios";
 
 import type { Product } from "src/api/Dto";
@@ -13,7 +14,7 @@ export default function FoodMenu() {
   return (
     <>
       <Helmet title="Food" />
-      <div className="food-container">
+      <div className="food-index-container">
         <FoodList />
       </div>
     </>
@@ -21,23 +22,27 @@ export default function FoodMenu() {
 }
 
 export function FoodList() {
-  const [productlist, setProduct] = useState<Product[]>([]);
-  const [, setProductIsLoading] = useState(false);
+  const [productList, setProductList] = useState<Product[]>([]);
+  const [productIsLoading, setProductIsLoading] = useState(false);
 
   useEffect(() => {
     setProductIsLoading(true);
     const productPath = `/api/Product/`;
     axios.get(productPath).then((response) => {
-      setProduct(response.data);
+      setProductList(response.data);
       setProductIsLoading(false);
     });
   }, []);
 
   return (
     <>
-      {productlist?.map((product) => (
-        <FoodItem key={product.productId} id={product.productId} imageUrl={product.imageUrl ?? ""} name={product.name} price={product.price} />
-      ))}
+      {productIsLoading ? (
+        <LinearProgress />
+      ) : (
+        productList.map((product) => (
+          <FoodItem key={product.productId} id={product.productId} imageUrl={product.imageUrl ?? ""} name={product.name} price={product.price} />
+        )) ?? []
+      )}
     </>
   );
 }

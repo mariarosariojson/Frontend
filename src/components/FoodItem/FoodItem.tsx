@@ -48,10 +48,8 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
     axios.get(productPath).then((response) => {
       setProduct(response.data);
       setProductIsLoading(false);
-      console.log("response.data", response.data);
     });
   }, []);
-  console.log("first", product);
 
   return (
     <>
@@ -121,16 +119,9 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
                           </Typography>
                           <div className="food-card-btn-container">
                             {quantity === 0 ? (
-                              <>
-                                <Button className="food-card-btn add-to-cart" onClick={() => increaseCartQuantity(product.productId)}>
-                                  <i className="bi bi-basket" />
-                                </Button>
-                                {/* <button className="place-order-btn stripe-btn" type="button">
-                          <a href="https://buy.stripe.com/test_14kaGofVN2if7ugdQU">
-                            <p>Quick checkout</p>
-                          </a>
-                        </button> */}
-                              </>
+                              <Button className="food-card-btn add-to-cart" onClick={() => increaseCartQuantity(product.productId)}>
+                                <i className="bi bi-basket" />
+                              </Button>
                             ) : (
                               <>
                                 <Button className="food-card-btn food-card-remove-btn" onClick={() => removeFromCart(product.productId)}>

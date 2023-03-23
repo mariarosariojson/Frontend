@@ -19,7 +19,7 @@ export default function FoodProduct({ id }: FoodItemProps) {
 
   useEffect(() => {
     setProductIsLoading(true);
-    const productPath = `/api/Product/`;
+    const productPath = `/api/Product/${id}`;
     axios.get(productPath).then((response) => {
       setProduct(response.data);
       setProductIsLoading(false);

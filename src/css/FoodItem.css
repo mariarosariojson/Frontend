@@ -35,6 +35,9 @@
   justify-content: center;
   font-size: 0.9rem;
 }
+.food-card-btn-container {
+  padding: 1rem;
+}
 .food-count-container {
   display: flex;
   width: 6rem;
@@ -102,5 +105,4 @@
   .card-desktop {
     visibility: hidden;
   }
-  
 }
