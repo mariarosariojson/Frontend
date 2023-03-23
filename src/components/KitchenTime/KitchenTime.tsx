@@ -4,7 +4,10 @@ import Slider from "@mui/material/Slider";
 import axios from "axios";
 
 import type { Kitchen } from "Src/api/Dto";
-import type { KitchenStatus } from "Src/api/Enums";
+
+import { KitchenStatus } from "Src/api/Enums";
+
+import "src/css/Kitchen.css";
 
 export interface KitchenTimeProps {
   kitchen: Kitchen | undefined;
@@ -17,27 +20,20 @@ export default function KitchenTime({ kitchen }: KitchenTimeProps) {
     setKitchens(value);
     const kitchenTime = { ...kitchen, KitchenStatus: value };
     axios.put(`/api/Kitchen/${kitchenTime.kitchenId}`, kitchenTime);
-    console.log(kitchenTime);
   };
 
   return (
     <Box>
-      <div className="kitchen-queue">
-        {/* <Slider marks aria-label="Öppettider" max={2} min={1} step={1} valueLabelDisplay="auto" onChange={changeState} /> */}
-        <div>
-          <h3>State {kitchen?.kitchenStatus}</h3>
+      <div className="kitchen-time">
+        <Slider marks max={2} min={1} onChange={changeState} />
+        <div className="queue-status">
+          <b>Restaurangen är {kitchen?.kitchenStatus === KitchenStatus.Open ? "öppen!" : "tyvärr stängd."}</b>
         </div>
-      </div>
-      <div>
-        <button className="add-edit-btn" type="button" onClick={() => changeState}>
-          {" "}
-          open / close <br /> restaurangen
-        </button>
       </div>
     </Box>
   );
 }
 
 export function KitchenState({ kitchen }: KitchenTimeProps) {
-  return <p>Restaurangen är {kitchen?.kitchenStatus ? "öppen" : ""}</p>;
+  return <p>Restaurangen är {kitchen?.kitchenStatus === KitchenStatus.Open ? "öppen!" : "tyvärr stängd."}</p>;
 }

@@ -64,7 +64,7 @@ export default function Register() {
         <form className="register-input" onSubmit={handleSubmit(onSubmit)}>
           <div className="login-reg">
             <div>
-              <Login/>
+              <Login />
             </div>
           </div>
           <div className="register-container">
@@ -78,7 +78,7 @@ export default function Register() {
             <section className="input-2">
               <input placeholder="E-mail adress" type="email" {...register("email")} />
             </section>
-            <section className="input-4">
+            <section className="input-3">
               <button className="register-btn" type="submit" onSubmit={() => registerUser()}>
                 Spara
               </button>

@@ -1,25 +1,26 @@
-.login-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5rem auto;
-  width: max-content;
-}
 .kitchen-status-login {
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 5rem auto;
+  color: #727272;
 }
-
-.login-container h1 {
+.login-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 0rem 1rem 5rem 1rem;
+}
+.login-header {
+  display: flex;
+  justify-content: center;
   font-weight: 700;
+  padding: 1rem;
 }
-.login-container li {
-  list-style: none;
-  letter-spacing: 1px;
-  line-height: 1.5rem;
+.login-input {
+  display: flex;
+  flex-direction: column;
 }
 .login-container input {
-  width: 13rem;
+  width: 15rem;
   border: 0.01rem solid #6c8fa7;
   border-radius: 0.4rem;
   background-color: #f2f2f2;
@@ -30,7 +31,9 @@
 .login-container input::placeholder {
   color: #6c8fa7;
 }
-.login-container button {
+.login-btn {
+  display: flex;
+  justify-content: center;
   padding: 0.9rem 1.5rem;
   margin-top: 0.9rem;
   border-radius: 0.5rem;
@@ -41,14 +44,22 @@
   font-weight: 600;
   font-size: 0.7rem;
   transition: filter 250ms ease;
+  width: 10rem;
 }
 .login-container button:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
-
+.google-login-btn {
+  border-top: 0.5px solid #6c8fa776;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 1rem;
+}
 .reg-nav-text {
   margin-top: 2rem;
-  font-size: 11px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: center;
 }
 .reg-nav-text a {
   color: #6c8fa7;

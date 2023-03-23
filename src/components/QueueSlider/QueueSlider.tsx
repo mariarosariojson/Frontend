@@ -21,12 +21,11 @@ export default function QueueSlider({ kitchen }: QueueSliderProps) {
   };
 
   return (
-    <Box sx={{ width: 280 }}>
+    <Box>
       <div className="kitchen-queue">
-        <h3>Sätt kötid</h3>
         <Slider marks aria-label="Minuter" defaultValue={5} max={60} min={5} step={5} valueLabelDisplay="auto" onChange={changeValue} />
         <div className="queue-status">
-          <h3>Kötid: {kitchen?.kitchenQueueTime}minuter</h3>
+          <b>Kötid: {kitchen?.kitchenQueueTime}minuter</b>
         </div>
       </div>
     </Box>

@@ -9,7 +9,7 @@ export default function GoogleLogoutButton() {
 
   return (
     <div id="signOutButton">
-      <GoogleLogout buttonText="Logga ut" clientId={clientId} onLogoutSuccess={onSuccess} />
+      <GoogleLogout buttonText="Logga ut med Google" clientId={clientId} onLogoutSuccess={onSuccess} />
     </div>
   );
 }

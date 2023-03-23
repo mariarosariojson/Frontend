@@ -8,9 +8,10 @@ import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
 import CardOverflow from "@mui/joy/CardOverflow";
 import IconButton from "@mui/joy/IconButton";
+import LinearProgress from "@mui/joy/LinearProgress";
 import Stack from "@mui/joy/Stack";
 import Typography from "@mui/joy/Typography";
-import { Box, LinearProgress } from "@mui/material";
+import { Box } from "@mui/material";
 import axios from "axios";
 import { useShoppingCart } from "src/context/ShoppingCartContex";
 import { formatCurrency } from "src/utilities/FormatCurrency";
@@ -62,7 +63,7 @@ export default function FoodItem({ id, name, price, imageUrl }: FoodItemProps) {
           <div className="card-desktop">
             <Stack direction="row" flexWrap="wrap" gap={3} rowGap={3} sx={{ width: "85%", marginLeft: "auto", marginRight: "auto" }}>
               {orderIsLoading && productIsLoading ? (
-                <LinearProgress />
+                <LinearProgress thickness={1} />
               ) : (
                 product.map(
                   (product) =>

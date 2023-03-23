@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { Box, LinearProgress } from "@mui/material";
+import LinearProgress from "@mui/joy/LinearProgress";
+import { Box } from "@mui/material";
 import axios from "axios";
 import { gapi } from "gapi-script";
 
 import type { SubmitHandler } from "react-hook-form";
 import type { Kitchen } from "Src/api/Dto";
-import type { QueueSliderProps } from "Src/components/QueueSlider/QueueSlider";
 
 import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
 import KitchenTime, { KitchenState } from "Src/components/KitchenTime/KitchenTime";
@@ -56,52 +56,42 @@ export default function Login() {
     <>
       <Helmet title="Login" />
       <Box>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <section className="login-container">
-            <div className="kitchen">
-              {kitchenIsLoading ? (
-                <LinearProgress />
-              ) : (
-                <div className="kitchen-status-login" id="kitchen-status">
-                  <h3>
-                    <KitchenState kitchen={kitchen} />
-                  </h3>
-                  <p>
-                    <KitchenLine kitchen={kitchen} />
-                  </p>
-                </div>
-              )}
+        <section className="kitchen-status-login">
+          {kitchenIsLoading ? (
+            <LinearProgress thickness={1} />
+          ) : (
+            <div id="kitchen-status">
+              <h3>
+                <KitchenState kitchen={kitchen} />
+              </h3>
+              <b>
+                <KitchenLine kitchen={kitchen} />
+              </b>
             </div>
-            <br />
+          )}
+        </section>
+        <section className="login-container">
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="login-header">
               <h3>Logga in här</h3>
             </div>
             <div className="login-input">
-              <ul>
-                <br />
-                <li>
-                  <input placeholder="E-postadress" type="email" {...register("email")} />
-                </li>
-                <li>
-                  <input placeholder="Kod" type="password" {...register("code")} />
-                </li>
-                <li>
-                  <button className="register-btn" type="submit">
-                    Logga in
-                  </button>
-                  <div className="google-login-btn">
-                    <GoogleLoginButton />
-                  </div>
-                </li>
-              </ul>
+              <input placeholder="E-postadress" type="email" {...register("email")} />
+              <input placeholder="Kod" type="password" {...register("code")} />
+              <button className="login-btn" type="submit">
+                Logga in
+              </button>
+              <div className="google-login-btn">
+                <GoogleLoginButton />
+              </div>
             </div>
             <div className="reg-nav-text">
               <a href="./Register">
                 <p>Har du inget konto? Registrera dig här.</p>
               </a>
             </div>
-          </section>
-        </form>
+          </form>
+        </section>
       </Box>
     </>
   );
