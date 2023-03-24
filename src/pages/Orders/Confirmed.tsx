@@ -77,7 +77,7 @@ export default function Confirmed() {
                   <div className="confirmed-status-header">
                     Order Id: {confirmed.orderId}
                     <h2>Orderstatus: {confirmed.confirmed ? "Bekräftad" : "Ej bekräftad"}</h2>
-                    Order uppdaterad: {confirmed.confirmed}
+                    Order bekräftad: {confirmed.confirmed}
                   </div>
                   <br />
                   {confirmed.orderLines?.map((item, productId) => (

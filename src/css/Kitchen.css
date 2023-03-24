@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 3rem;
-  border-bottom: 1px solid rgb(199, 199, 199);
+  border-bottom: 1px solid #6c8fa7;
 }
 .kitchen-status h3,
 .kitchen-queue h3 {
@@ -13,8 +13,8 @@
 .kitchen-time {
   display: flex;
   flex-direction: column;
-  margin: 3rem auto;
-  height: 2rem;
+  margin: 1rem auto;
+  height: 5rem;
   width: 80%;
   color: rgb(85, 85, 85);
 }
@@ -25,7 +25,12 @@
   margin-top: 1rem;
 }
 .kitchen-code {
-  margin-top: 1rem;
+  margin: 2rem auto;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #6c8fa7;
+}
+.kitchen-code h3 {
+  color: #6c8fa7;
 }
 .kitchen-btn {
   display: flex;
@@ -61,20 +66,23 @@
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
 .kitchen-input {
-  width: 13rem;
+  width: 10rem;
+  height: 3rem;
   border: 0.01rem solid #6c8fa7;
   border-radius: 0.4rem;
   background-color: #f2f2f2;
-  padding: 0.9rem;
-  margin-top: 0.5rem;
+  padding: 0.7rem;
+  margin-right: 0.5rem;
   color: #6c8fa7;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 .kitchen-input::placeholder {
   color: #6c8fa7;
 }
 .kitchen-input-btn {
-  padding: 0.9rem 1.5rem;
-  margin-top: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  height: 3rem;
   border-radius: 0.5rem;
   background-color: #6c8fa7;
   color: #f2f2f2;

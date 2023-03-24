@@ -130,8 +130,9 @@ export default function Chef() {
                           </div>
                           Ordersumma: {order.totalAmount}kr
                           <br />
-                          Tidstämpel: {order.confirmed}
+                          Senast uppdaterad: {order.confirmed}
                           <br />
+                          {order.orderStatus}
                           <br />
                         </div>
                       </div>

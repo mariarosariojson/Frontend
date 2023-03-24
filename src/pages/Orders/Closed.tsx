@@ -59,18 +59,15 @@ export default function Closed() {
                     <div className="closed-status-header">
                       Order Id: {closed.orderId}
                       <h2>Orderstatus: {closed.done ? "Stängd" : "Ej stängd"}</h2>
-                      <br />
+                      Order stängd: {closed.closed}
                     </div>
+                    <br />
                     {closed.orderLines?.map((item, productId) => (
                       <div key={productId}>
                         <h3>{product.find((product) => product.productId === item.productId)?.name}</h3>
                       </div>
                     ))}
-                    <div className="order-info">
-                      <br />
-                      <br />
-                      Ordersumma: {closed.totalAmount}kr
-                    </div>
+                    <div className="order-info">Ordersumma: {closed.totalAmount}kr</div>
                   </div>
                 </div>
               </div>

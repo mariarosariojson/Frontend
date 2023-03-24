@@ -6,14 +6,11 @@ import List from "@mui/material/List";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Kitchen from "src/components/Kitchen/Kitchen";
 
-import type { CreateKitchen } from "Src/api/Dto";
-
 import "src/css/Sidebar.css";
 
 type Anchor = "right";
 
 export default function SideBar() {
-  const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
   const [state, setState] = React.useState({
     right: false
   });

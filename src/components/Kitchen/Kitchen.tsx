@@ -4,15 +4,11 @@ import axios from "axios";
 
 import type { Kitchen } from "Src/api/Dto";
 
+import KitchenCode from "../KitchenCode/KitchenCode";
 import KitchenTime from "../KitchenTime/KitchenTime";
 import QueueSlider from "../QueueSlider/QueueSlider";
 
 import "src/css/Kitchen.css";
-
-export interface KitchenProps {
-  closed: string;
-  open: string;
-}
 
 export default function Kitchen() {
   const [kitchenOpen, setKitchenOpen] = useState(true);
@@ -43,7 +39,6 @@ export default function Kitchen() {
       <Helmet title="Kitchen" />
       <div className="kitchen-status" id="kitchen-status">
         <h3>
-          {" "}
           {kitchenOpen && <p>Restaurangen är öppen!</p>}
           {kitchenClosed && <p>Restaurangen är tyvärr stängd.</p>}
         </h3>
@@ -58,15 +53,9 @@ export default function Kitchen() {
           restaurangen
         </button>
         <br />
-        <div className="kitchen-code">
-          <h3>Dagens kod</h3>
-          <div>{kitchen?.code}</div>
-          <br />
-          <input className="kitchen-input" type="text" />
-          <button className="kitchen-input-btn" type="button">
-            Ändra kod
-          </button>
-        </div>
+      </div>
+      <div>
+        <KitchenCode kitchen={kitchen} />
       </div>
       <div>
         <KitchenTime kitchen={kitchen} />

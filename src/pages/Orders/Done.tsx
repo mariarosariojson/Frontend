@@ -65,24 +65,19 @@ export default function Done() {
           ) : (
             doneOrders?.map((done, orderId) => (
               <div key={orderId} className="chef-card">
-                <div>
-                  <div className="chef-list">
-                    <div className="done-status-header">
-                      Order Id: {done.orderId}
-                      <h2>Orderstatus: {done.done ? "Slutförd" : "Ej slutförd"}</h2>
-                      <br />
-                    </div>
-                    {done.orderLines?.map((item, productId) => (
-                      <div key={productId}>
-                        <h3>{product.find((product) => product.productId === item.productId)?.name}</h3>
-                      </div>
-                    ))}
-                    <div className="order-info">
-                      <br />
-                      <br />
-                      Ordersumma: {done.totalAmount}kr
-                    </div>
+                <div className="chef-list">
+                  <div className="done-status-header">
+                    Order Id: {done.orderId} <br />
+                    <h2>Orderstatus: {done.done ? "Slutförd" : "Ej slutförd"}</h2>
+                    Order slutförd: {done.done}
                   </div>
+                  <br />
+                  {done.orderLines?.map((item, productId) => (
+                    <div key={productId}>
+                      <h3>{product.find((product) => product.productId === item.productId)?.name}</h3>
+                    </div>
+                  ))}
+                  <div className="order-info">Ordersumma: {done.totalAmount}kr</div>
                 </div>
                 <div className="order-btn-container">
                   <button className="order-btn delete-order-btn" type="button" onClick={(_) => closedOrder(done.orderId, done)}>
