@@ -17,13 +17,12 @@ export default function QueueSlider({ kitchen }: QueueSliderProps) {
     setKitchenQueue(value);
     const sliderValue = { ...kitchen, kitchenQueueTime: value };
     axios.put(`/api/Kitchen/${sliderValue.kitchenId}`, sliderValue);
-    console.log(sliderValue);
   };
 
   return (
     <Box>
       <div className="kitchen-queue">
-        <Slider marks aria-label="Minuter" defaultValue={5} max={60} min={5} step={5} valueLabelDisplay="auto" onChange={changeValue} />
+        <Slider marks aria-label="Minuter" max={60} min={5} step={5} value={kitchenQueue} valueLabelDisplay="auto" onChange={changeValue} />
         <div className="queue-status">
           <b>Kötid: {kitchen?.kitchenQueueTime}minuter</b>
         </div>

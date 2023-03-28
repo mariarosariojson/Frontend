@@ -140,7 +140,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
               left: 0
             }}
           >
-            <Puller />
+            <Puller className="swipeable-drawer-puller" />
             <Typography sx={{ p: 2, color: "text.secondary", textAlign: "center" }}>
               <b>Orderstatus: 5 min</b>
             </Typography>

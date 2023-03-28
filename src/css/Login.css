@@ -10,14 +10,9 @@
   padding: 0rem 1rem 5rem 1rem;
 }
 .login-header {
-  display: flex;
-  justify-content: center;
+  text-align: center;
   font-weight: 700;
-  padding: 1rem;
-}
-.login-input {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 1rem;
 }
 .login-container input {
   width: 15rem;
@@ -86,7 +81,9 @@
     color: #6c8fa7;
     text-transform: uppercase;
   }
-
+  .login-header {
+    padding: 0;
+  }
   .login-container input {
     display: flex;
     justify-content: center;

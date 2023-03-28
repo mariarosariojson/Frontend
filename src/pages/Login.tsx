@@ -1,13 +1,11 @@
 /* eslint-disable react/button-has-type */
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { useForm } from "react-hook-form";
 import LinearProgress from "@mui/joy/LinearProgress";
 import { Box } from "@mui/material";
 import axios from "axios";
 import { gapi } from "gapi-script";
 
-import type { SubmitHandler } from "react-hook-form";
 import type { Kitchen } from "Src/api/Dto";
 
 import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
@@ -25,11 +23,28 @@ interface LoginValues {
 const clientId = "758380863651-69t6pe0h7ta7g7btvh7v9dt5r1b3nkkd.apps.googleusercontent.com";
 
 export default function Login() {
-  const { register, handleSubmit } = useForm<LoginValues>();
-  const onSubmit: SubmitHandler<LoginValues> = (data) => data;
   const [kitchen, setKitchen] = useState<Kitchen>();
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
-  // const { label, value, onChange } = Input();
+  const [user, setUser] = useState({ email: "", code: "" });
+
+  const handleChange = (e: any) => {
+    const { value } = e.target;
+    setUser({
+      ...user,
+      [e.target.name]: value
+    });
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const loginData = {
+      email: user.email,
+      code: user.code
+    };
+    axios.post(`/api/Login`, loginData).then((response) => {
+      console.log(response.status);
+    });
+  };
 
   useEffect(() => {
     setKitchenIsLoading(true);
@@ -71,19 +86,19 @@ export default function Login() {
           )}
         </section>
         <section className="login-container">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form className="login-input" onSubmit={handleSubmit}>
             <div className="login-header">
-              <h3>Logga in här</h3>
+              <h3>Logga in</h3>
             </div>
-            <div className="login-input">
-              <input placeholder="E-postadress" type="email" {...register("email")} />
-              <input placeholder="Kod" type="password" {...register("code")} />
-              <button className="login-btn" type="submit">
-                Logga in
-              </button>
-              <div className="google-login-btn">
-                <GoogleLoginButton />
-              </div>
+            <div className="login-input-field">
+              <input name="email" placeholder="E-mailadress" type="email" value={user.email} onChange={handleChange} /> <br />
+              <input name="code" placeholder="Dagens kod" type="code" value={user.code} onChange={handleChange} />
+            </div>
+            <button className="login-btn" type="submit">
+              Logga in
+            </button>
+            <div className="google-login-btn">
+              <GoogleLoginButton />
             </div>
             <div className="reg-nav-text">
               <a href="./Register">

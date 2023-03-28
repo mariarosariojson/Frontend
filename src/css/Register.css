@@ -8,7 +8,7 @@
   width: max-content;
   height: 50vh;
   border-left: 0.1rem solid #6c8fa7;
-  padding: 3rem 4rem 4rem 4rem;
+  padding: 3rem 4rem 4rem 7rem;
 }
 .register-header {
   display: flex;
@@ -33,7 +33,6 @@
   gap: 1rem;
   margin-top: 0.5rem;
 }
-
 .register-container input {
   width: 13rem;
   border: 0.01rem solid #6c8fa7;
@@ -82,30 +81,38 @@
     margin: 0 auto;
     padding: 0;
   }
-  .register-container h3 {
+  .register-container {
     display: flex;
-    font-weight: 700;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    border-left: none;
+    padding: 0;
+    width: 100%;
+    margin-top: -23rem;
+  }
+  .register-header h3 {
     color: #6c8fa7;
-    text-transform: uppercase;
-    font-size: 0.9rem;
   }
   .login-reg {
     display: flex;
-    padding: 0;
     visibility: hidden;
   }
   .register-input {
     display: flex;
     flex-direction: column;
-    padding: 0;
+    width: 100%;
   }
-  .register-container {
+  .register-input-field {
+    margin: 0 auto;
+  }
+  .input-1,
+  .input-2,
+  .input-3 {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 100%;
     justify-content: center;
-    border-left: none;
-    padding: 0;
-    margin-top: -22rem;
   }
   .register-container button {
     width: 100%;

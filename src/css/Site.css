@@ -83,6 +83,10 @@ h5 {
 .food-index-container {
   width: 100%;
 }
+.food-container {
+  width: 95%;
+  margin: 0 auto 0 auto;
+}
 
 @media only screen and (max-width: 900px) {
   * {

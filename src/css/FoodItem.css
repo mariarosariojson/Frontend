@@ -1,13 +1,7 @@
-.food-container {
-  display: flex;
-  justify-items: center;
-  font-weight: 500;
+.main-container {
+  width: 100%;
   margin: 0 auto;
-  margin-bottom: 2rem;
-  width: fit-content;
-  z-index: 1;
 }
-
 .card {
   display: inline-block;
   width: 27rem;

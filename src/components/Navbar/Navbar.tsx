@@ -11,6 +11,8 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import SideBar from "../Sidebar/Sidebar";
 import AccountMenu from "../UserMenu/UserMenu";
 
+import NavbarMobile from "./NavbarMobile";
+
 import "src/css/Navbar.css";
 
 interface Props {
@@ -40,21 +42,7 @@ export default function Navbar({ children }: Props) {
       <Helmet />
       <nav>
         <div className="navbar">
-          <div className="nav-mobile">
-            <div className="header-icons-1">
-              <Link className="link-icon" to="/Home">
-                <i className="bi bi-house-fill" />
-              </Link>
-            </div>
-            <div className="logotype-nav">
-              <img alt="logo" className="logotype" src={fastfood} width="45px" />
-            </div>
-            <div className="header-icons-1">
-              <Link className="link-icon" to="/Sidebar">
-                <SideBar />
-              </Link>
-            </div>
-          </div>
+          <NavbarMobile />
           <div className="nav-links">
             {links.map((item, index) => (
               <NavLink key={index} to={item.path}>
