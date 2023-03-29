@@ -51,7 +51,7 @@
       "**/.hg/store/**": true,
       "**/Backend/**": true
     },
-    "typescript.tsdk": "Frontend\\node_modules\\typescript\\lib",
+    "typescript.tsdk": "/usr/local/lib/node_modules/typescript/lib/",
     "typescript.implementationsCodeLens.enabled": true,
     "typescript.referencesCodeLens.enabled": true,
     "editor.formatOnSave": true,
@@ -122,7 +122,8 @@
       "eamodio.gitlens",
       "visualstudioexptteam.vscodeintellicode",
       "vscode-icons-team.vscode-icons",
-      "github.copilot"
+      "github.copilot",
+      "amodio.tsl-problem-matcher"
     ]
   }
 }
