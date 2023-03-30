@@ -11,6 +11,8 @@ import TabLink from "Src/components/TabLink/TabLink";
 
 import "src/css/Orders.css";
 
+let timeoutId: any = null;
+
 export default function Closed() {
   const [order, setOrder] = useState<Order[]>([]);
   const [product, setProduct] = useState<Product[]>([]);
@@ -31,6 +33,21 @@ export default function Closed() {
       setProductIsLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    if (order) {
+      if (timeoutId !== null) {
+        clearInterval(timeoutId);
+      }
+      timeoutId = setTimeout(() => setOrder([]), 86400000);
+    }
+
+    return () => {
+      if (timeoutId !== null) {
+        clearInterval(timeoutId);
+      }
+    };
+  }, [order]);
 
   const closedOrders = order.filter((closed) => closed.orderStatus === OrderStatus.Closed);
 
@@ -69,6 +86,7 @@ export default function Closed() {
                     ))}
                     <div className="order-info">Ordersumma: {closed.totalAmount}kr</div>
                   </div>
+                  <br />
                 </div>
               </div>
             ))

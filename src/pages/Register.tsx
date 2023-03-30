@@ -14,27 +14,21 @@ import Login from "./Login";
 import "src/css/Register.css";
 
 export default function Register() {
-  const [newUser, setNewUser] = useState({ firstName: "", lastName: "", email: "" });
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [kitchen] = useState<Kitchen>();
-
-  const handleChange = (e: any) => {
-    const { value } = e.target;
-    setNewUser({
-      ...newUser,
-      [e.target.name]: value
-    });
-  };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const newUsers = {
-      firstName: newUser.firstName,
-      lastName: newUser.lastName,
-      email: newUser.email
-    };
-    axios.post(`/api/User`, newUsers).then((response) => {
-      console.log(response.status);
-    });
+    axios
+      .post(`/api/User`, { firstName, lastName, email })
+      .then((response) => {
+        console.log(response.status);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -53,11 +47,11 @@ export default function Register() {
             </div>
             <div className="register-input-field">
               <section className="input-1">
-                <input name="firstName" placeholder="Förnamn" type="text" value={newUser.firstName} onChange={handleChange} />
-                <input name="lastName" placeholder="Efternamn" type="text" value={newUser.lastName} onChange={handleChange} />
+                <input name="firstName" placeholder="Förnamn" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                <input name="lastName" placeholder="Efternamn" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
               </section>
               <section className="input-2">
-                <input name="email" placeholder="E-mailadress" type="email" value={newUser.email} onChange={handleChange} />
+                <input name="email" placeholder="E-mailadress" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
               </section>
               <section className="input-2">
                 <UserTypeButton />

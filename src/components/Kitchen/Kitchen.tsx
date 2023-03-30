@@ -28,10 +28,15 @@ export default function Kitchen() {
   useEffect(() => {
     setKitchenIsLoading(true);
     const path = `/api/Kitchen/`;
-    axios.get(path).then((response) => {
-      setKitchen(response.data);
-      setKitchenIsLoading(false);
-    });
+    axios
+      .get(path)
+      .then((response) => {
+        setKitchen(response.data);
+        setKitchenIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   return (

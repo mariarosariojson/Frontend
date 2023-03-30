@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import Grid from "@mui/joy/Grid";
-import { Box, LinearProgress } from "@mui/material";
+import LinearProgress from "@mui/joy/LinearProgress";
+import { Box } from "@mui/material";
 import axios from "axios";
 
 import type { Product } from "src/api/Dto";
@@ -38,7 +38,7 @@ export function FoodList() {
     <Box className="food-container">
       <Grid container columns={{ xs: 4, sm: 8, md: 12 }} spacing={{ xs: 2, md: 3 }} sx={{ flexGrow: 1 }}>
         {productIsLoading ? (
-          <LinearProgress />
+          <LinearProgress thickness={1} />
         ) : (
           productList.map((product) => (
             <Grid key={product.productId} justify-content="center" xs="auto">
