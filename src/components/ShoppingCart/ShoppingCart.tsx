@@ -6,7 +6,7 @@ import { CartItem } from "src/components/CartItem/CartItem";
 import { formatCurrency } from "src/utilities/FormatCurrency";
 
 import type { Anchor } from "react-bootstrap";
-import type { CreateOrder, CreateOrderLine, Product, User } from "Src/api/Dto";
+import type { CreateOrder, CreateOrderLine, Order, Product, User } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 import { addOrder } from "Src/api/Order";
@@ -24,6 +24,7 @@ export default function ShoppingCart() {
   const [productItem, setProductItem] = useState<Product[]>([]);
   const [, setProductIsLoading] = useState(false);
   const [, setOrder] = useState<CreateOrderLine[]>([]);
+  const [info, setInfo] = useState<Order[]>([]);
   const [, setOrderIsLoading] = useState(false);
   const [state, setState] = React.useState({
     right: false
@@ -53,7 +54,7 @@ export default function ShoppingCart() {
       totalAmount: 240,
       userId: 1,
       orderStatus: OrderStatus.Created,
-      orderLines: [{ orderLineId: 0, orderId: 0, productId: 3, quantity: 2 }]
+      orderLines: [{ orderLineId: 0, orderId: 0, productId: 2, quantity: 1 }]
     };
     await addOrder(newOrder);
     setUserIsLoading(true);

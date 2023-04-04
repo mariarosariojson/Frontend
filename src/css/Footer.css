@@ -75,6 +75,13 @@ footer button:is(:hover, :focus) {
   align-items: left;
   width: 100%;
 }
+.reg-footer {
+  font-size: 0.7rem;
+  color: #f2f2f2;
+}
+.reg-footer:hover {
+  text-decoration: underline;
+}
 .footer-copy {
   width: 100%;
   height: 0.5rem;

@@ -46,12 +46,10 @@ export default function FoodItem({ product }: FoodItemProps) {
   return (
     <>
       <Helmet title={product.name} />
-      <Box className='main-container'>
-        <div>
-          <FoodCardMobile product={product} />
-        </div>
+      <Box className="main-container">
         <Card
           key={product.productId}
+          className="card-desktop"
           sx={{
             minHeight: "250px",
             width: 280,

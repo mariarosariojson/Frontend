@@ -21,14 +21,9 @@ export default function Register() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    axios
-      .post(`/api/User`, { firstName, lastName, email })
-      .then((response) => {
-        console.log(response.status);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.post(`/api/User`, { firstName, lastName, email }).then((response) => {
+      console.log(response.status);
+    });
   };
 
   return (
@@ -47,13 +42,13 @@ export default function Register() {
             </div>
             <div className="register-input-field">
               <section className="input-1">
-                <input name="firstName" placeholder="Förnamn" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                <input name="lastName" placeholder="Efternamn" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                <input required name="firstName" placeholder="Förnamn" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                <input required name="lastName" placeholder="Efternamn" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
               </section>
               <section className="input-2">
-                <input name="email" placeholder="E-mailadress" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input required name="email" placeholder="E-mailadress" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
               </section>
-              <section className="input-2">
+              <section className="input-3">
                 <UserTypeButton />
               </section>
             </div>

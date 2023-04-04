@@ -32,6 +32,15 @@
 .food-card-btn-container {
   padding: 1rem;
 }
+.food-mobile-card-btn-container {
+  display: flex;
+  align-items: center;
+  bottom: 1rem;
+  position: absolute;
+  height: fit-content;
+  width: 50%;
+  justify-content: space-between;
+}
 .food-count-container {
   display: flex;
   width: 6rem;
@@ -53,6 +62,40 @@
   width: 1.3rem;
   height: 1.3rem;
 }
+.food-card-stripe-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  border: 0.07rem solid #6c8fa7;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  color: #f2f2f2;
+  transition: filter 250ms ease;
+  background-color: #6c8fa7;
+  padding: 0.5rem;
+  width: fit-content;
+  height: fit-content;
+}
+.bi-stripe {
+  color: #f2f2f2;
+  margin-right: 0.3rem;
+}
+.food-card-mobile-btn {
+  cursor: pointer;
+  border: 0.07rem solid #6c8fa7;
+  border-radius: 100%;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #6c8fa7;
+  transition: filter 250ms ease;
+  background-color: #f2f2f2;
+  width: 2.5rem;
+  height: 2.5rem;
+}
 .food-card-btn {
   cursor: pointer;
   border: 0.07rem solid #6c8fa7;
@@ -65,7 +108,6 @@
   background-color: #f2f2f2;
   width: 2.5rem;
   height: 2.5rem;
-  padding: 0.7rem;
 }
 .add-to-cart,
 .food-card-remove-btn {
@@ -85,16 +127,20 @@
 .food-card-btn:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
+.food-card-mobile-btn:is(:hover, :focus) {
+  filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
 .card-mobile {
   visibility: hidden;
 }
 .card-desktop {
-  margin-top: -40rem;
+  margin: 0 auto;
 }
 
 @media only screen and (max-width: 430px) {
   .card-mobile {
     visibility: visible;
+    margin-left: 0.9rem;
   }
   .card-desktop {
     visibility: hidden;

@@ -51,7 +51,7 @@ export default function Footer() {
           </section>
           <section className="footer-col-3">
             <ul>
-              <h3>Registrera dig här</h3>
+              <h3>Logga in här</h3>
               <br />
               <li>
                 <input placeholder="Användarnamn" type="text" />
@@ -60,7 +60,13 @@ export default function Footer() {
                 <input placeholder="Lösenord" type="password" />
               </li>
               <li>
-                <button type="button">Registrera</button>
+                <button type="button">Logga in</button>
+              </li>
+              <br />
+              <li>
+                <a href="./Register">
+                  <p className="reg-footer">Inget konto? Registrera dig här.</p>
+                </a>
               </li>
             </ul>
           </section>

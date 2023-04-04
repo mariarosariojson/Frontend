@@ -12,7 +12,6 @@ export interface KitchenTimeProps {
 
 export default function KitchenCode({ kitchen }: KitchenTimeProps) {
   const [data, setData] = useState("");
-  // const [code, setCode] = useState<Kitchen>();
 
   const handleChange = (event: any) => {
     const { value } = event.target;
@@ -45,7 +44,3 @@ export default function KitchenCode({ kitchen }: KitchenTimeProps) {
     </Box>
   );
 }
-
-// export function Code({ kitchen }: KitchenTimeProps) {
-//   return <p>Dagens kod:</p>;
-// }

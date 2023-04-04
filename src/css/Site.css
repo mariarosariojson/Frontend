@@ -97,6 +97,11 @@ h5 {
   .hero-container {
     margin: 1rem auto;
   }
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
   .hero-header {
     display: flex;
     height: fit-content;

@@ -7,6 +7,7 @@ import axios from "axios";
 
 import type { Product } from "src/api/Dto";
 
+import FoodCardMobile from "Src/components/FoodCardMobile/FoodCardMobile";
 import FoodItem from "Src/components/FoodItem/FoodItem";
 
 import "src/css/Site.css";

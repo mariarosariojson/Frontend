@@ -41,14 +41,9 @@ export default function Login() {
       email: user.email,
       code: user.code
     };
-    axios
-      .post(`/api/Login`, loginData)
-      .then((response) => {
-        console.log(response.status);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.post(`/api/Login`, loginData).then((response) => {
+      console.log(response.status);
+    });
   };
 
   useEffect(() => {

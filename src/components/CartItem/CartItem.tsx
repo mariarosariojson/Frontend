@@ -47,16 +47,16 @@ export function CartItem({ quantity, id }: CartItemProps) {
   return (
     <>
       <Helmet title="CartItem" />
-      {productItem?.map((productItem) => (
-        <Stack key={productItem.productId} className="cart-item-container" direction="horizontal" gap={2}>
-          <img className="cart-item-img" src={productItem.imageUrl} />
+      {item && (
+        <Stack key={item.productId} className="cart-item-container" direction="horizontal" gap={2}>
+          <img className="cart-item-img" src={item.imageUrl} />
           <div className="cart-item-body">
             <div className="cart-item-text-primary">
-              {productItem.name} <br />
+              {item.name} <br />
               {quantity > 1 && <span className="cart-item-text-secondary">{quantity}st</span>}
             </div>
-            <div className="cart-item-text-secondary">{formatCurrency(productItem.price)}</div>
-            <div className="cart-item-text-third">{formatCurrency(productItem.price * quantity)}</div>
+            <div className="cart-item-text-secondary">{formatCurrency(item.price)}</div>
+            <div className="cart-item-text-third">{formatCurrency(item.price * quantity)}</div>
           </div>
           <div className="cart-item-btn-container">
             <Button className="cart-item-btn cart-item-remove-btn" onClick={() => removeFromCart(id)}>
@@ -64,7 +64,7 @@ export function CartItem({ quantity, id }: CartItemProps) {
             </Button>
           </div>
         </Stack>
-      ))}
+      )}
     </>
   );
 }
