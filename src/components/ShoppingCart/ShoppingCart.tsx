@@ -6,7 +6,7 @@ import { CartItem } from "src/components/CartItem/CartItem";
 import { formatCurrency } from "src/utilities/FormatCurrency";
 
 import type { Anchor } from "react-bootstrap";
-import type { CreateOrder, CreateOrderLine, Order, Product, User } from "Src/api/Dto";
+import type { CreateOrder, Order, Product, User } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 import { addOrder } from "Src/api/Order";
@@ -23,8 +23,7 @@ export default function ShoppingCart() {
   const [, setUserIsLoading] = useState(false);
   const [productItem, setProductItem] = useState<Product[]>([]);
   const [, setProductIsLoading] = useState(false);
-  const [, setOrder] = useState<CreateOrderLine[]>([]);
-  const [info, setInfo] = useState<Order[]>([]);
+  const [order, setOrder] = useState<Order[]>([]);
   const [, setOrderIsLoading] = useState(false);
   const [state, setState] = React.useState({
     right: false
@@ -49,18 +48,31 @@ export default function ShoppingCart() {
     });
   }, []);
 
+  const calculateTotalAmount = () =>
+    cartItems.reduce((total, { id, quantity }) => total + (productItem.find((product) => product.productId === id)?.price || 0) * quantity, 0);
+
   const placeOrder = async () => {
-    const newOrder: CreateOrder = {
-      totalAmount: 240,
+    const orderLines = cartItems.map(({ id, quantity }) => ({
+      orderLineId: 0,
+      orderId: 0,
+      productId: id,
+      quantity
+    }));
+
+    const newOrder = {
+      totalAmount: calculateTotalAmount(),
       userId: 1,
       orderStatus: OrderStatus.Created,
-      orderLines: [{ orderLineId: 0, orderId: 0, productId: 2, quantity: 1 }]
+      orderLines
     };
-    await addOrder(newOrder);
-    setUserIsLoading(true);
-    const result = await listUsers();
-    setUser(result);
-    setUserIsLoading(false);
+
+    try {
+      await addOrder(newOrder);
+      const result = await listUsers();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -89,7 +101,7 @@ export default function ShoppingCart() {
               <h2>Totalt att betala:</h2>
               {formatCurrency(
                 cartItems.reduce((total, cartItem) => {
-                  const item = productItem.find((product) => product.productId === product.productId);
+                  const item = productItem.find((product) => product.productId === cartItem.id);
 
                   return total + (item?.price || 0) * cartItem?.quantity;
                 }, 0)
