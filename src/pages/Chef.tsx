@@ -83,6 +83,11 @@ export default function Chef() {
     });
   }, []);
 
+  const createdOrders = order.filter((created) => created.orderStatus === OrderStatus.Created);
+  const confirmedOrders = order.filter((confirmed) => confirmed.orderStatus === OrderStatus.Confirmed);
+  const doneOrders = order.filter((done) => done.orderStatus === OrderStatus.Done);
+  const closedOrders = order.filter((closed) => closed.orderStatus === OrderStatus.Closed);
+
   return (
     <>
       <Helmet title="Kocken" />
@@ -93,16 +98,16 @@ export default function Chef() {
         <br />
         <div className="chef-order-status">
           <div className="chef-status-col-1">
-            <h2>Nya ordrar: {OrderStatus.Created}st</h2>
+            <h2>Nya ordrar: {createdOrders.length}st</h2>
           </div>
           <div className="chef-status-col-2">
-            <h2>Bekräftade: {OrderStatus.Confirmed}st</h2>
+            <h2>Bekräftade: {confirmedOrders.length}st</h2>
           </div>
           <div className="chef-status-col-3">
-            <h2>Slutförda: {OrderStatus.Done}st</h2>
+            <h2>Slutförda: {doneOrders.length}st</h2>
           </div>
           <div className="chef-status-col-4">
-            <h2>Stängda: {OrderStatus.Closed}st</h2>
+            <h2>Stängda: {closedOrders.length}st</h2>
           </div>
         </div>
         <div className="chef-order-list">
