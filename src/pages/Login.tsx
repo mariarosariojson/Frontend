@@ -12,7 +12,6 @@ import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
 import KitchenTime, { KitchenState } from "Src/components/KitchenTime/KitchenTime";
 import QueueSlider, { KitchenLine } from "Src/components/QueueSlider/QueueSlider";
 
-// import { WaitingLine } from "Src/components/QueueSlider/QueueSlider";
 import "src/css/Login.css";
 
 interface LoginValues {
@@ -26,22 +25,27 @@ export default function Login() {
   const [kitchen, setKitchen] = useState<Kitchen>();
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
   const [user, setUser] = useState({ email: "", code: "" });
+  const [code, setCode] = useState({ code: "" });
 
   const handleChange = (e: any) => {
+    e.preventDefault();
     const { value } = e.target;
     setUser({
       ...user,
       [e.target.name]: value
     });
+    setCode({
+      ...code,
+      [e.target.code]: value
+    });
   };
 
   const handleSubmit = (e: any) => {
-    e.preventDefault();
     const loginData = {
       email: user.email,
       code: user.code
     };
-    axios.post(`/api/Login`, loginData).then((response) => {
+    axios.post(`/api/User/`, loginData).then((response) => {
       console.log(response.status);
     });
   };
@@ -65,7 +69,7 @@ export default function Login() {
     gapi.load("client:auth2", start);
   });
 
-  // const accessToken = gapi.auth.getToken().access_token;
+  // const accessToken = gapi.auth2.getToken().access_token;
 
   return (
     <>
@@ -92,7 +96,7 @@ export default function Login() {
             </div>
             <div className="login-input-field">
               <input name="email" placeholder="E-mailadress" type="email" value={user.email} onChange={handleChange} /> <br />
-              <input name="code" placeholder="Dagens kod" type="code" value={user.code} onChange={handleChange} />
+              <input name="code" placeholder="Dagens kod" type="text" value={user.code} onChange={handleChange} />
             </div>
             <button className="login-btn" type="submit">
               Logga in

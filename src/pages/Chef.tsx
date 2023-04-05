@@ -137,7 +137,10 @@ export default function Chef() {
                           <br />
                           Senast uppdaterad: {order.confirmed}
                           <br />
-                          {order.orderStatus}
+                          {order.orderStatus === OrderStatus.Created && "Ny order"}
+                          {order.orderStatus === OrderStatus.Confirmed && "Bekräftad order"}
+                          {order.orderStatus === OrderStatus.Done && "Slutförd order"}
+                          {order.orderStatus === OrderStatus.Closed && "Stängd order"}
                           <br />
                         </div>
                       </div>
