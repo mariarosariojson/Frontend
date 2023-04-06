@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Global } from "@emotion/react";
+import { List, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import { grey } from "@mui/material/colors";
 import CssBaseline from "@mui/material/CssBaseline";
+import ListItem from "@mui/material/ListItem";
 import { styled } from "@mui/material/styles";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Typography from "@mui/material/Typography";
@@ -52,10 +54,11 @@ export default function SwipeableEdgeDrawer(props: Props) {
 
   const [, setUser] = useState<User[]>([]);
   const [, setUserIsLoading] = useState(false);
-  const [, setProductItem] = useState<Product[]>([]);
+  const [productItem, setProductItem] = useState<Product[]>([]);
   const [, setProductIsLoading] = useState(false);
   const [, setOrder] = useState<CreateOrderLine[]>([]);
   const [, setOrderIsLoading] = useState(false);
+  const { cartItems } = useShoppingCart();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -79,18 +82,31 @@ export default function SwipeableEdgeDrawer(props: Props) {
     });
   }, []);
 
+  const calculateTotalAmount = () =>
+    cartItems.reduce((total, { id, quantity }) => total + (productItem.find((product) => product.productId === id)?.price || 0) * quantity, 0);
+
   const placeOrder = async () => {
-    const newOrder: CreateOrder = {
-      totalAmount: 240,
+    const orderLines = cartItems.map(({ id, quantity }) => ({
+      orderLineId: 0,
+      orderId: 0,
+      productId: id,
+      quantity
+    }));
+
+    const newOrder = {
+      totalAmount: calculateTotalAmount(),
       userId: 1,
       orderStatus: OrderStatus.Created,
-      orderLines: [{ orderLineId: 0, orderId: 0, productId: 3, quantity: 2 }]
+      orderLines
     };
-    await addOrder(newOrder);
-    setUserIsLoading(true);
-    const result = await listUsers();
-    setUser(result);
-    setUserIsLoading(false);
+
+    try {
+      await addOrder(newOrder);
+      const result = await listUsers();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const container = window === undefined ? undefined : () => window().document.body;
@@ -153,7 +169,15 @@ export default function SwipeableEdgeDrawer(props: Props) {
               overflow: "auto"
             }}
           >
-            <CartItem id={0} quantity={0} />
+            <List>
+              <ListItem>
+                <Stack gap={3}>
+                  {cartItems.map((item) => (
+                    <CartItem key={item.id} {...item} />
+                  ))}
+                </Stack>
+              </ListItem>
+            </List>
             <div className="place-order-drawer">
               <Button className="place-order-btn" type="button" onClick={placeOrder}>
                 Skicka beställning <i className="bi bi-send-fill" />
