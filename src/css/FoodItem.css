@@ -141,6 +141,8 @@
   .card-mobile {
     visibility: visible;
     margin-left: 0.9rem;
+    padding: 0;
+    height: 8rem;
   }
   .card-desktop {
     visibility: hidden;

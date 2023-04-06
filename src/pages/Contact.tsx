@@ -27,7 +27,7 @@ function Map() {
   return (
     <>
       <Helmet title="Contact" />
-      <Box>
+      <Box style={{ overflow: "scroll" }}>
         <section className="contact-container">
           <GoogleMap center={center} mapContainerClassName="map-container" mapTypeId={google.maps.MapTypeId.TERRAIN} zoom={15}>
             <Marker position={center} />
