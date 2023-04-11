@@ -132,6 +132,7 @@
 }
 .card-mobile {
   visibility: hidden;
+  padding: 0;
 }
 .card-desktop {
   margin: 0 auto;
@@ -142,7 +143,7 @@
     visibility: visible;
     margin-left: 0.9rem;
     padding: 0;
-    height: 8rem;
+    height: fit-content;
   }
   .card-desktop {
     visibility: hidden;

@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { CartItem } from "src/components/CartItem/CartItem";
 
-import type { CreateOrder, CreateOrderLine, Product, User } from "Src/api/Dto";
+import type { Order, Product, User } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 import { addOrder } from "Src/api/Order";
@@ -51,13 +51,12 @@ export default function SwipeableEdgeDrawer(props: Props) {
   const { cartQuantity } = useShoppingCart();
   const { window } = props;
   const [open, setOpen] = useState(false);
-
-  const [, setUser] = useState<User[]>([]);
-  const [, setUserIsLoading] = useState(false);
   const [productItem, setProductItem] = useState<Product[]>([]);
   const [, setProductIsLoading] = useState(false);
-  const [, setOrder] = useState<CreateOrderLine[]>([]);
+  const [order, setOrder] = useState<Order[]>([]);
   const [, setOrderIsLoading] = useState(false);
+  const [user, setUser] = useState<User[]>([]);
+  const [userIsLoading, setUserIsLoading] = useState(false);
   const { cartItems } = useShoppingCart();
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -66,19 +65,22 @@ export default function SwipeableEdgeDrawer(props: Props) {
 
   useEffect(() => {
     setOrderIsLoading(true);
-    const path = `/api/Order/`;
-    axios.get(path).then((response) => {
+    setProductIsLoading(true);
+    setUserIsLoading(true);
+    const orderPath = `/api/Order/`;
+    axios.get(orderPath).then((response) => {
       setOrder(response.data);
       setOrderIsLoading(false);
     });
-  }, []);
-
-  useEffect(() => {
-    setProductIsLoading(true);
-    const path = `/api/Product/`;
-    axios.get(path).then((response) => {
+    const productPath = `/api/Product/`;
+    axios.get(productPath).then((response) => {
       setProductItem(response.data);
       setProductIsLoading(false);
+    });
+    const userPath = `/api/User/`;
+    axios.get(userPath).then((response) => {
+      setUser(response.data);
+      setUserIsLoading(false);
     });
   }, []);
 
@@ -96,7 +98,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
     const newOrder = {
       totalAmount: calculateTotalAmount(),
       userId: 1,
-      orderStatus: OrderStatus.Created,
+      orderStatus: OrderStatus.Confirmed, // Set the order status to "Processing"
       orderLines
     };
 
@@ -157,9 +159,17 @@ export default function SwipeableEdgeDrawer(props: Props) {
             }}
           >
             <Puller className="swipeable-drawer-puller" />
-            <Typography sx={{ p: 2, color: "text.secondary", textAlign: "center" }}>
-              <b>Orderstatus: 5 min</b>
-            </Typography>
+            {order.map((order) => (
+              <span key={order.orderId}>
+                <Typography>
+                  Order status:
+                  {order.orderStatus === OrderStatus.Created && "Ny order"}
+                  {order.orderStatus === OrderStatus.Confirmed && "Bekräftad order"}
+                  {order.orderStatus === OrderStatus.Done && "Slutförd order"}
+                  {order.orderStatus === OrderStatus.Closed && "Stängd order"}
+                </Typography>
+              </span>
+            ))}
           </StyledBox>
           <StyledBox
             sx={{

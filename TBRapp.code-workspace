@@ -109,7 +109,9 @@
     "[typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "powershell.cwd": "/Users/mariarosariojson/Desktop/Dekiru/TBRapp/Frontend"
+    "powershell.cwd": "/Users/mariarosariojson/Desktop/Dekiru/TBRapp/Frontend",
+    "C_Cpp.default.enableConfigurationSquiggles": true,
+    "C_Cpp.errorSquiggles": "enabled"
   },
   "extensions": {
     "recommendations": [

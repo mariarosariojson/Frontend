@@ -46,7 +46,6 @@ export default function FoodItem({ product }: FoodItemProps) {
     <>
       <Helmet title={product.name} />
       <Box className="main-container">
-        <FoodCardMobile product={product} />
         {orderIsLoading && productIsLoading ? (
           <LinearProgress thickness={1} />
         ) : (
@@ -65,12 +64,12 @@ export default function FoodItem({ product }: FoodItemProps) {
             variant="outlined"
           >
             <CardOverflow className="card-section">
-              <AspectRatio>
-                <CardCover>
+              <AspectRatio ratio="1.5">
+                
                   <Link to={`/FoodProduct/${product.productId}`}>
                     <img alt="image" loading="lazy" src={product.imageUrl} />
                   </Link>
-                </CardCover>
+
               </AspectRatio>
               <IconButton
                 size="md"

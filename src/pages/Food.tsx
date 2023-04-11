@@ -44,6 +44,7 @@ export function FoodList() {
           productList.map((product) => (
             <Grid key={product.productId} justify-content="center" xs="auto">
               <FoodItem product={product} />
+              <FoodCardMobile product={product} />
             </Grid>
           ))
         )}
