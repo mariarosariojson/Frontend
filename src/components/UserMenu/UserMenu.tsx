@@ -159,17 +159,20 @@ export default function SwipeableEdgeDrawer(props: Props) {
             }}
           >
             <Puller className="swipeable-drawer-puller" />
-            {order.map((order) => (
+            <Typography sx={{ p: 2, color: "text.secondary", textAlign: "left" }}>
+              <b>Följ din order</b>
+            </Typography>
+            {/* {order.map((order) => (
               <span key={order.orderId}>
-                <Typography>
-                  Order status:
+                <Typography sx={{ p: 2, color: "text.secondary", textAlign: "left" }}>
+                   <b>order status</b>
                   {order.orderStatus === OrderStatus.Created && "Ny order"}
                   {order.orderStatus === OrderStatus.Confirmed && "Bekräftad order"}
                   {order.orderStatus === OrderStatus.Done && "Slutförd order"}
                   {order.orderStatus === OrderStatus.Closed && "Stängd order"}
                 </Typography>
               </span>
-            ))}
+            ))} */}
           </StyledBox>
           <StyledBox
             sx={{
