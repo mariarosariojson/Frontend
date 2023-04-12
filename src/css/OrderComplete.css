@@ -1,0 +1,33 @@
+.thankyou-container {
+  width: 100%;
+  height: 40vh;
+  margin: 5rem auto;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+.thankyou-btn-container {
+  margin: 1rem auto;
+}
+
+.thankyou-btn {
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  border: 0.1rem solid #6c8fa7;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  margin: 1.5rem 0.6rem 0rem 0rem;
+  color: #6c8fa7;
+  transition: filter 250ms ease;
+  background-color: #f2f2f2;
+}
+.thankyou-btn:hover,
+.thankyou-btn a:hover {
+  background-color: #6c8fa7;
+  color: #f2f2f2;
+}
+.thankyou-btn:is(:hover, :focus) {
+  filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}

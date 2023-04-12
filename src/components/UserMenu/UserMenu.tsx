@@ -124,7 +124,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
     const newOrder = {
       totalAmount: calculateTotalAmount(),
       userId: 1,
-      orderStatus: OrderStatus.Confirmed, // Set the order status to "Processing"
+      orderStatus: OrderStatus.Created,
       orderLines
     };
 
@@ -132,6 +132,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
       await addOrder(newOrder);
       const result = await listUsers();
       console.log(result);
+      localStorage.removeItem("shopping-cart");
     } catch (error) {
       console.error(error);
     }

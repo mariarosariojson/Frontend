@@ -71,6 +71,9 @@ export default function ShoppingCart() {
       await addOrder(newOrder);
       const result = await listUsers();
       console.log(result);
+      localStorage.removeItem("shopping-cart");
+      // eslint-disable-next-line immutable/no-mutation
+      window.location.href = "/OrderComplete";
     } catch (error) {
       console.error(error);
     }

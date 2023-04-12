@@ -11,9 +11,10 @@ import Checkout from "Src/pages/Checkout";
 import Chef from "Src/pages/Chef";
 import Contact from "Src/pages/Contact";
 import Food from "Src/pages/Food";
-// import FoodProduct from "Src/pages/FoodProduct";
+import FoodProduct from "Src/pages/FoodProduct";
 import Index from "Src/pages/Index";
 import Login from "Src/pages/Login";
+import OrderComplete from "Src/pages/OrderComplete";
 import Closed from "Src/pages/Orders/Closed";
 import Confirmed from "Src/pages/Orders/Confirmed";
 import Created from "Src/pages/Orders/Created";
@@ -35,8 +36,9 @@ const routes: RouteObject[] = [
   { path: "/Closed", element: <Closed /> },
   { path: "/ShoppingCart", element: <ShoppingCart /> },
   { path: "/Checkout", element: <Checkout /> },
-  { path: "/Sidebar", element: <Sidebar /> }
-  // { path: "/FoodProduct/:id", element: <FoodProduct /> }
+  { path: "/Sidebar", element: <Sidebar /> },
+  { path: "/OrderComplete", element: <OrderComplete /> },
+  { path: "/FoodProduct/:id", element: <FoodProduct /> }
 ];
 
 export default function Routes() {
