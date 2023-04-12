@@ -57,6 +57,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
   const [, setOrderIsLoading] = useState(false);
   const [user, setUser] = useState<User[]>([]);
   const [userIsLoading, setUserIsLoading] = useState(false);
+  const [currentUserOrders, setCurrentUserOrders] = useState<Order[]>([]);
   const { cartItems } = useShoppingCart();
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -81,6 +82,19 @@ export default function SwipeableEdgeDrawer(props: Props) {
     axios.get(userPath).then((response) => {
       setUser(response.data);
       setUserIsLoading(false);
+    });
+  }, []);
+
+  const userId = 3; // replace with the actual userId of the logged-in user
+  useEffect(() => {
+    setOrderIsLoading(true);
+    const orderPath = `/api/Order/`;
+    axios.get(orderPath).then((response) => {
+      const orders = response.data;
+      const filteredOrders = orders.filter((order: any) => order.userId === userId);
+      setOrder(filteredOrders);
+      setCurrentUserOrders(filteredOrders);
+      setOrderIsLoading(false);
     });
   }, []);
 
@@ -159,20 +173,15 @@ export default function SwipeableEdgeDrawer(props: Props) {
             }}
           >
             <Puller className="swipeable-drawer-puller" />
-            <Typography sx={{ p: 2, color: "text.secondary", textAlign: "left" }}>
-              <b>Följ din order</b>
-            </Typography>
-            {/* {order.map((order) => (
-              <span key={order.orderId}>
-                <Typography sx={{ p: 2, color: "text.secondary", textAlign: "left" }}>
-                   <b>order status</b>
-                  {order.orderStatus === OrderStatus.Created && "Ny order"}
-                  {order.orderStatus === OrderStatus.Confirmed && "Bekräftad order"}
-                  {order.orderStatus === OrderStatus.Done && "Slutförd order"}
-                  {order.orderStatus === OrderStatus.Closed && "Stängd order"}
-                </Typography>
-              </span>
-            ))} */}
+            {currentUserOrders.length > 0 && (
+              <Typography sx={{ p: 2, color: "text.secondary", textAlign: "left" }}>
+                Order status:
+                {currentUserOrders[0].orderStatus === OrderStatus.Created && "Ny order"}
+                {currentUserOrders[0].orderStatus === OrderStatus.Confirmed && "Bekräftad order"}
+                {currentUserOrders[0].orderStatus === OrderStatus.Done && "Slutförd order"}
+                {currentUserOrders[0].orderStatus === OrderStatus.Closed && "Stängd order"}
+              </Typography>
+            )}
           </StyledBox>
           <StyledBox
             sx={{
