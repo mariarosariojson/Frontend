@@ -50,6 +50,10 @@ export interface CreateUser {
 export interface Kitchen extends CreateKitchen {
     kitchenId: number;
 }
+export interface LoginModel {
+    email: string;
+    password: string;
+}
 export interface Order extends CreateOrder {
     orderId: number;
 }

@@ -29,7 +29,7 @@ export default function SideBar() {
         <div className="sidebar-cart-header">
           <h2>
             <i className="bi bi-gear-wide-connected" />
-             Inställningar
+            Inställningar
           </h2>
         </div>
       </List>

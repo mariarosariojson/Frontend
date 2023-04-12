@@ -5,7 +5,7 @@ import axios from "axios";
 import type { Kitchen } from "Src/api/Dto";
 
 import KitchenCode from "../KitchenCode/KitchenCode";
-import KitchenTime, { KitchenState } from "../KitchenTime/KitchenTime";
+import KitchenTime from "../KitchenTime/KitchenTime";
 import QueueSlider from "../QueueSlider/QueueSlider";
 
 import "src/css/Kitchen.css";
@@ -44,8 +44,8 @@ export default function Kitchen() {
       <Helmet title="Kitchen" />
       <div className="kitchen-status" id="kitchen-status">
         <h3>
-          {kitchenOpen ? <p>Restaurangen är öppen!</p> : null}
-          {kitchenClosed ? <p>Restaurangen är tyvärr stängd.</p> : null}
+          {kitchenOpen && <p>Restaurangen är öppen!</p>}
+          {kitchenClosed && <p>Restaurangen är tyvärr stängd.</p>}
         </h3>
         <button className="kitchen-btn kitchen-open-btn" type="button" onClick={stateOpen}>
           Öppna

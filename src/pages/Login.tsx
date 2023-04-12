@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import LinearProgress from "@mui/joy/LinearProgress";
@@ -14,17 +13,17 @@ import QueueSlider, { KitchenLine } from "Src/components/QueueSlider/QueueSlider
 
 import "src/css/Login.css";
 
-// interface LoginValues {
-//   email: string;
-//   code: string;
-// }
+interface LoginValues {
+  email: string;
+  code: string;
+}
 
 const clientId = "758380863651-69t6pe0h7ta7g7btvh7v9dt5r1b3nkkd.apps.googleusercontent.com";
 
 export default function Login() {
   const [kitchen, setKitchen] = useState<Kitchen>();
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
-  const [user, setUser] = useState({ email: "" });
+  const [user, setUser] = useState({ email: "", code: "" });
   const [code, setCode] = useState({ code: "" });
 
   const handleChange = (e: any) => {
@@ -44,9 +43,10 @@ export default function Login() {
     e.preventDefault();
     const loginData = {
       email: user.email,
-      code: code.code
+      password: user.code
     };
-    axios.post(`/api/User/`, loginData).then((response) => {
+
+    axios.post(`/api/User/login`, loginData).then((response) => {
       console.log(response.status);
     });
   };
@@ -97,7 +97,7 @@ export default function Login() {
             </div>
             <div className="login-input-field">
               <input name="email" placeholder="E-mailadress" type="email" value={user.email} onChange={handleChange} /> <br />
-              <input name="code" placeholder="Dagens kod" type="text" value={code.code} onChange={handleChange} />
+              <input name="code" placeholder="Dagens kod" type="text" value={user.code} onChange={handleChange} />
             </div>
             <button className="login-btn" type="submit">
               Logga in

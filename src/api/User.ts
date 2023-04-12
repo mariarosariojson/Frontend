@@ -22,9 +22,9 @@ export const listUsers = async (): Promise<DTO.User[]> => {
     return _client.httpFetch<DTO.User[]>('GET', path.join(""), null, undefined, undefined, undefined);
 };
 
-export const login = async (email: string, code: string): Promise<boolean> => {
-    const path = [_client.resolveUrl(`/api/User/${email}/${code}`)];
-    return _client.httpFetch<boolean>('GET', path.join(""), null, undefined, undefined, undefined);
+export const login = async (login: DTO.LoginModel): Promise<DTO.User> => {
+    const path = [_client.resolveUrl(`/api/User/login`)];
+    return _client.httpFetch<DTO.User>('POST', path.join(""), login, undefined, undefined, undefined);
 };
 
 export const updateUser = async (id: number, user: DTO.CreateUser): Promise<DTO.User> => {
