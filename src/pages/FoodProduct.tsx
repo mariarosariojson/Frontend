@@ -12,7 +12,7 @@ import "src/css/FoodProduct.css";
 
 export default function FoodProduct() {
   const [productItem, setProductItem] = useState<Product[]>([]);
-  const [productIsLoading, setProductIsLoading] = useState(false);
+  const [, setProductIsLoading] = useState(false);
   const { id } = useParams<{ id: string }>();
   const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart();
 
