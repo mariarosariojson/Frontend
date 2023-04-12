@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Global } from "@emotion/react";
+import LinearProgress from "@mui/joy/LinearProgress";
 import { List, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import { grey } from "@mui/material/colors";
@@ -59,10 +60,21 @@ export default function SwipeableEdgeDrawer(props: Props) {
   const [userIsLoading, setUserIsLoading] = useState(false);
   const [currentUserOrders, setCurrentUserOrders] = useState<Order[]>([]);
   const { cartItems } = useShoppingCart();
+  const [progress, setProgress] = useState(0);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
+    }, 800);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   useEffect(() => {
     setOrderIsLoading(true);
@@ -85,7 +97,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
     });
   }, []);
 
-  const userId = 3; // replace with the actual userId of the logged-in user
+  const userId = 2; // replace with the actual userId of the logged-in user
   useEffect(() => {
     setOrderIsLoading(true);
     const orderPath = `/api/Order/`;
@@ -175,11 +187,47 @@ export default function SwipeableEdgeDrawer(props: Props) {
             <Puller className="swipeable-drawer-puller" />
             {currentUserOrders.length > 0 && (
               <Typography sx={{ p: 2, color: "text.secondary", textAlign: "left" }}>
-                Order status:
-                {currentUserOrders[0].orderStatus === OrderStatus.Created && "Ny order"}
-                {currentUserOrders[0].orderStatus === OrderStatus.Confirmed && "Bekräftad order"}
-                {currentUserOrders[0].orderStatus === OrderStatus.Done && "Slutförd order"}
-                {currentUserOrders[0].orderStatus === OrderStatus.Closed && "Stängd order"}
+                <span>
+                  {currentUserOrders[0].orderStatus === OrderStatus.Created && (
+                    <Box
+                      sx={{
+                        width: "90%",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1
+                      }}
+                    >
+                      <b>Din order:</b>Ny order
+                      <LinearProgress determinate color="neutral" value={5} />
+                    </Box>
+                  )}
+                  {currentUserOrders[0].orderStatus === OrderStatus.Confirmed && (
+                    <Box
+                      sx={{
+                        width: "90%",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1
+                      }}
+                    >
+                      <b>Din order:</b>Bekräftad
+                      <LinearProgress determinate color="neutral" value={45} />
+                    </Box>
+                  )}
+                  {currentUserOrders[0].orderStatus === OrderStatus.Done && (
+                    <Box
+                      sx={{
+                        width: "90%",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 1
+                      }}
+                    >
+                      <b>Din order:</b>Klar för upphämtning
+                      <LinearProgress determinate color="success" value={100} />
+                    </Box>
+                  )}
+                </span>
               </Typography>
             )}
           </StyledBox>
