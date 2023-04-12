@@ -1,20 +1,33 @@
 .kitchen-status {
   display: flex;
+  justify-content: center;
+  width: 100%;
   flex-direction: column;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid #6c8fa7;
+  padding: 4rem 0rem 4rem 0rem;
+  border-bottom: 0.5px solid #6c8fa7;
 }
 .kitchen-status h3,
 .kitchen-queue h3 {
   font-weight: 900;
-  color: rgb(85, 85, 85);
+  color: #6c8fa7;
 }
-.kitchen-queue,
+.kitchen-queue {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  height: fit-content;
+  width: 80%;
+  align-items: center;
+}
+.slider {
+  margin-top: 1rem;
+  width: 100%;
+}
 .kitchen-time {
   display: flex;
   flex-direction: column;
-  margin: 1rem auto;
-  height: 5rem;
+  margin: 0 auto;
+  height: fit-content;
   width: 80%;
   color: rgb(85, 85, 85);
 }
@@ -22,12 +35,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 1rem;
+  margin: 0 auto;
+  height: fit-content;
 }
 .kitchen-code {
-  margin: 2rem auto;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #6c8fa7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .kitchen-code h3 {
   color: #6c8fa7;
@@ -59,14 +74,14 @@
   border: 0.07rem solid rgb(253, 105, 105);
 }
 .kitchen-open-btn:hover {
-  background-color: #569d52;
+  background-color: rgb(86, 157, 82);
   border: 0.07rem solid #569d52;
 }
 .kitchen-btn:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
 .kitchen-input {
-  width: 10rem;
+  width: 12rem;
   height: 3rem;
   border: 0.01rem solid #6c8fa7;
   border-radius: 0.4rem;
@@ -74,7 +89,7 @@
   padding: 0.7rem;
   margin-right: 0.5rem;
   color: #6c8fa7;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9rem;
 }
 .kitchen-input::placeholder {
@@ -96,4 +111,21 @@
   background-color: #f2f2f2;
   color: #6c8fa7;
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+.kitchen-time-btn {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  padding: 0.5rem 0.6rem;
+  border: 0.07rem solid #6c8fa7;
+  border-radius: 2%;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin: 1.5rem 0.6rem 0rem 0rem;
+  color: #6c8fa7;
+  transition: filter 250ms ease;
+  background-color: #f2f2f2;
+  justify-content: center;
+  float: left;
 }

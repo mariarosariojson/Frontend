@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
+import Button from "@mui/material/Button";
 import axios from "axios";
 
 import type { Kitchen } from "Src/api/Dto";
@@ -14,21 +14,32 @@ export interface KitchenTimeProps {
 }
 
 export default function KitchenTime({ kitchen }: KitchenTimeProps) {
-  const [kitchens, setKitchens] = useState<KitchenStatus>();
+  const [kitchenStatus, setKitchenStatus] = useState<KitchenStatus>(kitchen?.kitchenStatus || KitchenStatus.Closed);
 
-  const changeState = (event: any, value: any) => {
-    setKitchens(value);
-    const kitchenTime = { ...kitchen, KitchenStatus: value };
+  const toggleKitchenStatus = () => {
+    const newKitchenStatus = kitchenStatus === KitchenStatus.Open ? KitchenStatus.Closed : KitchenStatus.Open;
+    setKitchenStatus(newKitchenStatus);
+    const kitchenTime = { ...kitchen, kitchenStatus: newKitchenStatus };
     axios.put(`/api/Kitchen/${kitchenTime.kitchenId}`, kitchenTime);
   };
 
   return (
     <Box>
       <div className="kitchen-time">
-        <Slider marks max={2} min={1} onChange={changeState} />
         <div className="queue-status">
-          <b>Restaurangen är {kitchen?.kitchenStatus === KitchenStatus.Open ? "öppen!" : "tyvärr stängd."}</b>
+          <b>Restaurangen är {kitchenStatus === KitchenStatus.Open ? "öppen!" : "tyvärr stängd."}</b>
         </div>
+        <br />
+        <button className="kitchen-btn kitchen-open-btn" type="button" onClick={toggleKitchenStatus}>
+          Öppna
+          <br />
+          restaurangen
+        </button>
+        <button className="kitchen-btn kitchen-close-btn" type="button" onClick={toggleKitchenStatus}>
+          Stäng
+          <br />
+          restaurangen
+        </button>
       </div>
     </Box>
   );

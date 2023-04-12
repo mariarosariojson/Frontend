@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import axios from "axios";

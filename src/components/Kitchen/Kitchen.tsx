@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import axios from "axios";
@@ -11,19 +12,8 @@ import QueueSlider from "../QueueSlider/QueueSlider";
 import "src/css/Kitchen.css";
 
 export default function Kitchen() {
-  const [kitchenOpen, setKitchenOpen] = useState(true);
-  const [kitchenClosed, setKitchenClosed] = useState(false);
   const [kitchen, setKitchen] = useState<Kitchen>();
   const [, setKitchenIsLoading] = useState(false);
-
-  const stateOpen = () => {
-    setKitchenOpen(true);
-    setKitchenClosed(!setKitchenClosed);
-  };
-  const stateClosed = () => {
-    setKitchenOpen(!setKitchenOpen);
-    setKitchenClosed(true);
-  };
 
   useEffect(() => {
     setKitchenIsLoading(true);
@@ -42,36 +32,17 @@ export default function Kitchen() {
   return (
     <>
       <Helmet title="Kitchen" />
-      <div className="kitchen-status" id="kitchen-status">
-        <h3>
-          {kitchenOpen && <p>Restaurangen är öppen!</p>}
-          {kitchenClosed && <p>Restaurangen är tyvärr stängd.</p>}
-        </h3>
-        <button className="kitchen-btn kitchen-open-btn" type="button" onClick={stateOpen}>
-          Öppna
-          <br />
-          restaurangen
-        </button>
-        <button className="kitchen-btn kitchen-close-btn" type="button" onClick={stateClosed}>
-          Stäng
-          <br />
-          restaurangen
-        </button>
-        <br />
-      </div>
-      <div>
-        <KitchenCode kitchen={kitchen} />
-      </div>
-      <div>
-        <KitchenTime kitchen={kitchen} />
-      </div>
-      <div>
-        <QueueSlider kitchen={kitchen} />
+      <div className="kitchen-status-container">
+        <div className="kitchen-status">
+          <KitchenTime kitchen={kitchen} />
+        </div>
+        <div className="kitchen-status">
+          <KitchenCode kitchen={kitchen} />
+        </div>
+        <div className="kitchen-status">
+          <QueueSlider kitchen={kitchen} />
+        </div>
       </div>
     </>
   );
 }
-
-// export function KitchenTime() {
-//   return <h3>Restaurangen är {}</h3>;
-// }
