@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { Box } from "@mui/material";
 import axios from "axios";
 
 import type { Kitchen } from "Src/api/Dto";
@@ -32,7 +33,7 @@ export default function Kitchen() {
   return (
     <>
       <Helmet title="Kitchen" />
-      <div className="kitchen-status-container">
+      <Box className="kitchen-status-container">
         <div className="kitchen-status">
           <KitchenTime kitchen={kitchen} />
         </div>
@@ -42,7 +43,7 @@ export default function Kitchen() {
         <div className="kitchen-status">
           <QueueSlider kitchen={kitchen} />
         </div>
-      </div>
+      </Box>
     </>
   );
 }

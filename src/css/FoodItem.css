@@ -1,6 +1,6 @@
 .main-container {
   width: 100%;
-  margin: 0 auto;
+  margin: 1rem auto;
 }
 .card {
   display: inline-block;
