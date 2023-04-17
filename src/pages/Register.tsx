@@ -4,8 +4,6 @@ import { Helmet } from "react-helmet";
 import { Box } from "@mui/material";
 import axios from "axios";
 
-import type { Kitchen } from "Src/api/Dto";
-
 import GoogleLogoutButton from "Src/components/google-login/GoogleLogout";
 import UserTypeButton from "Src/components/UserTypeButton/UserTypeButton";
 
@@ -17,7 +15,6 @@ export default function Register() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [kitchen] = useState<Kitchen>();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();

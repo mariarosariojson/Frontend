@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import Grid from "@mui/joy/Grid";
 import LinearProgress from "@mui/joy/LinearProgress";
-import { Box } from "@mui/material";
 import axios from "axios";
 
 import type { Product } from "src/api/Dto";
@@ -11,7 +10,6 @@ import FoodCardMobile from "Src/components/FoodCardMobile/FoodCardMobile";
 import FoodItem from "Src/components/FoodItem/FoodItem";
 
 import "src/css/Site.css";
-import "src/css/Food.css";
 
 export default function Food() {
   return (
@@ -36,18 +34,37 @@ export function FoodList() {
   }, []);
 
   return (
-    <Box className="food-container">
-      <Grid container columns={{ xs: 4, sm: 8, md: 12 }} spacing={{ xs: 2, md: 3 }} sx={{ flexGrow: 1 }}>
-        {productIsLoading ? (
-          <LinearProgress thickness={1} />
-        ) : (
-          productList.map((product) => (
-            <Grid key={product.productId} justify-content="center" xs="auto">
-              <FoodItem product={product} />
-            </Grid>
-          ))
-        )}
-      </Grid>
-    </Box>
+    <>
+      <section className="food-mobile-section">
+        <Grid container columns={{ xs: 1 }} spacing={{ xs: 3 }}>
+          {productIsLoading ? (
+            <LinearProgress thickness={1} />
+          ) : (
+            productList.map((product) => (
+              <Grid key={product.productId} md={1} sm={1} xs={1}>
+                <div className="food-container-mobile">
+                  <FoodCardMobile product={product} />
+                </div>
+              </Grid>
+            ))
+          )}
+        </Grid>
+      </section>
+      <section className="food-container-section">
+        <Grid container columns={{ xs: 4, sm: 8, md: 12 }} spacing={{ xs: 2, md: 3 }} sx={{ flexGrow: 1 }}>
+          {productIsLoading ? (
+            <LinearProgress thickness={1} />
+          ) : (
+            productList.map((product) => (
+              <Grid key={product.productId} md={3} sm={6} xs={4}>
+                <div className="food-container">
+                  <FoodItem product={product} />
+                </div>
+              </Grid>
+            ))
+          )}
+        </Grid>
+      </section>
+    </>
   );
 }

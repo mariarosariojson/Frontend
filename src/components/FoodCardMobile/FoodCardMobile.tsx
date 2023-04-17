@@ -41,12 +41,11 @@ export default function FoodCardMobile({ product }: FoodItemProps) {
   return (
     <>
       <Helmet title={product.name} />
-      {orderIsLoading && productIsLoading ? (
-        <LinearProgress thickness={1} />
-      ) : (
-        <Box className="card-mobile">
+      <Box className="main-container card-mobile">
+        {orderIsLoading && productIsLoading ? (
+          <LinearProgress thickness={1} />
+        ) : (
           <Card
-            className="card-mobile"
             orientation="horizontal"
             sx={{
               width: 320,
@@ -60,7 +59,7 @@ export default function FoodCardMobile({ product }: FoodItemProps) {
           >
             <AspectRatio ratio="0.9" sx={{ width: 90 }}>
               <Link to={`/FoodProduct/${product.name}`}>
-                <img alt="" loading="lazy" src="" srcSet={product.imageUrl} />
+                <img alt={product.imageUrl} loading="lazy" src="" srcSet={product.imageUrl} />
               </Link>
             </AspectRatio>
             <IconButton
@@ -129,8 +128,8 @@ export default function FoodCardMobile({ product }: FoodItemProps) {
               </div>
             </div>
           </Card>
-        </Box>
-      )}
+        )}
+      </Box>
     </>
   );
 }

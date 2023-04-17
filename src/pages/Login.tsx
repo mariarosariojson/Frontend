@@ -47,7 +47,9 @@ export default function Login() {
     };
 
     axios.post(`/api/User/login`, loginData).then((response) => {
-      console.log(response.status);
+      console.log(response.data);
+      // eslint-disable-next-line immutable/no-mutation
+      window.location.href = "/Home";
     });
   };
 

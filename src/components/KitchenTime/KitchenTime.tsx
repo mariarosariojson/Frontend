@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import axios from "axios";
 
 import type { Kitchen } from "Src/api/Dto";
@@ -24,24 +24,27 @@ export default function KitchenTime({ kitchen }: KitchenTimeProps) {
   };
 
   return (
-    <Box>
-      <div className="kitchen-time">
-        <div className="queue-status">
-          <b>Restaurangen är {kitchenStatus === KitchenStatus.Open ? "öppen!" : "tyvärr stängd."}</b>
+    <>
+      <Helmet title="Kitchen" />
+      <Box>
+        <div className="kitchen-time">
+          <div className="queue-status">
+            <b>Restaurangen är {kitchenStatus === KitchenStatus.Open ? "öppen!" : "tyvärr stängd."}</b>
+          </div>
+          <br />
+          <button className="kitchen-btn kitchen-open-btn" type="button" onClick={toggleKitchenStatus}>
+            Öppna
+            <br />
+            restaurangen
+          </button>
+          <button className="kitchen-btn kitchen-close-btn" type="button" onClick={toggleKitchenStatus}>
+            Stäng
+            <br />
+            restaurangen
+          </button>
         </div>
-        <br />
-        <button className="kitchen-btn kitchen-open-btn" type="button" onClick={toggleKitchenStatus}>
-          Öppna
-          <br />
-          restaurangen
-        </button>
-        <button className="kitchen-btn kitchen-close-btn" type="button" onClick={toggleKitchenStatus}>
-          Stäng
-          <br />
-          restaurangen
-        </button>
-      </div>
-    </Box>
+      </Box>
+    </>
   );
 }
 

@@ -10,11 +10,10 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
-
 body {
   background-color: whitesmoke;
+  overflow: scroll;
 }
-
 a {
   text-decoration: none;
   color: rgb(42, 42, 42);
@@ -80,61 +79,60 @@ h5 {
 .hero-btn:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
-.food-index-container {
-  width: 100%;
-}
-.food-container {
-  width: 95%;
-  margin: 0 auto 0 auto;
+.food-container-section {
+  display: flex;
+  margin-top: -42rem;
+  height: fit-content;
 }
 
 @media only screen and (max-width: 900px) {
-  * {
-    box-sizing: border-box;
+  html {
+    overflow: scroll;
     max-width: 100%;
-    overflow: hidden;
+  }
+  .food-container-section {
+    visibility: hidden;
+  }
+  .food-mobile-section {
+    display: flex;
+    margin-top: 3rem;
+    height: fit-content;
+  }
+  .food-container-mobile {
+    display: flex;
+    align-content: center;
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
   }
   .hero-container {
-    margin: 1rem auto;
-  }
-  .main-container {
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
-    width: 100%;
   }
   .hero-header {
     display: flex;
-    height: fit-content;
+    height: 11rem;
     text-align: center;
     font-size: 1rem;
     margin: 0 auto;
   }
   .hero-greeting {
     min-width: 100%;
+    margin: 0 auto;
   }
   .hero-paragraph,
   .hero-img {
     visibility: hidden;
-    padding: 0;
   }
   .hero-title h1 {
     font-size: 1.2rem;
     color: #6c8fa7;
-    padding: 0;
     text-align: center;
-  }
-  .food-index-container {
-    margin: 2rem auto;
-  }
-  .food-container {
-    margin: 1rem auto;
-    visibility: visible;
-    width: 100%;
-    padding: 0.3rem;
   }
   .hero-btns {
     min-width: 100%;
-    margin-top: -6.5rem;
+    margin-top: -3.5rem;
     padding: 0;
   }
   .hero-btn {
@@ -160,6 +158,10 @@ h5 {
     filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
   }
   footer {
+    visibility: hidden;
+    position: relative;
+  }
+  .footer-copy {
     visibility: hidden;
   }
 }

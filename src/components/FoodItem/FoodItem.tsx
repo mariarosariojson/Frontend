@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Favorite from "@mui/icons-material/Favorite";
 import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
-import CardCover from "@mui/joy/CardCover";
 import CardOverflow from "@mui/joy/CardOverflow";
 import IconButton from "@mui/joy/IconButton";
 import LinearProgress from "@mui/joy/LinearProgress";
@@ -16,8 +15,6 @@ import { useShoppingCart } from "src/context/ShoppingCartContex";
 import { formatCurrency } from "src/utilities/FormatCurrency";
 
 import type { OrderLine, Product } from "Src/api/Dto";
-
-import FoodCardMobile from "../FoodCardMobile/FoodCardMobile";
 
 import "src/css/FoodItem.css";
 
@@ -45,8 +42,7 @@ export default function FoodItem({ product }: FoodItemProps) {
   return (
     <>
       <Helmet title={product.name} />
-      <Box className="main-container">
-        <FoodCardMobile product={product} />
+      <Box>
         {orderIsLoading && productIsLoading ? (
           <LinearProgress thickness={1} />
         ) : (
@@ -65,12 +61,10 @@ export default function FoodItem({ product }: FoodItemProps) {
             variant="outlined"
           >
             <CardOverflow className="card-section">
-              <AspectRatio>
-                <CardCover>
-                  <Link to={`/FoodProduct/${product.productId}`}>
-                    <img alt="image" loading="lazy" src={product.imageUrl} />
-                  </Link>
-                </CardCover>
+              <AspectRatio ratio="1.5">
+                <Link to={`/FoodProduct/${product.productId}`}>
+                  <img alt="image" loading="lazy" src={product.imageUrl} />
+                </Link>
               </AspectRatio>
               <IconButton
                 size="md"

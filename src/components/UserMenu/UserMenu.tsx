@@ -54,13 +54,13 @@ export default function SwipeableEdgeDrawer(props: Props) {
   const [open, setOpen] = useState(false);
   const [productItem, setProductItem] = useState<Product[]>([]);
   const [, setProductIsLoading] = useState(false);
-  const [order, setOrder] = useState<Order[]>([]);
+  const [, setOrder] = useState<Order[]>([]);
   const [, setOrderIsLoading] = useState(false);
-  const [user, setUser] = useState<User[]>([]);
-  const [userIsLoading, setUserIsLoading] = useState(false);
+  const [, setUser] = useState<User[]>([]);
+  const [, setUserIsLoading] = useState(false);
   const [currentUserOrders, setCurrentUserOrders] = useState<Order[]>([]);
   const { cartItems } = useShoppingCart();
-  const [progress, setProgress] = useState(0);
+  const [, setProgress] = useState(0);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -97,7 +97,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
     });
   }, []);
 
-  const userId = 2; // replace with the actual userId of the logged-in user
+  const userId = 2; // remember to replace with the actual userId of the logged-in user
   useEffect(() => {
     setOrderIsLoading(true);
     const orderPath = `/api/Order/`;
@@ -107,6 +107,11 @@ export default function SwipeableEdgeDrawer(props: Props) {
       setOrder(filteredOrders);
       setCurrentUserOrders(filteredOrders);
       setOrderIsLoading(false);
+    });
+    const userPath = `/api/User/`;
+    axios.get(userPath).then((response) => {
+      setUser(response.data);
+      setUserIsLoading(false);
     });
   }, []);
 
@@ -124,7 +129,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
     const newOrder = {
       totalAmount: calculateTotalAmount(),
       userId: 1,
-      orderStatus: OrderStatus.Created,
+      orderStatus: OrderStatus.Confirmed,
       orderLines
     };
 
@@ -242,19 +247,29 @@ export default function SwipeableEdgeDrawer(props: Props) {
             }}
           >
             <List>
-              <ListItem>
-                <Stack gap={3}>
-                  {cartItems.map((item) => (
-                    <CartItem key={item.id} {...item} />
-                  ))}
-                </Stack>
-              </ListItem>
+              {cartItems.length > 0 ? (
+                <>
+                  <ListItem>
+                    <Stack gap={3}>
+                      {cartItems.map((item) => (
+                        <CartItem key={item.id} {...item} />
+                      ))}
+                    </Stack>
+                  </ListItem>
+                  <ListItem>
+                    <div className="place-order-drawer">
+                      <Button className="place-order-btn" type="button" onClick={placeOrder}>
+                        Skicka beställning <i className="bi bi-send-fill" />
+                      </Button>
+                    </div>
+                  </ListItem>
+                </>
+              ) : (
+                <div className="empty-cart-message">
+                  <p>Din kundvagn är tom!</p>
+                </div>
+              )}
             </List>
-            <div className="place-order-drawer">
-              <Button className="place-order-btn" type="button" onClick={placeOrder}>
-                Skicka beställning <i className="bi bi-send-fill" />
-              </Button>
-            </div>
           </StyledBox>
         </SwipeableDrawer>
       </Root>

@@ -7,7 +7,7 @@ import { CartItem } from "src/components/CartItem/CartItem";
 import { formatCurrency } from "src/utilities/FormatCurrency";
 
 import type { Anchor } from "react-bootstrap";
-import type { Order, Product, User } from "Src/api/Dto";
+import type { Order, Product } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 import { addOrder } from "Src/api/Order";
@@ -20,11 +20,9 @@ import "src/css/ShoppingCart.css";
 type Anchor = "right";
 
 export default function ShoppingCart() {
-  const [, setUser] = useState<User[]>([]);
-  const [, setUserIsLoading] = useState(false);
   const [productItem, setProductItem] = useState<Product[]>([]);
   const [, setProductIsLoading] = useState(false);
-  const [order, setOrder] = useState<Order[]>([]);
+  const [, setOrder] = useState<Order[]>([]);
   const [, setOrderIsLoading] = useState(false);
   const [state, setState] = React.useState({
     right: false

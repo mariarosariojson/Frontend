@@ -1,43 +1,35 @@
-// import { useAuth } from "../../context/AuthContext";
+// import { createContext, useState } from "react";
 
-// export function Authentication() {
-//   const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
+// export const UserContext = createContext(null);
 
-//   const login = (e) => {
-//     e.preventDefault();
-//     setIsLoggedIn(true);
-//     setAuthUser({ email: "test@mail.com", code: "1234" });
+// export function UserContextProvider({ children }) {
+//   const [userInfo, setUserInfo] = useState(null);
+//   const [isAuth, setIsAuth] = useState(false);
+
+//   const login = () => {
+//     fetch("/login").then((res) => {
+//       setIsAuth(true);
+//       setUserInfo(res.user);
+//     });
 //   };
-//   const logout = (e) => {
-//     e.preventDefault();
-//     setIsLoggedIn(false);
-//     setAuthUser(null);
+
+//   const logout = () => {
+//     fetch("/logout").then((res) => {
+//       setIsAuth(false);
+//       setUserInfo(null);
+//     });
 //   };
 
-//   return (
-//     <>
-//       <span>Användaren är nu {isLoggedIn ? "Inloggad" : "Utloggad"}.</span>
-//       {isLoggedIn ? <span> Användarnamn: {authUser.email}</span> : null}
-//       <br />
-//       {isLoggedIn ? (
-//         <button
-//           type="button"
-//           onClick={(e) => {
-//             logout(e);
-//           }}
-//         >
-//           Logga ut
-//         </button>
-//       ) : (
-//         <button
-//           type="button"
-//           onClick={(e) => {
-//             login(e);
-//           }}
-//         >
-//           Logga ut
-//         </button>
-//       )}
-//     </>
-//   );
+//   const value = {
+//     userInfo,
+//     setUserInfo,
+//     isAuth,
+//     setIsAuth,
+//     login,
+//     logout
+//   };
+
+//   return <UserContext.Provider value={value}> {children} </UserContext.Provider>;
 // }
+
+// export default UserContext;

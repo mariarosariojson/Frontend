@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { IconButton, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -24,7 +24,7 @@ export default function SideBar() {
   };
 
   const list = (anchor: Anchor) => (
-    <Box className="sidebar" role="presentation" sx={{ width: "30rem", minHeight: "230%", overflow: "auto" }}>
+    <Box className="sidebar" role="presentation" sx={{ width: "auto", minHeight: "230%", overflow: "auto" }}>
       <List>
         <div className="sidebar-cart-header">
           <h2>
