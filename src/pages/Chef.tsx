@@ -9,7 +9,6 @@ import { OrderStatus } from "Src/api/Enums";
 
 import TabLink from "Src/components/TabLink/TabLink";
 
-// import { useShoppingCart } from "Src/context/ShoppingCartContex";
 import "src/css/Chef.css";
 
 export default function Chef() {
@@ -19,8 +18,6 @@ export default function Chef() {
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [userIsLoading, setUserIsLoading] = useState(false);
-  // const { getItemQuantity } = useShoppingCart();
-  // const quantity = getItemQuantity(id);
 
   function removeOrder(id: number) {
     const orderPath = `/api/Order/${id}`;

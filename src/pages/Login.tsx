@@ -25,6 +25,14 @@ export default function Login() {
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
   const [user, setUser] = useState({ email: "", code: "" });
   const [code, setCode] = useState({ code: "" });
+  // const [userType, setUserType] = useState<User[]>([]);
+
+  // useEffect(() => {
+  //   const path = `/api/User`;
+  //   axios.get(path).then((response) => {
+  //     setUserType(response.data);
+  //   });
+  // }, []);
 
   const handleChange = (e: any) => {
     e.preventDefault();
@@ -45,7 +53,6 @@ export default function Login() {
       email: user.email,
       password: user.code
     };
-
     axios.post(`/api/User/login`, loginData).then((response) => {
       console.log(response.data);
       // eslint-disable-next-line immutable/no-mutation
