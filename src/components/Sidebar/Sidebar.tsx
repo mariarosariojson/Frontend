@@ -23,7 +23,7 @@ export default function SideBar() {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor: Anchor) => (
+  const list = (_: Anchor) => (
     <Box className="sidebar" role="presentation" sx={{ width: "auto", minHeight: "230%", overflow: "auto" }}>
       <List>
         <div className="sidebar-cart-header">

@@ -11,7 +11,7 @@ import TabLink from "Src/components/TabLink/TabLink";
 
 import "src/css/Orders.css";
 
-let timeoutId: any = null;
+let timeoutId: NodeJS.Timeout | null = null;
 
 export default function Closed() {
   const [order, setOrder] = useState<Order[]>([]);

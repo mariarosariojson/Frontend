@@ -17,7 +17,6 @@ import type { Order, Product, User } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 import { addOrder } from "Src/api/Order";
-import { listUsers } from "Src/api/User";
 
 import { useShoppingCart } from "Src/context/ShoppingCartContex";
 
@@ -103,7 +102,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
     const orderPath = `/api/Order/`;
     axios.get(orderPath).then((response) => {
       const orders = response.data;
-      const filteredOrders = orders.filter((order: any) => order.userId === userId);
+      const filteredOrders = orders.filter((order: Order) => order.userId === userId);
       setOrder(filteredOrders);
       setCurrentUserOrders(filteredOrders);
       setOrderIsLoading(false);
@@ -135,10 +134,9 @@ export default function SwipeableEdgeDrawer(props: Props) {
 
     try {
       await addOrder(newOrder);
-      const result = await listUsers();
-      console.log(result);
       localStorage.removeItem("shopping-cart");
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
     }
   };

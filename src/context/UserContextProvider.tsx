@@ -1,21 +1,36 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
+
+import type { User } from "Src/api/Dto";
+
+import { UserType } from "Src/api/Enums";
 
 interface UserContextType {
-  userRole: string;
+  userRole: User | null;
   adminOnly: boolean;
-  setUserRole: (role: string) => void;
+  setUserRole: (role: User) => void;
 }
 
-const UserContext = createContext<UserContextType>({
-  userRole: "",
-  adminOnly: false,
-  setUserRole: () => {}
-});
+const UserContext = createContext<UserContextType>({} as UserContextType);
 
 export function UserContextProvider({ children }: { children: React.ReactNode }) {
-  const [userRole, setUserRole] = useState<string>("");
+  const [userRole, setState] = useState<User | null>(() => {
+    const user = sessionStorage.getItem("user");
+    if (!user) {
+      return null;
+    }
 
-  const adminOnly = userRole === "admin";
+    try {
+      return JSON.parse(user) as User;
+    } catch {
+      return null;
+    }
+  });
+
+  const setUserRole = useCallback((user: User) => {
+    sessionStorage.setItem("user", JSON.stringify(user));
+    setState(user);
+  }, []);
+  const adminOnly = userRole?.userType === UserType.Admin;
 
   return <UserContext.Provider value={{ userRole, adminOnly, setUserRole }}>{children}</UserContext.Provider>;
 }

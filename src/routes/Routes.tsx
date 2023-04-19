@@ -3,11 +3,12 @@ import { useRoutes } from "react-router-dom";
 
 import type { RouteObject } from "react-router";
 
+import { UserType } from "Src/api/Enums";
+
 import Error401 from "Src/components/Errors/Error401";
 import Error404 from "Src/components/Errors/Error404";
 import ShoppingCart from "Src/components/ShoppingCart/ShoppingCart";
 import Sidebar from "Src/components/Sidebar/Sidebar";
-import { UserType } from "Src/api/Enums";
 
 import { UserContext } from "Src/context/UserContextProvider";
 import Checkout from "Src/pages/Checkout";
@@ -24,16 +25,11 @@ import Created from "Src/pages/Orders/Created";
 import Done from "Src/pages/Orders/Done";
 import Register from "Src/pages/Register";
 
-interface UserContextType {
-  userRole: string;
-  adminOnly: boolean;
-}
-
 const userRoutes: RouteObject[] = [
+  { path: "/", element: <Login /> },
   { path: "/Home", element: <Index /> },
   { path: "/Food", element: <Food /> },
   { path: "/Contact", element: <Contact /> },
-  { path: "/", element: <Login /> },
   { path: "*", element: <Error404 /> },
   { path: "/Register", element: <Register /> },
   { path: "/ShoppingCart", element: <ShoppingCart /> },
@@ -43,6 +39,7 @@ const userRoutes: RouteObject[] = [
 ];
 
 const adminRoutes: RouteObject[] = [
+  { path: "/", element: <Login /> },
   { path: "/Chef", element: <Chef /> },
   { path: "/Confirmed", element: <Confirmed /> },
   { path: "/Created", element: <Created /> },
@@ -54,8 +51,8 @@ const adminRoutes: RouteObject[] = [
 ];
 
 export default function Routes() {
-  const { userRole } = useContext(UserContext) as UserContextType;
-  const routes = userRole === "Admin" ? adminRoutes : userRoutes;
+  const { userRole } = useContext(UserContext);
+  const routes = userRole?.userType === UserType.Admin ? adminRoutes : userRoutes;
   const allRoutes = useRoutes(routes);
 
   return allRoutes;

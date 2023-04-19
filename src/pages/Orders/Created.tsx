@@ -19,7 +19,7 @@ export default function Created() {
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [userIsLoading, setUserIsLoading] = useState(false);
 
-  async function confirmedOrder(id: number, order: any) {
+  async function confirmedOrder(id: number, order: Order) {
     const orderPath = `/api/Order/${id}`;
     await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Confirmed });
     setOrderIsLoading(true);

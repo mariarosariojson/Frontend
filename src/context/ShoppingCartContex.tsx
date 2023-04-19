@@ -39,7 +39,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   function increaseCartQuantity(id: number) {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) == null) {
+      if (!currItems.some((item) => item.id === id)) {
         return [...currItems, { id, quantity: 1 }];
       }
 

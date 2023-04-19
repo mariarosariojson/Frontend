@@ -17,7 +17,7 @@ export default function Done() {
   const [orderIsLoading, setOrderIsLoading] = useState(false);
   const [productIsLoading, setProductIsLoading] = useState(false);
 
-  async function closedOrder(id: number, order: any) {
+  async function closedOrder(id: number, order: Order) {
     const orderPath = `/api/Order/${id}`;
     await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Closed });
     setOrderIsLoading(true);

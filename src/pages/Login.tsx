@@ -1,73 +1,54 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import LinearProgress from "@mui/joy/LinearProgress";
 import { Box } from "@mui/material";
 import axios from "axios";
-import { gapi } from "gapi-script";
-import { useContext } from "react";
-import type { Kitchen } from "Src/api/Dto";
+
+import type { Kitchen, User } from "Src/api/Dto";
 
 import { UserType } from "Src/api/Enums";
-import { UserContextProvider } from "Src/context/UserContextProvider";
 
-import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
+// import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
 import { KitchenState } from "Src/components/KitchenTime/KitchenTime";
 import { KitchenLine } from "Src/components/QueueSlider/QueueSlider";
 
+import { UserContext } from "Src/context/UserContextProvider";
+
 import "src/css/Login.css";
-
-interface LoginValues {
-  email: string;
-  code: string;
-}
-
-const clientId = "758380863651-69t6pe0h7ta7g7btvh7v9dt5r1b3nkkd.apps.googleusercontent.com";
 
 export default function Login() {
   const [kitchen, setKitchen] = useState<Kitchen>();
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
   const [user, setUser] = useState({ email: "", code: "" });
-  const [code, setCode] = useState({ code: "" });
-  const [userType, setUserType] = useState([] as UserType[]);
-  const [, setUserRole] = useState<string>();
 
-  const handleChange = (e: any) => {
+  const { setUserRole } = useContext(UserContext);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { value } = e.target;
     setUser({
       ...user,
       [e.target.name]: value
     });
-    setCode({
-      ...code,
-      [e.target.code]: value
-    });
   };
-  useEffect(() => {
-    const path = `/api/User`;
-    axios.get<UserType[]>(path).then((response) => {
-      setUserType(response.data);
-    });
-  }, []);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const loginData = {
       email: user.email,
       password: user.code
     };
-    axios.post(`/api/User/login`, loginData).then((response) => {
-      const { role } = response.data;
-      setUserRole(role);
-      if (userType.length > 0) {
-        const userTypeValue = UserType.User;
-        if (userTypeValue === UserType.User) {
-          window.location.replace("/Home");
-        } else if (userTypeValue === UserType.Admin) {
-          window.location.replace("/Chef");
-        } else {
-          window.location.href = "/";
-        }
+    axios.post<User>(`/api/User/login`, loginData).then((response) => {
+      const user = response.data;
+
+      setUserRole(user);
+
+      if (user.userType === UserType.User) {
+        window.location.replace("/Home");
+      } else if (user.userType === UserType.Admin) {
+        window.location.replace("/Chef");
+      } else {
+        window.location.replace("/");
       }
     });
   };
@@ -80,18 +61,6 @@ export default function Login() {
       setKitchenIsLoading(false);
     });
   }, []);
-
-  useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId,
-        scope: ""
-      });
-    }
-    gapi.load("client:auth2", start);
-  });
-
-  // const accessToken = gapi.auth2.getToken().access_token;
 
   return (
     <>
@@ -120,12 +89,10 @@ export default function Login() {
               <input name="email" placeholder="E-mailadress" type="email" value={user.email} onChange={handleChange} /> <br />
               <input name="code" placeholder="Dagens kod" type="text" value={user.code} onChange={handleChange} />
             </div>
-            <button className="login-btn" type="submit">
-              Logga in
-            </button>
-            <div className="google-login-btn">
+            <input className="login-btn" type="submit" value="Logga in" />
+            {/* <div className="google-login-btn">
               <GoogleLoginButton />
-            </div>
+            </div> */}
             <div className="reg-nav-text">
               <a href="./Register">
                 <p>Har du inget konto? Registrera dig här.</p>

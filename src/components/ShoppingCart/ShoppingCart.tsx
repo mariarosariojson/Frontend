@@ -11,7 +11,6 @@ import type { Order, Product } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 import { addOrder } from "Src/api/Order";
-import { listUsers } from "Src/api/User";
 
 import { useShoppingCart } from "Src/context/ShoppingCartContex";
 
@@ -67,12 +66,12 @@ export default function ShoppingCart() {
 
     try {
       await addOrder(newOrder);
-      const result = await listUsers();
-      console.log(result);
+
       localStorage.removeItem("shopping-cart");
-      // eslint-disable-next-line immutable/no-mutation
-      window.location.href = "/OrderComplete";
+
+      window.location.replace("/OrderComplete");
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
     }
   };

@@ -26,7 +26,7 @@ export default function Chef() {
   //   setOrder(newOrderList);
   // }
 
-  async function confirmedOrder(id: number, order: any) {
+  async function confirmedOrder(id: number, order: Order) {
     const orderPath = `/api/Order/${id}`;
     await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Confirmed });
     setOrderIsLoading(true);
@@ -37,7 +37,7 @@ export default function Chef() {
     });
   }
 
-  async function doneOrder(id: number, order: any) {
+  async function doneOrder(id: number, order: Order) {
     const orderPath = `/api/Order/${id}`;
     await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Done });
     setOrderIsLoading(true);
@@ -48,7 +48,7 @@ export default function Chef() {
     });
   }
 
-  async function closedOrder(id: number, order: any) {
+  async function closedOrder(id: number, order: Order) {
     const orderPath = `/api/Order/${id}`;
     await axios.put(orderPath, { ...order, orderStatus: OrderStatus.Closed });
     setOrderIsLoading(true);

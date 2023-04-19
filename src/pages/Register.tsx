@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { Box } from "@mui/material";
 import axios from "axios";
 
-import GoogleLogoutButton from "Src/components/google-login/GoogleLogout";
+// import GoogleLogoutButton from "Src/components/google-login/GoogleLogout";
 import UserTypeButton from "Src/components/UserTypeButton/UserTypeButton";
 
 import Login from "./Login";
@@ -16,10 +16,11 @@ export default function Register() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     axios.post(`/api/User`, { firstName, lastName, email }).then((response) => {
-      console.log(response.status);
+      return response;
+      // console.log(response.status);
     });
   };
 
@@ -54,9 +55,9 @@ export default function Register() {
                 Spara
               </button>
             </section>
-            <div className="google-logout-btn">
+            {/* <div className="google-logout-btn">
               <GoogleLogoutButton />
-            </div>
+            </div> */}
           </div>
         </form>
       </Box>

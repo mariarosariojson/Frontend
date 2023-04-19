@@ -14,15 +14,16 @@ export interface KitchenTimeProps {
 export default function KitchenCode({ kitchen }: KitchenTimeProps) {
   const [data, setData] = useState("");
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setData(value);
   };
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const kitchenCode = { ...kitchen, code: data };
     axios.put(`/api/Kitchen/${kitchenCode.kitchenId}`, kitchenCode).then((res) => {
-      console.log(res.status, res.data.token);
+      return res;
+      //  console.log(res.status, res.data.token);
     });
   };
 
