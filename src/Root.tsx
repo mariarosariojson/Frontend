@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Navbar from "src/components/Navbar/Navbar";
+import { UserContextProvider } from "src/context/UserContextProvider";
 
 import Footer from "./components/Footer/Footer";
 import { ShoppingCartProvider } from "./context/ShoppingCartContex";
@@ -13,16 +14,18 @@ import "./css/Site.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId="758380863651-69t6pe0h7ta7g7btvh7v9dt5r1b3nkkd.apps.googleusercontent.com">
-      <ShoppingCartProvider>
-        <BrowserRouter basename={process.env.BASE_URL}>
-          <Navbar>
-            <Routes />
-          </Navbar>
-          <Footer />
-        </BrowserRouter>
-      </ShoppingCartProvider>
-    </GoogleOAuthProvider>
+    <UserContextProvider>
+      <GoogleOAuthProvider clientId="758380863651-69t6pe0h7ta7g7btvh7v9dt5r1b3nkkd.apps.googleusercontent.com">
+        <ShoppingCartProvider>
+          <BrowserRouter basename={process.env.BASE_URL}>
+            <Navbar>
+              <Routes />
+            </Navbar>
+            <Footer />
+          </BrowserRouter>
+        </ShoppingCartProvider>
+      </GoogleOAuthProvider>
+    </UserContextProvider>
   </React.StrictMode>,
   document.querySelector("#root")
 );

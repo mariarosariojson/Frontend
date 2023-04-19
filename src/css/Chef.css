@@ -4,7 +4,6 @@ h1 {
 h3 {
   font-weight: bolder;
 }
-
 .chef-container {
   width: 100%;
   color: rgb(109, 109, 109);
@@ -31,13 +30,11 @@ h3 {
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.24);
   overflow: hidden;
 }
-
 .chef-order-status {
   display: flex;
   margin: 3rem auto;
   width: max-content;
 }
-
 .chef-status-col-1,
 .chef-status-col-2,
 .chef-status-col-3,

@@ -19,12 +19,12 @@ export default function Chef() {
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [userIsLoading, setUserIsLoading] = useState(false);
 
-  function removeOrder(id: number) {
-    const orderPath = `/api/Order/${id}`;
-    axios.delete(orderPath).then();
-    const newOrderList = order.filter((id) => id !== id);
-    setOrder(newOrderList);
-  }
+  // function removeOrder(id: number) {
+  //   const orderPath = `/api/Order/${id}`;
+  //   axios.delete(orderPath).then();
+  //   const newOrderList = order.filter((id) => id !== id);
+  //   setOrder(newOrderList);
+  // }
 
   async function confirmedOrder(id: number, order: any) {
     const orderPath = `/api/Order/${id}`;

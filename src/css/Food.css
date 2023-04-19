@@ -9,7 +9,7 @@
   margin-top: 5rem;
   color: rgb(45, 45, 45);
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 420px) {
   .food-menu-header {
     visibility: visible;
     font-size: 0.8rem;

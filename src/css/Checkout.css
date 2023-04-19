@@ -23,7 +23,6 @@
   margin: 1.5rem 0.6rem 0rem 0rem;
   color: #6c8fa7;
 }
-
 .checkout-btn {
   cursor: pointer;
   padding: 0.5rem 0.5rem;
@@ -56,7 +55,3 @@
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
 
-@media only screen and (max-width: 900px) {
-  
-
-}

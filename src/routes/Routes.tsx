@@ -7,6 +7,7 @@ import Error401 from "Src/components/Errors/Error401";
 import Error404 from "Src/components/Errors/Error404";
 import ShoppingCart from "Src/components/ShoppingCart/ShoppingCart";
 import Sidebar from "Src/components/Sidebar/Sidebar";
+import { UserType } from "Src/api/Enums";
 
 import { UserContext } from "Src/context/UserContextProvider";
 import Checkout from "Src/pages/Checkout";
@@ -54,7 +55,7 @@ const adminRoutes: RouteObject[] = [
 
 export default function Routes() {
   const { userRole } = useContext(UserContext) as UserContextType;
-  const routes = userRole === "admin" ? adminRoutes : userRoutes;
+  const routes = userRole === "Admin" ? adminRoutes : userRoutes;
   const allRoutes = useRoutes(routes);
 
   return allRoutes;

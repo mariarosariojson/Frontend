@@ -4,12 +4,15 @@ import LinearProgress from "@mui/joy/LinearProgress";
 import { Box } from "@mui/material";
 import axios from "axios";
 import { gapi } from "gapi-script";
-
+import { useContext } from "react";
 import type { Kitchen } from "Src/api/Dto";
 
+import { UserType } from "Src/api/Enums";
+import { UserContextProvider } from "Src/context/UserContextProvider";
+
 import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
-import KitchenTime, { KitchenState } from "Src/components/KitchenTime/KitchenTime";
-import QueueSlider, { KitchenLine } from "Src/components/QueueSlider/QueueSlider";
+import { KitchenState } from "Src/components/KitchenTime/KitchenTime";
+import { KitchenLine } from "Src/components/QueueSlider/QueueSlider";
 
 import "src/css/Login.css";
 
@@ -25,14 +28,8 @@ export default function Login() {
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
   const [user, setUser] = useState({ email: "", code: "" });
   const [code, setCode] = useState({ code: "" });
-  // const [userType, setUserType] = useState<User[]>([]);
-
-  // useEffect(() => {
-  //   const path = `/api/User`;
-  //   axios.get(path).then((response) => {
-  //     setUserType(response.data);
-  //   });
-  // }, []);
+  const [userType, setUserType] = useState([] as UserType[]);
+  const [, setUserRole] = useState<string>();
 
   const handleChange = (e: any) => {
     e.preventDefault();
@@ -46,6 +43,12 @@ export default function Login() {
       [e.target.code]: value
     });
   };
+  useEffect(() => {
+    const path = `/api/User`;
+    axios.get<UserType[]>(path).then((response) => {
+      setUserType(response.data);
+    });
+  }, []);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -54,9 +57,18 @@ export default function Login() {
       password: user.code
     };
     axios.post(`/api/User/login`, loginData).then((response) => {
-      console.log(response.data);
-      // eslint-disable-next-line immutable/no-mutation
-      window.location.href = "/Home";
+      const { role } = response.data;
+      setUserRole(role);
+      if (userType.length > 0) {
+        const userTypeValue = UserType.User;
+        if (userTypeValue === UserType.User) {
+          window.location.replace("/Home");
+        } else if (userTypeValue === UserType.Admin) {
+          window.location.replace("/Chef");
+        } else {
+          window.location.href = "/";
+        }
+      }
     });
   };
 
