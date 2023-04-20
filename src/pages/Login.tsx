@@ -8,7 +8,7 @@ import type { Kitchen, User } from "Src/api/Dto";
 
 import { UserType } from "Src/api/Enums";
 
-// import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
+import GoogleLoginButton from "Src/components/google-login/GoogleLogin";
 import { KitchenState } from "Src/components/KitchenTime/KitchenTime";
 import { KitchenLine } from "Src/components/QueueSlider/QueueSlider";
 
@@ -20,6 +20,7 @@ export default function Login() {
   const [kitchen, setKitchen] = useState<Kitchen>();
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
   const [user, setUser] = useState({ email: "", code: "" });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const { setUserRole } = useContext(UserContext);
 
@@ -42,6 +43,8 @@ export default function Login() {
       const user = response.data;
 
       setUserRole(user);
+      sessionStorage.setItem("user", JSON.stringify(user));
+      setIsLoggedIn(true);
 
       if (user.userType === UserType.User) {
         window.location.replace("/Home");
@@ -51,6 +54,11 @@ export default function Login() {
         window.location.replace("/");
       }
     });
+  };
+  const logout = () => {
+    sessionStorage.removeItem("user");
+    setIsLoggedIn(false);
+    window.location.replace("/");
   };
 
   useEffect(() => {
@@ -65,7 +73,7 @@ export default function Login() {
   return (
     <>
       <Helmet title="Login" />
-      <Box>
+      <Box className="container-login">
         <section className="kitchen-status-login">
           {kitchenIsLoading ? (
             <LinearProgress thickness={1} />
@@ -89,10 +97,19 @@ export default function Login() {
               <input name="email" placeholder="E-mailadress" type="email" value={user.email} onChange={handleChange} /> <br />
               <input name="code" placeholder="Dagens kod" type="text" value={user.code} onChange={handleChange} />
             </div>
-            <input className="login-btn" type="submit" value="Logga in" />
-            {/* <div className="google-login-btn">
+            <div className="login-btn-container">
+              <button className="login-btn" type="submit">
+                Logga in
+              </button>
+            </div>
+            <div>
+              {/* <button className="logout-btn" type="button" onClick={logout}>
+                Logga ut
+              </button> */}
+            </div>
+            <div className="google-login-btn">
               <GoogleLoginButton />
-            </div> */}
+            </div>
             <div className="reg-nav-text">
               <a href="./Register">
                 <p>Har du inget konto? Registrera dig här.</p>

@@ -1,0 +1,24 @@
+.logout-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 100%;
+  background-color: #6c8fa7;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  border: none;
+  font-size: 1.3rem;
+  transition: filter 250ms ease;
+  width: 2rem;
+  height: 2rem;
+}
+.logout-btn:hover {
+  background-color: #f2f2f2;
+  color: #6c8fa7;
+  border: none;
+}
+
+.logout-btn:is(:hover, :focus) {
+  filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}

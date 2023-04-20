@@ -17,29 +17,39 @@
 .login-container input {
   width: 15rem;
   border: 0.01rem solid #6c8fa7;
-  border-radius: 0.4rem;
+  border-radius: 2rem;
   background-color: #f2f2f2;
   padding: 0.9rem;
-  margin-top: 0.5rem;
+  margin-top: 0.7rem;
   color: #6c8fa7;
 }
 .login-container input::placeholder {
   color: #6c8fa7;
 }
+.login-btn-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 .login-btn {
   display: flex;
   justify-content: center;
-  padding: 0.9rem 1.5rem;
-  margin-top: 0.9rem;
-  border-radius: 0.5rem;
-  background-color: #f2f2f2;
-  color: #6c8fa7;
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+  background-color: #6c8fa7;
+  color: #f2f2f2;
   text-transform: uppercase;
-  border: 0.01rem solid #6c8fa7;
+  border: none;
   font-weight: 600;
   font-size: 0.7rem;
   transition: filter 250ms ease;
-  width: 10rem;
+  width: 99%;
+}
+.login-btn:hover {
+  background-color: #f2f2f2;
+  color: #6c8fa7;
 }
 .login-container button:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
@@ -67,42 +77,27 @@
 }
 
 @media only screen and (max-width: 420px) {
-  .login-container {
+  .container-login {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 3rem auto;
-    width: 100%;
-    font-weight: 400;
-    font-size: 0.7rem;
+    justify-content: center;
+    max-width: 420px;
+    min-height: fit-content;
+    margin: 0;
+    padding: 0;
+  }
+  .login-container {
+    margin: 0;
+    padding: 0;
   }
   .login-container h3 {
+    font-size: 1rem;
     color: #6c8fa7;
     text-transform: uppercase;
   }
-  .login-header {
-    padding: 0;
-  }
-  .login-container input {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    border: 0.01rem solid #6c8fa7;
-    border-radius: 0.4rem;
-    background-color: #f2f2f2;
-    padding: 0.9rem;
-    margin-top: 0.5rem;
-    color: #6c8fa7;
-  }
   .login-container input::placeholder {
     color: #6c8fa7;
-  }
-  .login-container button {
-    width: 100%;
-    border-radius: 0.3rem;
-    background-color: #6c8fa7;
-    color: #f2f2f2;
   }
   .google-login-btn {
     border-top: 0.5px solid #6c8fa776;

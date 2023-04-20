@@ -25,7 +25,7 @@ nav {
 }
 .nav-links {
   display: flex;
-  width: 40%;
+  width: 50%;
   justify-content: left;
 }
 .nav-links a {
@@ -45,20 +45,32 @@ nav {
 .login-register {
   display: flex;
   flex-direction: row;
-  font-size: 0.7rem;
+  justify-content: right;
+  align-items: center;
+  width: 60%;
+  gap: 0.5rem;
+}
+.login-register p {
+  display: flex;
+  font-size: min(0.8vw, 14px);
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  width: 50%;
-  justify-content: right;
+}
+.nav-icons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
 .nav-icons {
-  font-size: 1.3rem;
+  font-size: min(1.5vw, 20px);
   display: flex;
   flex-direction: row;
-  justify-content: right;
-  width: 50%;
+  justify-content: flex-end;
+  height: fit-content;
   color: #f2f2f2;
+  width: 50%;
 }
 .nav-icons a {
   color: #f2f2f2;
@@ -79,7 +91,7 @@ nav {
   border-radius: 100%;
   width: 1.2rem;
   height: 1.2rem;
-  margin-left: -2rem;
+  margin-left: -1.5rem;
 }
 .logotype-nav {
   display: flex;
@@ -91,8 +103,20 @@ nav {
   color: #f2f2f2;
   width: 10%;
 }
+.logotype-nav h5 {
+  font-size: min(1.2vw, 18px);
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}
 .logotype-nav p {
-  font-size: 7px;
+  font-size: min(1vw, 18px);
+  text-align: center;
+  display: flex;
+  width: max-content;
+  flex-direction: column;
 }
 .logotype {
   background-color: whitesmoke;
@@ -114,14 +138,14 @@ nav {
   visibility: hidden;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1350px) {
   nav {
     background-color: #6c8fa7;
     position: sticky;
     top: 0;
     height: 6rem;
     color: #f2f2f2;
-    max-width: 100%;
+    width: 100%;
   }
   .navbar {
     visibility: hidden;

@@ -23,7 +23,7 @@ footer ul li {
 footer input {
   width: 13rem;
   border: 0.01rem solid #f2f2f2;
-  border-radius: 0.4rem;
+  border-radius: 2rem;
   background-color: #6c8fa7;
   padding: 0.9rem;
   margin-top: 0.5rem;
@@ -32,10 +32,18 @@ footer input {
 footer input::placeholder {
   color: #f2f2f2;
 }
-footer button {
-  padding: 0.9rem 1.5rem;
-  margin-top: 0.9rem;
-  border-radius: 0.5rem;
+.login-btn-container-footer {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+.login-btn-footer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1rem;
+  border-radius: 2rem;
   background-color: #6c8fa7;
   color: #f2f2f2;
   text-transform: uppercase;
@@ -43,8 +51,14 @@ footer button {
   font-weight: 600;
   font-size: 0.7rem;
   transition: filter 250ms ease;
+  width: 99%;
 }
-footer button:is(:hover, :focus) {
+.login-btn-footer:hover {
+  background-color: #f2f2f2;
+  color: #6c8fa7;
+  border: 0.01rem solid #f2f2f2;
+}
+.login-btn-footer:is(:hover, :focus) {
   filter: grayscale(0%) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
 .footer-container {
@@ -75,6 +89,10 @@ footer button:is(:hover, :focus) {
   align-items: left;
   width: 100%;
 }
+.footer-col-3 {
+  display: flex;
+  align-items: center;
+}
 .reg-footer {
   font-size: 0.7rem;
   color: #f2f2f2;
@@ -95,9 +113,12 @@ footer button:is(:hover, :focus) {
 
 @media only screen and (max-width: 900px) {
   footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 0rem;
-    margin: 0 auto;
+    padding-top: 1rem;
     z-index: 5;
   }
   footer h3 {
@@ -105,7 +126,7 @@ footer button:is(:hover, :focus) {
     text-align: center;
     text-transform: uppercase;
     color: #f2f2f2;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   footer ul li {
     text-align: center;
@@ -144,6 +165,21 @@ footer button:is(:hover, :focus) {
     display: flex;
     height: fit-content;
     align-items: center;
+  }
+  .logotype-footer h1 {
+    font-size: max(1.5vw, 24px);
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+  }
+  .logotype-footer p {
+    font-size: max(1vw, 18px);
+    text-align: center;
+    display: flex;
+    width: max-content;
+    flex-direction: column;
   }
   .footer-copy {
     width: 100%;

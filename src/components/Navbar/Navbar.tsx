@@ -1,11 +1,14 @@
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
+import LogoutButton from "src/components/LogoutButton/LogoutButton";
 import fastfood from "src/images/placeholder-img/fastfood.svg";
 
 import type React from "react";
 
 import { useShoppingCart } from "Src/context/ShoppingCartContex";
+import { UserContext } from "Src/context/UserContextProvider";
 
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import SideBar from "../Sidebar/Sidebar";
@@ -36,6 +39,7 @@ const links = [
 
 export default function Navbar({ children }: Props) {
   const { cartQuantity } = useShoppingCart();
+  const { userRole } = useContext(UserContext);
 
   return (
     <>
@@ -57,11 +61,18 @@ export default function Navbar({ children }: Props) {
           </div>
           <div className="nav-icons">
             <div className="login-register">
-              <Link to="/">
-                <p>Logga in / Skapa konto</p>
-              </Link>
+              {userRole ? (
+                <>
+                  <p>Du är inloggad</p>
+                  <LogoutButton />
+                </>
+              ) : (
+                <Link to="/">
+                  <p>Logga in / Skapa konto</p>
+                </Link>
+              )}
             </div>
-            <div>
+            <div className="nav-icons-container">
               <Link to="/Chef">
                 <Button>
                   <i className="bi bi-shop-window nav-icons" />
@@ -73,7 +84,9 @@ export default function Navbar({ children }: Props) {
                   <div className="cart-count">{cartQuantity}</div>
                 </Button>
               )}
-              <SideBar />
+              <div className="nav-sidebar-icon">
+                <SideBar />
+              </div>
             </div>
           </div>
         </div>

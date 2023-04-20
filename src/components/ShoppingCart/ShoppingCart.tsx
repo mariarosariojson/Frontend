@@ -7,7 +7,7 @@ import { CartItem } from "src/components/CartItem/CartItem";
 import { formatCurrency } from "src/utilities/FormatCurrency";
 
 import type { Anchor } from "react-bootstrap";
-import type { Order, Product } from "Src/api/Dto";
+import type { Order, Product, User } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 import { addOrder } from "Src/api/Order";
@@ -26,6 +26,7 @@ export default function ShoppingCart() {
   const [state, setState] = React.useState({
     right: false
   });
+  const [user, setUser] = useState<User[]>([]);
   const { cartItems } = useShoppingCart();
 
   useEffect(() => {
@@ -59,7 +60,7 @@ export default function ShoppingCart() {
 
     const newOrder = {
       totalAmount: calculateTotalAmount(),
-      userId: 1,
+      userId: 2,
       orderStatus: OrderStatus.Created,
       orderLines
     };
