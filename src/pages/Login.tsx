@@ -20,7 +20,7 @@ export default function Login() {
   const [kitchen, setKitchen] = useState<Kitchen>();
   const [kitchenIsLoading, setKitchenIsLoading] = useState(false);
   const [user, setUser] = useState({ email: "", code: "" });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [, setIsLoggedIn] = useState(false);
 
   const { setUserRole } = useContext(UserContext);
 
