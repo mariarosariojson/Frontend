@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import LogoutButton from "src/components/LogoutButton/LogoutButton";
+import { UserContext } from "src/context/UserContextProvider";
 import fastfood from "src/images/placeholder-img/fastfood.svg";
 
 import SideBar from "../Sidebar/Sidebar";
@@ -6,6 +9,8 @@ import SideBar from "../Sidebar/Sidebar";
 import "src/css/Navbar.css";
 
 export default function NavbarMobile() {
+  const { userRole } = useContext(UserContext);
+
   return (
     <div className="nav-mobile">
       <div className="header-icons-1">
@@ -20,9 +25,13 @@ export default function NavbarMobile() {
       </div>
       <section className="header-icons-1">
         <div className="icon-2">
-          <Link className="link-icon" to="/">
-            <i className="bi bi-person-circle" />
-          </Link>
+          {userRole ? (
+            <LogoutButton />
+          ) : (
+            <Link className="link-icon" to="/">
+              <i className="bi bi-person-circle" />
+            </Link>
+          )}
         </div>
         <div className="icon-3">
           <Link className="link-icon" to="/Sidebar">

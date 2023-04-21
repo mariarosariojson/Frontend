@@ -9,7 +9,7 @@
   justify-content: center;
   position: fixed;
   bottom: 3.7rem;
-  width: 100%;
+  min-width: 100%;
 }
 .count {
   font-style: normal;
@@ -25,11 +25,11 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   margin: 0 auto;
-  width: 90%;
+  min-width: 90%;
   color: #f2f2f2;
   transition: filter 250ms ease;
   background-color: #6c8fa7;
-  visibility: hidden;
+  visibility: collapse;
 }
 .drawer-btn:hover,
 .drawer-btn a:hover {
@@ -79,7 +79,13 @@
   font-weight: 900;
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 430px) {
+  html {
+    overflow-x: hidden;
+    max-width: 420px;
+    padding: 0;
+    margin: 0;
+  }
   .swipeable-drawer-puller {
     visibility: visible;
   }

@@ -111,9 +111,8 @@ footer input::placeholder {
   margin: -3rem auto;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 800px) {
   footer {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;

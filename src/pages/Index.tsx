@@ -26,12 +26,16 @@ export default function Index() {
               </p>
             </div>
             <div className="hero-btns">
-              <Link to="/Food">
-                <Button className="hero-btn">Maträtter</Button>
-              </Link>
-              <Link to="/contact">
-                <Button className="hero-btn">Kontakta oss</Button>
-              </Link>
+              <div>
+                <Link to="/Food">
+                  <Button className="hero-btn-1">Maträtter</Button>
+                </Link>
+              </div>
+              <div>
+                <Link to="/contact">
+                  <Button className="hero-btn-2">Kontakta oss</Button>
+                </Link>
+              </div>
             </div>
           </div>
           <div className="hero-img">
@@ -39,7 +43,9 @@ export default function Index() {
           </div>
         </section>
       </Box>
-      <FoodList />
+        <div className="foodlist-container">
+          <FoodList />
+        </div>
     </>
   );
 }

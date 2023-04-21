@@ -76,7 +76,13 @@
   margin-top: 3rem;
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 430px) {
+  html {
+    overflow-x: hidden;
+    max-width: 420px;
+    padding: 0;
+    margin: 0;
+  }
   .container-login {
     display: flex;
     flex-direction: column;
