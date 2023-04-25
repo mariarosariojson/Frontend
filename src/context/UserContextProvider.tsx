@@ -10,6 +10,7 @@ interface UserContextType {
   setUserRole: (role: User | null) => void;
   logout: () => void;
   isLoggedIn: User | null;
+  userId: number | null;
 }
 
 const UserContext = createContext<UserContextType>({} as UserContextType);
@@ -40,8 +41,9 @@ export function UserContextProvider({ children }: { children: React.ReactNode })
   }, []);
 
   const adminOnly = userRole?.userType === UserType.Admin;
+  const userId = userRole?.userId ?? null;
 
-  return <UserContext.Provider value={{ userRole, adminOnly, setUserRole, logout, isLoggedIn }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ userRole, adminOnly, setUserRole, logout, isLoggedIn, userId }}>{children}</UserContext.Provider>;
 }
 
 export { UserContext };

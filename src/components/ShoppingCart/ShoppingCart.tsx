@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Box, Button, IconButton, List, Stack, SwipeableDrawer } from "@mui/material";
 import ListItem from "@mui/material/ListItem";
@@ -7,12 +7,13 @@ import { CartItem } from "src/components/CartItem/CartItem";
 import { formatCurrency } from "src/utilities/FormatCurrency";
 
 import type { Anchor } from "react-bootstrap";
-import type { Order, Product, User } from "Src/api/Dto";
+import type { Order, Product } from "Src/api/Dto";
 
 import { OrderStatus } from "Src/api/Enums";
 import { addOrder } from "Src/api/Order";
 
 import { useShoppingCart } from "Src/context/ShoppingCartContex";
+import { UserContext } from "Src/context/UserContextProvider";
 
 import "src/css/ShoppingCart.css";
 
@@ -26,8 +27,8 @@ export default function ShoppingCart() {
   const [state, setState] = React.useState({
     right: false
   });
-  const [user, setUser] = useState<User[]>([]);
   const { cartItems } = useShoppingCart();
+  const { userRole } = useContext(UserContext);
 
   useEffect(() => {
     setOrderIsLoading(true);
@@ -60,7 +61,7 @@ export default function ShoppingCart() {
 
     const newOrder = {
       totalAmount: calculateTotalAmount(),
-      userId: 2,
+      userId: userRole?.userId || 0,
       orderStatus: OrderStatus.Created,
       orderLines
     };

@@ -15,7 +15,9 @@ export default function Food() {
   return (
     <>
       <Helmet title="Food" />
-      <FoodList />
+      <div className="food-list">
+        <FoodList />
+      </div>
     </>
   );
 }

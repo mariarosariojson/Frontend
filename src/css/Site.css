@@ -12,6 +12,7 @@
 }
 body {
   background-color: whitesmoke;
+  width: 100%;
 }
 a {
   text-decoration: none;
@@ -95,8 +96,12 @@ h5 {
 }
 
 @media only screen and (max-width: 430px) {
-  html {
-    overflow: hidden;
+  nav {
+    max-width: 100%;
+  }
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 0;
     margin: 0;
   }
@@ -105,37 +110,52 @@ h5 {
   }
   .food-mobile-section {
     display: flex;
-    margin-top: -12rem;
+    margin-top: 2rem;
   }
   .food-container-mobile {
     display: flex;
     align-content: center;
-    margin: 0 auto;
     width: fit-content;
-    height: fit-content;
+  }
+  .hero-img {
+    visibility: collapse;
   }
   .hero-container {
     display: flex;
     flex-direction: column;
+    width: min-content;
     justify-content: center;
+    max-height: 10rem;
+    margin-left: 3rem;
+  }
+  .foodlist-container {
+    margin-left: 2rem;
+  }
+  .food-list {
+    display: flex;
+    margin-top: 2rem;
+    flex-direction: column;
+    margin-left: 2rem;
   }
   .hero-greeting {
-    padding: 0;
-    width: fit-content;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 5rem auto;
   }
   .hero-title h1 {
+    display: flex;
     font-size: max(1.5rem, 15px);
-    text-align: center;
+    width: fit-content;
   }
   .hero-title h5 {
     font-size: max(1rem, 10px);
     text-align: center;
+    width: fit-content;
   }
   .hero-btns {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    width: 100%;
     margin-top: -4rem;
     gap: 1rem;
   }

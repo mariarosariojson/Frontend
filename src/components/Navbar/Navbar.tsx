@@ -26,25 +26,10 @@ interface Props {
   children: React.ReactNode;
 }
 
-// const links = [
-//   {
-//     display: "Hem",
-//     path: "/Home"
-//   },
-//   {
-//     display: "Maträtter",
-//     path: "/Food"
-//   },
-//   {
-//     display: "Kontakt",
-//     path: "/Contact"
-//   }
-// ];
-
 export default function Navbar({ children }: Props) {
   const { cartQuantity } = useShoppingCart();
   const { userRole } = useContext(UserContext);
-  const [user, setUser] = useState<User | null>(null);
+  const [, setUser] = useState<User | null>(null);
   const [, setUserIsLoading] = useState(true);
 
   useEffect(() => {
@@ -86,19 +71,8 @@ export default function Navbar({ children }: Props) {
       path: ""
     }
   ];
-  // const emptyLinks = [
-  //   {
-  //     display: "",
-  //     path: ""
-  //   },
-  //   {
-  //     display: "",
-  //     path: ""
-  //   }
-  // ];
 
   const links = userRole?.userType === UserType.Admin ? adminLinks : customerLinks;
-  // const emptyLink = useRole ? (userType === UserType.User) | null : emptyLinks;
 
   return (
     <>

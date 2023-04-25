@@ -25,7 +25,21 @@ export default function Closed() {
     const orderPath = `/api/Order/`;
     const productPath = `/api/Product/`;
     axios.get(orderPath).then((response) => {
-      setOrder(response.data);
+      const allOrders = response.data;
+      const closedOrders = allOrders.filter((order: any) => order.orderStatus === OrderStatus.Closed);
+      const oldClosedOrders = closedOrders.filter((order: any) => {
+        const now = new Date();
+        const closedDate = new Date(order.closed);
+        const diff = now.getTime() - closedDate.getTime();
+        const hours = diff / 1000 / 60 / 60;
+        return hours > 48;
+      });
+      oldClosedOrders.forEach((order: any) => {
+        axios.delete(`${orderPath}${order.orderId}`).then(() => {
+          console.log(`Order ${order.orderId} deleted`);
+        });
+      });
+      setOrder(allOrders);
       setOrderIsLoading(false);
     });
     axios.get(productPath).then((response) => {
