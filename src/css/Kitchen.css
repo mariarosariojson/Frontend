@@ -51,9 +51,9 @@
   display: flex;
   flex-direction: row;
   cursor: pointer;
-  padding: 0.5rem 0.6rem;
+  padding: 1rem;
   border: 0.07rem solid #6c8fa7;
-  border-radius: 2%;
+  border-radius: 0.5rem;
   font-weight: 800;
   font-size: 0.9rem;
   text-transform: uppercase;

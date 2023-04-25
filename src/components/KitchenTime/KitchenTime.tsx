@@ -23,6 +23,10 @@ export default function KitchenTime({ kitchen }: KitchenTimeProps) {
     axios.put(`/api/Kitchen/${kitchenTime.kitchenId}`, kitchenTime);
   };
 
+  const buttonClass = kitchenStatus === KitchenStatus.Open ? "kitchen-btn kitchen-close-btn" : "kitchen-btn kitchen-open-btn";
+
+  const buttonText = kitchenStatus === KitchenStatus.Open ? "Stäng restaurangen" : "Öppna restaurangen";
+
   return (
     <>
       <Helmet title="Kitchen" />
@@ -32,15 +36,8 @@ export default function KitchenTime({ kitchen }: KitchenTimeProps) {
             <b>Restaurangen är {kitchenStatus === KitchenStatus.Open ? "öppen!" : "tyvärr stängd."}</b>
           </div>
           <br />
-          <button className="kitchen-btn kitchen-open-btn" type="button" onClick={toggleKitchenStatus}>
-            Öppna
-            <br />
-            restaurangen
-          </button>
-          <button className="kitchen-btn kitchen-close-btn" type="button" onClick={toggleKitchenStatus}>
-            Stäng
-            <br />
-            restaurangen
+          <button className={buttonClass} type="button" onClick={toggleKitchenStatus}>
+            {buttonText}
           </button>
         </div>
       </Box>
