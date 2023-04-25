@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 import axios from "axios";
 import LogoutButton from "src/components/LogoutButton/LogoutButton";
+import AccountMenu from "src/components/StatusBanner/StatusBanner";
 import fastfood from "src/images/placeholder-img/fastfood.svg";
 
 import type React from "react";
@@ -16,7 +17,6 @@ import { UserContext } from "Src/context/UserContextProvider";
 
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import SideBar from "../Sidebar/Sidebar";
-import AccountMenu from "../UserMenu/UserMenu";
 
 import NavbarMobile from "./NavbarMobile";
 

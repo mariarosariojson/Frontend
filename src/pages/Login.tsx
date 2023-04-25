@@ -55,11 +55,6 @@ export default function Login() {
       }
     });
   };
-  const logout = () => {
-    sessionStorage.removeItem("user");
-    setIsLoggedIn(false);
-    window.location.replace("/");
-  };
 
   useEffect(() => {
     setKitchenIsLoading(true);
@@ -101,11 +96,6 @@ export default function Login() {
               <button className="login-btn" type="submit">
                 Logga in
               </button>
-            </div>
-            <div>
-              {/* <button className="logout-btn" type="button" onClick={logout}>
-                Logga ut
-              </button> */}
             </div>
             <div className="google-login-btn">
               <GoogleLoginButton />

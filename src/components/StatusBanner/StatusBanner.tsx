@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext,useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Global } from "@emotion/react";
 import LinearProgress from "@mui/joy/LinearProgress";
@@ -19,8 +19,9 @@ import { OrderStatus } from "Src/api/Enums";
 import { addOrder } from "Src/api/Order";
 
 import { useShoppingCart } from "Src/context/ShoppingCartContex";
+import { UserContext } from "Src/context/UserContextProvider";
 
-import "src/css/UserMenu.css";
+import "src/css/StatusBanner.css";
 
 const drawerBleeding = 56;
 
@@ -60,6 +61,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
   const [currentUserOrders, setCurrentUserOrders] = useState<Order[]>([]);
   const { cartItems } = useShoppingCart();
   const [, setProgress] = useState(0);
+  const { userRole } = useContext(UserContext);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -96,7 +98,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
     });
   }, []);
 
-  const userId = 2; // remember to replace with the actual userId of the logged-in user
+  const userId = userRole?.userId || 0;
   useEffect(() => {
     setOrderIsLoading(true);
     const orderPath = `/api/Order/`;
