@@ -68,9 +68,7 @@ export default function ShoppingCart() {
 
     try {
       await addOrder(newOrder);
-
       localStorage.removeItem("shopping-cart");
-
       window.location.replace("/OrderComplete");
     } catch (error) {
       // eslint-disable-next-line no-console

@@ -63,7 +63,7 @@ export default function FoodItem({ product }: FoodItemProps) {
             <CardOverflow className="card-section">
               <AspectRatio ratio="1.5">
                 <Link to={`/FoodProduct/${product.productId}`}>
-                  <img alt="image" loading="lazy" src={product.imageUrl} />
+                  <img alt={`Image of ${product.name}`} loading="lazy" src={product.imageUrl} />
                 </Link>
               </AspectRatio>
               <IconButton
@@ -101,11 +101,6 @@ export default function FoodItem({ product }: FoodItemProps) {
                     <Button className="food-card-btn add-to-cart" onClick={() => increaseCartQuantity(product.productId)}>
                       <i className="bi bi-basket" />
                     </Button>
-                    {/* <button className="place-order-btn stripe-btn" type="button">
-                          <a href="https://buy.stripe.com/test_14kaGofVN2if7ugdQU">
-                            <p>Quick checkout</p>
-                          </a>
-                        </button> */}
                   </>
                 ) : (
                   <>

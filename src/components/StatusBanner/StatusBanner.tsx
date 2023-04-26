@@ -1,4 +1,4 @@
-import { useContext,useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Global } from "@emotion/react";
 import LinearProgress from "@mui/joy/LinearProgress";
@@ -41,7 +41,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 const Puller = styled(Box)(({ theme }) => ({
   width: 30,
   height: 6,
-  backgroundColor: theme.palette.mode === "light" ? grey[300] : grey[900],
+  backgroundColor: theme.palette.mode === "light" ? "#6c8fa7" : grey[900],
   borderRadius: 3,
   position: "absolute",
   top: 8,
@@ -193,7 +193,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
             <Puller className="swipeable-drawer-puller" />
             {currentUserOrders.length > 0 && (
               <Typography sx={{ p: 2, color: "text.secondary", textAlign: "left" }}>
-                <div />
+                <div>{currentUserOrders.length === 0 && <b>Ingen aktiv order</b>}</div>
                 <span>
                   {currentUserOrders[0].orderStatus === OrderStatus.Created && (
                     <Box
