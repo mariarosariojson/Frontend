@@ -73,7 +73,7 @@ export default function Login() {
           {kitchenIsLoading ? (
             <LinearProgress thickness={1} />
           ) : (
-            <div id="kitchen-status">
+            <div className="kitchen-status-info">
               <h3>
                 <KitchenState kitchen={kitchen} />
               </h3>
