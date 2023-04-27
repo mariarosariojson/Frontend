@@ -222,7 +222,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
                       }}
                     >
                       <p className="order-status-p">Tillagas</p>
-                      <LinearProgress color="neutral" thickness={2} value={50} />
+                      <LinearProgress color="neutral" thickness={1} value={50} />
                     </Box>
                   )}
                   {currentUserOrders[0].orderStatus === OrderStatus.Done && (
