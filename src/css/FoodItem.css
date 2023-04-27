@@ -132,12 +132,28 @@
 .card-desktop {
   margin: 0 auto;
 }
+.order-status-p {
+  font-weight: 900;
+  font-size: 0.6rem;
+  color: #838383;
+}
+.order-status-banner {
+  font-weight: 900;
+  font-size: 1rem;
+  color: #6c8fa7;
+}
 
 @media only screen and (max-width: 420px) {
   .card-mobile {
     visibility: visible;
+    margin-left: -0.8rem;
   }
   .card-desktop {
     visibility: hidden;
+  }
+  .icon-checkout-btn {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
   }
 }

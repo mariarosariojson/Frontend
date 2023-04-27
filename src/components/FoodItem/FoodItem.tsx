@@ -97,11 +97,9 @@ export default function FoodItem({ product }: FoodItemProps) {
               </Typography>
               <div className="food-card-btn-container">
                 {quantity === 0 ? (
-                  <>
-                    <Button className="food-card-btn add-to-cart" onClick={() => increaseCartQuantity(product.productId)}>
-                      <i className="bi bi-basket" />
-                    </Button>
-                  </>
+                  <Button className="food-card-btn add-to-cart" onClick={() => increaseCartQuantity(product.productId)}>
+                    <i className="bi bi-basket" />
+                  </Button>
                 ) : (
                   <>
                     <Button className="food-card-btn food-card-remove-btn" onClick={() => removeFromCart(product.productId)}>

@@ -22,6 +22,7 @@
   padding: 0.9rem;
   margin-top: 0.7rem;
   color: #6c8fa7;
+  font-weight: 600;
 }
 .login-container input::placeholder {
   color: #6c8fa7;
@@ -89,9 +90,16 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: fit-content;
-    margin: 0;
+    margin-top: -7rem;
     padding: 0;
+  }
+  .login-container input {
+    width: 18rem;
+    height: 3.5rem;
+  }
+  .login-container input::placeholder {
+    color: #6c8fa7;
+    font-weight: 500;
   }
   .login-container {
     margin: 0;
@@ -109,5 +117,8 @@
     border-top: 0.5px solid #6c8fa776;
     width: 100%;
     margin: 3rem auto;
+  }
+  .reg-nav-text {
+    margin-top: -4.5rem;
   }
 }

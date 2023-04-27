@@ -23,7 +23,6 @@ export default function KitchenCode({ kitchen }: KitchenTimeProps) {
     const kitchenCode = { ...kitchen, code: data };
     axios.put(`/api/Kitchen/${kitchenCode.kitchenId}`, kitchenCode).then((res) => {
       return res;
-      //  console.log(res.status, res.data.token);
     });
   };
 

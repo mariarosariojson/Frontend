@@ -48,7 +48,8 @@ export default function FoodCardMobile({ product }: FoodItemProps) {
           <Card
             orientation="horizontal"
             sx={{
-              width: 320,
+              width: 350,
+              height: 143,
               gap: 2,
               "&:hover": { boxShadow: "md", borderColor: "neutral.outlinedHoverBorder" },
               backgroundColor: "#f2f2f2",
@@ -57,9 +58,9 @@ export default function FoodCardMobile({ product }: FoodItemProps) {
             }}
             variant="outlined"
           >
-            <AspectRatio ratio="0.9" sx={{ width: 90 }}>
+            <AspectRatio ratio="0.9" sx={{ width: 100 }}>
               <Link to={`/FoodProduct/${product.name}`}>
-                <img alt={product.imageUrl} loading="lazy" src="" srcSet={product.imageUrl} />
+                <img alt={product.imageUrl} className="food-card-image" loading="lazy" src="" srcSet={product.imageUrl} />
               </Link>
             </AspectRatio>
             <IconButton
@@ -78,7 +79,7 @@ export default function FoodCardMobile({ product }: FoodItemProps) {
             </IconButton>
             <div>
               <Link to={`/FoodProduct/${product.productId}`}>
-                <Typography fontSize="14px" id="card-description" level="h2" mb={0.5}>
+                <Typography className="food-card-name" fontSize="15px" id="card-description" level="h2" mb={0.5}>
                   {product.name}
                 </Typography>
               </Link>
