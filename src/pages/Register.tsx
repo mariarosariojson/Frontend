@@ -20,7 +20,6 @@ export default function Register() {
     e.preventDefault();
     axios.post(`/api/User`, { firstName, lastName, email }).then((response) => {
       return response;
-      // console.log(response.status);
     });
   };
 
@@ -45,12 +44,12 @@ export default function Register() {
               </section>
               <section className="input-2">
                 <input required name="email" placeholder="E-mailadress" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              </section>
-              <section className="input-3">
-                <UserTypeButton />
+                <section className="input-3">
+                  <UserTypeButton />
+                </section>
               </section>
             </div>
-            <section className="input-3">
+            <section className="input-4">
               <button className="register-btn" type="submit">
                 Spara
               </button>

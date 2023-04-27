@@ -157,131 +157,131 @@ export default function SwipeableEdgeDrawer(props: Props) {
             }
           }}
         />
-        {currentUserOrders.length > 0 && (
-          <Box className="bottom-drawer">
-            <button className="drawer-btn" type="button" onClick={toggleDrawer(true)}>
-              {cartQuantity > 0 && (
-                <i className="bi bi-basket checkout-count">
-                  <span className="count">{cartQuantity}</span>
-                </i>
-              )}
-              Din kundvagn
-            </button>
-          </Box>
-        )}
-        <SwipeableDrawer
-          ModalProps={{
-            keepMounted: true
-          }}
-          anchor="bottom"
-          container={container}
-          disableSwipeToOpen={false}
-          open={open}
-          swipeAreaWidth={drawerBleeding}
-          onClose={toggleDrawer(false)}
-          onOpen={toggleDrawer(true)}
-        >
-          <StyledBox
-            sx={{
-              position: "absolute",
-              top: -drawerBleeding,
-              borderTopLeftRadius: 8,
-              borderTopRightRadius: 8,
-              visibility: "visible",
-              right: 0,
-              left: 0
-            }}
-          >
-            {currentUserOrders.length > 0 && (
-              <>
+        {cartItems.length > 0 && (
+          <>
+            <Box className="bottom-drawer">
+              <button className="drawer-btn" type="button" onClick={toggleDrawer(true)}>
+                {cartQuantity > 0 && (
+                  <i className="bi bi-basket checkout-count">
+                    <span className="count">{cartQuantity}</span>
+                  </i>
+                )}
+                Din kundvagn
+              </button>
+            </Box>
+            <SwipeableDrawer
+              ModalProps={{
+                keepMounted: true
+              }}
+              anchor="bottom"
+              container={container}
+              disableSwipeToOpen={false}
+              open={open}
+              swipeAreaWidth={drawerBleeding}
+              onClose={toggleDrawer(false)}
+              onOpen={toggleDrawer(true)}
+            >
+              <StyledBox
+                sx={{
+                  position: "absolute",
+                  top: -drawerBleeding,
+                  borderTopLeftRadius: 8,
+                  borderTopRightRadius: 8,
+                  visibility: "visible",
+                  right: 0,
+                  left: 0
+                }}
+              >
                 <Puller className="swipeable-drawer-puller" />
                 <Typography sx={{ py: 3.9, px: 3 }}>
                   <b className="order-status-banner">Orderstatus</b>
                   <Typography />
-                  <span>
-                    {currentUserOrders[0].orderStatus === OrderStatus.Created && (
-                      <Box
-                        sx={{
-                          width: "95%",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 1
-                        }}
-                      >
-                        <p className="order-status-p">Skapad</p>
-                        <LinearProgress determinate color="neutral" thickness={2} value={5} />
-                      </Box>
-                    )}
-                    {currentUserOrders[0].orderStatus === OrderStatus.Confirmed && (
-                      <Box
-                        sx={{
-                          width: "95%",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 1
-                        }}
-                      >
-                        <p className="order-status-p">Tillagas</p>
-                        <LinearProgress color="neutral" thickness={2} value={50} />
-                      </Box>
-                    )}
-                    {currentUserOrders[0].orderStatus === OrderStatus.Done && (
-                      <Box
-                        sx={{
-                          width: "95%",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 1
-                        }}
-                      >
-                        <p className="order-status-p">Klar för upphämtning</p>
-                        <i className="bi bi-check-circle-fill" />
-                      </Box>
-                    )}
-                  </span>
+                  {currentUserOrders.length > 0 && (
+                    <span>
+                      {currentUserOrders[0].orderStatus === OrderStatus.Created && (
+                        <Box
+                          sx={{
+                            width: "95%",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1
+                          }}
+                        >
+                          <p className="order-status-p">Skapad</p>
+                          <LinearProgress determinate color="neutral" thickness={2} value={5} />
+                        </Box>
+                      )}
+                      {currentUserOrders[0].orderStatus === OrderStatus.Confirmed && (
+                        <Box
+                          sx={{
+                            width: "95%",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1
+                          }}
+                        >
+                          <p className="order-status-p">Tillagas</p>
+                          <LinearProgress color="neutral" thickness={2} value={50} />
+                        </Box>
+                      )}
+                      {currentUserOrders[0].orderStatus === OrderStatus.Done && (
+                        <Box
+                          sx={{
+                            width: "95%",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1
+                          }}
+                        >
+                          <p className="order-status-p">Klar för upphämtning</p>
+                          <i className="bi bi-check-circle-fill" />
+                        </Box>
+                      )}
+                    </span>
+                  )}
                 </Typography>
-              </>
-            )}
-          </StyledBox>
-          <StyledBox
-            className="drawer-content"
-            sx={{
-              px: 1,
-              pb: 2,
-              height: "100%",
-              overflow: "auto",
-              mt: -1.7
-            }}
-          >
-            <List>
-              {cartItems.length > 0 ? (
-                <>
-                  <ListItem>
-                    <Stack gap={3}>
-                      {cartItems.map((item) => (
-                        <CartItem key={item.id} {...item} />
-                      ))}
-                    </Stack>
-                  </ListItem>
-                  <ListItem>
-                    <div className="place-order-drawer">
-                      <Button className="place-order-btn" type="button" onClick={placeOrder}>
-                        Skicka beställning
-                        <div className="icon-checkout-btn">
-                          <i className="bi bi-arrow-right-circle" />
+              </StyledBox>
+              <StyledBox
+                className="drawer-content"
+                sx={{
+                  px: 1,
+                  pb: 2,
+                  height: "100%",
+                  overflow: "auto",
+                  mt: -1.7
+                }}
+              >
+                <List>
+                  {cartItems.length > 0 ? (
+                    <>
+                      <ListItem>
+                        <Stack gap={3}>
+                          {cartItems.map((item) => (
+                            <CartItem key={item.id} {...item} />
+                          ))}
+                        </Stack>
+                      </ListItem>
+                      <ListItem>
+                        <div className="place-order-drawer">
+                          <Button className="place-order-btn" type="button" onClick={placeOrder}>
+                            Skicka beställning
+                            <div className="icon-checkout-btn">
+                              <i className="bi bi-arrow-right-circle" />
+                            </div>
+                          </Button>
                         </div>
-                      </Button>
+                      </ListItem>
+                    </>
+                  ) : (
+                    <div className="empty-cart-message">
+                      <p>Din kundvagn är tom!</p>
                     </div>
-                  </ListItem>
-                </>
-              ) : (
-                <div className="empty-cart-message">
-                  <p>Din kundvagn är tom!</p>
-                </div>
-              )}
-            </List>
-          </StyledBox>
-        </SwipeableDrawer>
+                  )}
+                </List>
+              </StyledBox>
+            </SwipeableDrawer>
+          </>
+        )}
       </Root>
     </>
   );

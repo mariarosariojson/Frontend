@@ -94,7 +94,7 @@ export default function ShoppingCart() {
         <div className="shopping-cart-header">
           <h2>
             <i className="bi bi-cart-plus-fill" />
-            Kundvagn
+            <span className="settings-header">Kundvagn</span>
           </h2>
         </div>
         <br />

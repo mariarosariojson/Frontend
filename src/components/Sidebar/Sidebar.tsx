@@ -24,12 +24,12 @@ export default function SideBar() {
   };
 
   const list = (_: Anchor) => (
-    <Box className="sidebar" role="presentation" sx={{ width: "auto", minHeight: "230%", overflow: "auto" }}>
+    <Box className="sidebar" role="presentation" sx={{ width: "auto", minHeight: "280%", overflow: "auto" }}>
       <List>
         <div className="sidebar-cart-header">
           <h2>
             <i className="bi bi-gear-wide-connected" />
-            Inställningar
+            <span className="settings-header">Inställningar</span>
           </h2>
         </div>
       </List>
