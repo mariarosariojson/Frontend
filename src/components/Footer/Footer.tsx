@@ -60,12 +60,12 @@ export default function Footer() {
               <li>
                 <b>Måndag - Fredag</b>
               </li>
-              <li>9:00 - 19:00</li>
+              <li>10:00 - 19:00</li>
               <br />
               <li>
                 <b>Lördag - Söndag</b>
               </li>
-              <li>11:00 - 18:00</li>
+              <li>10:00 - 17:00</li>
             </ul>
           </section>
           <section className="footer-col-2">
@@ -77,21 +77,21 @@ export default function Footer() {
               </li>
               <li>
                 <p>
-                  En gata 12
+                  Saluvägen 5
                   <br />
-                  123 45 Täby
+                  187 66 Täby
                 </p>
               </li>
               <br />
               <li>
                 <b>Telefonummer</b>{" "}
               </li>
-              <li>08-1234 123 456</li>
+              <li>079-306 00 15</li>
               <br />
               <li>
                 <b>Hemsida</b>{" "}
               </li>
-              <li>www.entbrapp.se</li>
+              <li>www.tbr-appen.se</li>
             </ul>
           </section>
           <section className="footer-col-3">

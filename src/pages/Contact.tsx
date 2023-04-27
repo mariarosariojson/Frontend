@@ -22,39 +22,35 @@ export default function Contact() {
 }
 
 function Map() {
-  const center = useMemo(() => ({ lat: 59.29790570266212, lng: 18.082348922490475 }), []);
+  const center = useMemo(() => ({ lat: 59.459701, lng: 18.138355 }), []);
 
   return (
     <>
       <Helmet title="Contact" />
       <Box style={{ overflow: "scroll" }}>
-        <section className="contact-container">
+        <div className="contact-container">
           <GoogleMap center={center} mapContainerClassName="map-container" mapTypeId={google.maps.MapTypeId.TERRAIN} zoom={15}>
             <Marker position={center} />
           </GoogleMap>
           <div className="contact-info">
-            <section className="contact-header">
-              <div>
-                <h1>Kontakta oss</h1>
-              </div>
-            </section>
+            <div className="contact-header">
+              <h1>Kontakta oss</h1>
+            </div>
             <div className="contact-col">
               <div className="contact-col-1">
-                <section>
-                  <ul>
-                    <h1>Öppettider</h1>
-                    <br />
-                    <li>
-                      <b>Måndag - Fredag</b>
-                    </li>
-                    <li>9:00 - 19:00</li>
-                    <br />
-                    <li>
-                      <b>Lördag - Söndag</b>
-                    </li>
-                    <li>11:00 - 18:00</li>
-                  </ul>
-                </section>
+                <ul>
+                  <h2>Öppettider</h2>
+                  <br />
+                  <li>
+                    <b>Måndag - Fredag</b>
+                  </li>
+                  <li>9:00 - 19:00</li>
+                  <br />
+                  <li>
+                    <b>Lördag - Söndag</b>
+                  </li>
+                  <li>11:00 - 18:00</li>
+                </ul>
               </div>
               <div className="contact-col-2">
                 <section>
@@ -64,29 +60,29 @@ function Map() {
                     </li>
                     <li>
                       <p>
-                        En gata 12
+                        Saluvägen 5
                         <br />
-                        123 45 Täby
+                        187 66 Täby
                       </p>
                     </li>
                     <br />
                     <li>
                       <b>Telefonummer</b>
                     </li>
-                    <li>08-1234 123 456</li>
+                    <li>079-306 00 15</li>
                     <br />
                     <li>
                       <b>Hemsida</b>
                     </li>
                     <li>
-                      <a href="#">www.entbrapp.se</a>
+                      <a href="#">www.tbr-appen.se</a>
                     </li>
                   </ul>
                 </section>
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </Box>
     </>
   );

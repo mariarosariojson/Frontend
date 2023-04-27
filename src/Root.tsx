@@ -12,16 +12,16 @@ import "./css/Site.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserContextProvider>
-      <ShoppingCartProvider>
-        <BrowserRouter basename={process.env.BASE_URL}>
+    <BrowserRouter basename={process.env.BASE_URL}>
+      <UserContextProvider>
+        <ShoppingCartProvider>
           <Navbar>
             <Routes />
           </Navbar>
           <Footer />
-        </BrowserRouter>
-      </ShoppingCartProvider>
-    </UserContextProvider>
+        </ShoppingCartProvider>
+      </UserContextProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.querySelector("#root")
 );

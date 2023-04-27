@@ -59,6 +59,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
   const [, setUser] = useState<User[]>([]);
   const [, setUserIsLoading] = useState(false);
   const [currentUserOrders, setCurrentUserOrders] = useState<Order[]>([]);
+  const [orderPlaced, setOrderPlaced] = useState(false);
   const { cartItems } = useShoppingCart();
   const [, setProgress] = useState(0);
   const { userRole } = useContext(UserContext);
@@ -137,7 +138,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
     try {
       await addOrder(newOrder);
       localStorage.removeItem("shopping-cart");
-      // window.location.replace("/OrderComplete");
+      setOrderPlaced(true);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
@@ -242,7 +243,9 @@ export default function SwipeableEdgeDrawer(props: Props) {
               )}
             </Typography>
           </StyledBox>
-          {cartItems.length > 0 && (
+          {orderPlaced ? (
+            <span className="empty-cart-message">Tack för din beställning!</span>
+          ) : (
             <StyledBox
               className="drawer-content"
               sx={{
@@ -265,7 +268,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
                     </ListItem>
                     <ListItem>
                       <div className="place-order-drawer">
-                        <Button className="place-order-btn" type="button" onClick={placeOrder}>
+                        <Button className="place-order-btn-drawer" type="button" onClick={placeOrder}>
                           Skicka beställning
                           <div className="icon-checkout-btn">
                             <i className="bi bi-arrow-right-circle" />
