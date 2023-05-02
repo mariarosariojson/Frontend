@@ -38,12 +38,12 @@ export function FoodList() {
   return (
     <>
       <section className="food-mobile-section">
-        <Grid container columns={{ xs: 1 }} spacing={{ xs: 3 }}>
+        <Grid container alignItems="center" columns={{ xs: 1 }} justifyContent="center" spacing={{ xs: 2 }}>
           {productIsLoading ? (
             <LinearProgress thickness={1} />
           ) : (
             productList.map((product) => (
-              <Grid key={product.productId} md={1} sm={1} xs={1}>
+              <Grid key={product.productId}>
                 <div className="food-container-mobile">
                   <FoodCardMobile product={product} />
                 </div>

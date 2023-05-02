@@ -92,7 +92,7 @@ h5 {
 }
 .food-container-section {
   display: flex;
-  margin-top: -42rem;
+  margin-top: -15rem;
 }
 
 @media only screen and (max-width: 430px) {
@@ -111,11 +111,7 @@ h5 {
   .food-mobile-section {
     display: flex;
     margin-top: 2rem;
-  }
-  .food-container-mobile {
-    display: flex;
-    align-content: center;
-    width: fit-content;
+    margin-left: 0.7rem;
   }
   .hero-img {
     visibility: collapse;
@@ -124,29 +120,16 @@ h5 {
     display: flex;
     flex-direction: column;
     width: min-content;
-    justify-content: center;
     max-height: 10rem;
-    margin-left: 3rem;
-  }
-  .foodlist-container {
-    margin-left: 2rem;
-  }
-  .food-list {
-    display: flex;
-    margin-top: 2rem;
-    flex-direction: column;
-    margin-left: 2rem;
   }
   .hero-greeting {
     display: flex;
-    align-items: center;
-    width: 100%;
+    width: 88%;
     margin: 5rem auto;
   }
   .hero-title h1 {
     display: flex;
     font-size: max(1.5rem, 15px);
-    width: fit-content;
   }
   .hero-title h5 {
     font-size: max(1rem, 10px);

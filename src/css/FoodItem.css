@@ -143,7 +143,7 @@
   color: #6c8fa7;
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 430px) {
   .card-mobile {
     visibility: visible;
     margin-left: -0.8rem;

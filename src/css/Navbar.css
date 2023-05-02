@@ -139,7 +139,7 @@ nav {
   visibility: hidden;
 }
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 900px) {
   nav {
     background-color: #6c8fa7;
     position: sticky;
